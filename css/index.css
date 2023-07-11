@@ -763,7 +763,7 @@ hue-6-2: #e6c07b
   flex-grow: 1;
   flex-shrink: 1;
   position: relative;
-  min-height: 150px;
+  max-height: 150px;
   margin: 20px;
   background-color: #FFF;
   border-radius: 10px;
