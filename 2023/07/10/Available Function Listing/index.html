@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Function,Powershell,AppDeployToolkit,">
+<meta name="keywords" content="Powershell,AppDeployToolkit,Function,">
 <meta name="description" content="">
 
 
@@ -284,11 +284,11 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Function">Function</a></li>
-            
             <li><a href="/tags/Powershell">Powershell</a></li>
             
             <li><a href="/tags/AppDeployToolkit">AppDeployToolkit</a></li>
+            
+            <li><a href="/tags/Function">Function</a></li>
             
             
         </ul>
@@ -321,7 +321,82 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="From-AppDeployToolkit"><a href="#From-AppDeployToolkit" class="headerlink" title="From AppDeployToolkit"></a>From AppDeployToolkit</h2><p>| Name | Synopsis | Name | Synopsis | Name | Synopsis | Name | Synopsis |<br>| —-  | —-  | —-  | —-  | —-  | —-  | —-  | —-  | —-  |<br>| <code>Execute-MSP</code>  | Reads SummaryInfo targeted product codes in MSP file and determines if the MSP file applies to any installed products. | <code>Write-Log</code>  | Write messages to a log file in CMTrace.exe compatible format or Legacy text file format.  | <code>New-ZipFile</code>  | Create a new zip archive or add content to an existing archive.  | <code>Exit-Script</code>  | Exit the script, perform cleanup actions, and pass an exit code to the parent process.  |   <!--one line --><br><code>Resolve-Error</code>  |  Enumerate error record details. | <code>Show-InstallationPrompt</code>  |  Displays a custom installation prompt with the toolkit branding and optional buttons.  |  <code>Show-DialogBox</code>  |  Display a custom dialog box with optional title, buttons, icon and timeout.  |  <code>Get-HardwarePlatform</code>  |  Retrieves information about the hardware platform (physical or virtual)  | <!--one line --><br><code>Get-FreeDiskSpace</code>  |  Retrieves the free disk space in MB on a particular drive (defaults to system drive) | <code>Get-InstalledApplication</code>  |  Retrieves information about installed applications.  |  <code>Execute-MSI</code>  | Executes msiexec.exe to perform the following actions for MSI &amp; MSP files and MSI product codes: install, uninstall, patch, repair, active setup.  | <code>Remove-MSIApplications</code>  |  Removes all MSI applications matching the specified application name.  | <!--one line --><br><code>Execute-Process</code>  |  Execute a process with optional arguments, working directory, window style. | <code>Get-MsiExitCodeMessage</code>  |  Get message for MSI error code  |  <code>Test-IsMutexAvailable</code>  |  Wait, up to a timeout value, to check if current thread is able to acquire an exclusive lock on a system mutex.  | <code>New-Folder</code>  |  Create a new folder.  | <!--one line --><br><code>Remove-Folder</code>  |  Remove folder and files if they exist. | <code>Copy-File</code>  |  Copy a file or group of files to a destination path.  |  <code>Remove-File</code>  |  Removes one or more items from a given path on the filesystem.  | <code>Convert-RegistryPath</code>  |  Converts the specified registry key path to a format that is compatible with built-in PowerShell cmdlets.  | <!--one line --><br><code>Test-RegistryValue</code>  |  Test if a registry value exists. | <code>Get-RegistryKey</code>  |  Retrieves value names and value data for a specified registry key or optionally, a specific value.  |  <code>Set-RegistryKey</code>  |  Creates a registry key name, value, and value data; it sets the same if it already exists.  | <code>Remove-RegistryKey</code>  |  Deletes the specified registry key or value.  | <!--one line --><br><code>Invoke-HKCURegistrySettingsForAllUsers</code>  |  Set current user registry settings for all current users and any new users in the future.  | <code>ConvertTo-NTAccountOrSID</code>  |  Convert between NT Account names and their security identifiers (SIDs).  |  <code>Get-UserProfiles</code>  |  Get the User Profile Path, User Account Sid, and the User Account Name for all users that log onto the machine and also the Default User (which does not log on).  | <code>Get-FileVersion</code>  |  Gets the version of the specified file  | <!--one line --><br><code>New-Shortcut</code>  |  Creates a new .lnk or .url type shortcut  | <code>Execute-ProcessAsUser</code>  |  Execute a process with a logged in user account, by using a scheduled task, to provide interaction with user in the SYSTEM context.  |  <code>Update-Desktop</code>  |  Refresh the Windows Explorer Shell, which causes the desktop icons and the environment variables to be reloaded.  | <code>Update-SessionEnvironmentVariables</code>  |  Updates the environment variables for the current PowerShell session with any environment variable changes that may have occurred during script execution.  | <!--one line --><br><code>Get-ScheduledTask</code>  |  Retrieve all details for scheduled tasks on the local computer.  | <code>Block-AppExecution</code>  |  Block the execution of an application(s)  |  <code>Unblock-AppExecution</code>  |  Unblocks the execution of applications performed by the Block-AppExecution function  | <code>Get-DeferHistory</code>  |  Get the history of deferrals from the registry for the current application, if it exists.  | <!--one line --><br><code>Set-DeferHistory</code>  |  Set the history of deferrals in the registry for the current application.  | <code>Get-UniversalDate</code>  |  Returns the date&#x2F;time for the local culture in a universal sortable date time pattern.  |  <code>Get-RunningProcesses</code>  |  Gets the processes that are running from a custom list of process objects and also adds a property called ProcessDescription.  | <code>Show-InstallationWelcome</code>  |  Show a welcome dialog prompting the user with information about the installation and actions to be performed before the installation can begin.  | <!--one line --><br><code>Show-WelcomePrompt</code>  |  Called by Show-InstallationWelcome to prompt the user to optionally do the following: 1. Close the specified running applications. 2. Provide an option to defer the installation. 3. Show a countdown before applications are automatically closed.  | <code>Show-InstallationRestartPrompt</code>  |  Displays a restart prompt with a countdown to a forced restart.  |  <code>Show-BalloonTip</code>  |  Displays a balloon tip notification in the system tray.  | <code>Show-InstallationProgress</code>  |  Displays a progress dialog in a separate thread with an updateable custom message.  | <!--one line --></p>
+    <h2 id="From-AppDeployToolkit"><a href="#From-AppDeployToolkit" class="headerlink" title="From AppDeployToolkit"></a>From AppDeployToolkit</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Name</th>
+<th>Synopsis</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Execute-MSP</code></td>
+<td>Reads SummaryInfo targeted product codes in MSP file and determines if the MSP file applies to any installed products.</td>
+<td><code>Write-Log</code></td>
+<td>Write messages to a log file in CMTrace.exe compatible format or Legacy text file format.</td>
+</tr>
+<tr>
+<td><code>Resolve-Error</code></td>
+<td>Enumerate error record details.</td>
+<td><code>Show-InstallationPrompt</code></td>
+<td>Displays a custom installation prompt with the toolkit branding and optional buttons.</td>
+</tr>
+<tr>
+<td><code>Get-FreeDiskSpace</code></td>
+<td>Retrieves the free disk space in MB on a particular drive (defaults to system drive)</td>
+<td><code>Get-InstalledApplication</code></td>
+<td>Retrieves information about installed applications.</td>
+</tr>
+<tr>
+<td><code>Execute-Process</code></td>
+<td>Execute a process with optional arguments, working directory, window style.</td>
+<td><code>Get-MsiExitCodeMessage</code></td>
+<td>Get message for MSI error code</td>
+</tr>
+<tr>
+<td><code>Remove-Folder</code></td>
+<td>Remove folder and files if they exist.</td>
+<td><code>Copy-File</code></td>
+<td>Copy a file or group of files to a destination path.</td>
+</tr>
+<tr>
+<td><code>Test-RegistryValue</code></td>
+<td>Test if a registry value exists.</td>
+<td><code>Get-RegistryKey</code></td>
+<td>Retrieves value names and value data for a specified registry key or optionally, a specific value.</td>
+</tr>
+<tr>
+<td><code>Invoke-HKCURegistrySettingsForAllUsers</code></td>
+<td>Set current user registry settings for all current users and any new users in the future.</td>
+<td><code>ConvertTo-NTAccountOrSID</code></td>
+<td>Convert between NT Account names and their security identifiers (SIDs).</td>
+</tr>
+<tr>
+<td><code>New-Shortcut</code></td>
+<td>Creates a new .lnk or .url type shortcut</td>
+<td><code>Execute-ProcessAsUser</code></td>
+<td>Execute a process with a logged in user account, by using a scheduled task, to provide interaction with user in the SYSTEM context.</td>
+</tr>
+<tr>
+<td><code>Get-ScheduledTask</code></td>
+<td>Retrieve all details for scheduled tasks on the local computer.</td>
+<td><code>Block-AppExecution</code></td>
+<td>Block the execution of an application(s)</td>
+</tr>
+<tr>
+<td><code>Set-DeferHistory</code></td>
+<td>Set the history of deferrals in the registry for the current application.</td>
+<td><code>Get-UniversalDate</code></td>
+<td>Returns the date&#x2F;time for the local culture in a universal sortable date time pattern.</td>
+</tr>
+<tr>
+<td><code>Show-WelcomePrompt</code></td>
+<td>Called by Show-InstallationWelcome to prompt the user to optionally do the following: 1. Close the specified running applications. 2. Provide an option to defer the installation. 3. Show a countdown before applications are automatically closed.</td>
+<td><code>Show-InstallationRestartPrompt</code></td>
+<td>Displays a restart prompt with a countdown to a forced restart.</td>
+</tr>
+</tbody></table>
 
   </div>
   <div id="gitalk-container"></div>
@@ -380,11 +455,21 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
     }
 </style>
 
-    <div class="post-paging">
+       <style>
+       hr{
+           width: 1000px;
+           height: 1px;
+           background: linear-gradient(to left, #fff 5%, gainsboro 50%, #fff 85%);
+	   margin: auto;
+
+       }
+   </style>
+<hr>
+<div class="post-paging">
     
     <a href="/2023/07/10/ExcelFuncton/">
         <div class="post-paging-last">
-            <span>上一篇</span>
+            <span>Previous</span>
             <p>Excel Function Recording</p>
         </div>
     </a>
@@ -393,7 +478,7 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
     
     <a href="/2023/07/03/hello-world/">
         <div class="post-paging-next">
-            <span>下一篇</span>
+            <span>Next</span>
             <p>Hello World</p>
         </div>
     </a>
@@ -509,6 +594,8 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
   gtag('config', 'G-1V1Z7EKXTB');
 </script>
+
+
 <script>
 	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
 </script>
