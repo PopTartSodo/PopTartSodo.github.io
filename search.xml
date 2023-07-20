@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>使用Hexo部署Github Page</title>
+      <link href="/2023/07/11/Hexo-Github/"/>
+      <url>/2023/07/11/Hexo-Github/</url>
+      
+        <content type="html"><![CDATA[<p>##搭建前准备<br>部署设备：MacBook Pro</p><ol><li>安装Homebrew</li></ol><pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></pre><ol start="2"><li>安装环境</li></ol><pre><code class="bash">#安装Gitbrew install git#安装nodebrew install node#安装Hexo 因为是macOS需要在命令前添加sudosudo npm install -g hexo-cli#初始化hexo init &lt;blog&gt;   #blog可自定义cd &lt;blog&gt;npm install#检查是否安装成功node -vgit --versionhexo -v</code></pre><ol start="3"><li>本地Hexo关联远程Github仓库</li></ol><pre><code class="bash"># 常用命令hexo c    #清理缓存hexo g    #生成hexo d    #发布hexo s    #本地预览#git config --global user.name &quot;username&quot;git config --global user.email &quot;email&quot;#验证查看是否有输出git config user.namegit config user.emailssh-keygen -t rsa -C &quot;email&quot;#获取sshcd /Users/user/.ssh/vim id_rsa.pub #复制ssh至下述步骤4</code></pre><blockquote><p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p></blockquote><pre><code class="bash">cd ~/&lt;blog&gt;vim _config.yml #########需要修改以下内容# Deployment## Docs: https://hexo.io/docs/one-command-deploymentdeploy:  type: git  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git  branch: master# URL## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;url: https://&lt;username&gt;.github.io#########需要修改以上内容#推送到githubsudo npm install hexo-deployer-git --savehexo cleanhexo d</code></pre><ol start="6"><li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Github </tag>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PowerShell Command Recording</title>
+      <link href="/2023/07/10/PowerShell/"/>
+      <url>/2023/07/10/PowerShell/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>ShortCut Keys in VSCode:</strong></p><ul><li><p><strong>Auto-adjust indent</strong><br> <code>Shift+Alt+F (Win)</code><br> <code>Shift+Option+F (Mac)</code></p></li><li><p><strong>Annotating</strong><br><code>Ctrl+/ (Win)</code></p></li></ul></blockquote><hr><h2 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h2><blockquote><ul><li><p><strong>Description:</strong><br>To get the specific file’s SHA256 automatically</p></li><li><p><strong>Syntax</strong></p></li></ul><pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl  Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;</code></pre><p><strong>More info:</strong> <a href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p></blockquote><h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote><ul><li><p><strong>Description:</strong><br>Make sure the script can output log.</p></li><li><p><strong>Syntax</strong></p></li></ul><pre><code class="powershell"> $ErrorMessage = $_.Exception.Message $FailIedItem = $_.Exception.ItemName $StackTrace = $_.Exception.StackTrace Write-Host &quot;Error: $ErrorMessage &quot; </code></pre><ul><li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li></ul><p><strong>More info:</strong> <a href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p></blockquote><h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote><ul><li><p><strong>Description:</strong><br>To get the file name in the file’s path.</p></li><li><p><strong>Syntax</strong></p></li></ul><pre><code class="powershell">Split-Path -Path &lt;Path&gt; -Leaf</code></pre><ul><li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li></ul><p><strong>More info:</strong> <a href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p></blockquote><h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote><ul><li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p></li><li><p><strong>Example[Command]</strong></p></li></ul><pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;</code></pre><ul><li><strong>Example[Output]</strong></li></ul><pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName-------  ------    -----      -----     ------     --  -- -----------      0       2      432       1852       0.00  45952   1 msiexec</code></pre><ul><li><strong>Syntax</strong></li></ul><pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru</code></pre><p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p><ul><li>&lt;arg&gt;Normal Parameters</li><li><ul><li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li></ul></li><li><ul><li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li></ul></li><li><ul><li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li></ul></li><li><ul><li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li></ul></li><li><ul><li><ul><li><strong>More info:</strong> <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></li></ul></li></ul></li></ul></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Powershell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Powershell </tag>
+            
+            <tag> Command </tag>
+            
+            <tag> ShortCuts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Excel Function Recording</title>
+      <link href="/2023/07/10/ExcelFuncton/"/>
+      <url>/2023/07/10/ExcelFuncton/</url>
+      
+        <content type="html"><![CDATA[<ol><li>Extract Group in cell:   <ul><li><code>=IF(ISNUMBER(SEARCH(&quot; : Users&quot;,D2)),&quot;Users&quot;,IF(ISNUMBER(SEARCH(&quot;Everyone&quot;,D2)),&quot;Everyone&quot;,&quot;Authenticated Users&quot;))</code></li></ul></li><li>Extract Path in cell: <ul><li><code>=MID(B9,FIND(&quot;Path :&quot;,B9)+LEN(&quot;Path :&quot;),FIND(&quot;Used by services&quot;,B9)-FIND(&quot;Path :&quot;,B9)-LEN(&quot;Path :&quot;))</code></li><li>Only extract the path that includes three “&quot;, decrease to two if do not have it </li><li><code>=IFERROR(MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)+1)),MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)))</code><br> Click “Data” , then will find “Text to Columns”. It will separate each field, only need 3 fields.<br> New a pivot table to calculate data.(Control Columns A:I )<ul><li>Required: DNS Name, Plugin Output</li></ul></li></ul><ol><li>Extract Path except for filename<br>   a. <code>=LEFT(D2,FIND(CHAR(1),SUBSTITUTE(D2,&quot;\&quot;,CHAR(1),LEN(D2)-LEN(SUBSTITUTE(D2,&quot;\&quot;,&quot;&quot;))))-1)</code><br> i. <code>left(text, num_chars)</code><br>     text: required. The text string that contains the characters you want to extract<br>     1) num_chars: optional. Specifies the number of characters you want left to extract.<br> ii. <code>find(find_text, within_text, [start_num])</code><br>  1. find_text: required. The text you want to find<br>  2. within_text: required. The text containing the text you want to find.<br>  3. start_num: option. Specifies the character at which to start the search. The first character in within_text is character number 1. if you omit start_num, it is assumed to be 1.<br> iii.<code>substitute(text, old_text, new_text, [instance_num])</code><br>  4. text: required. The text or the reference to a cell containing text for which you want to substitute characters.<br>  5. old_text: required. The text you want to replace.<br>  6. new_text: required. The Text you want to replace old_text with<br>  7. instance_num: optional. Specifics which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text.<br> iv. <code>len(text) </code><br> 1.Text: required. The text whose length you want to find. Space count as characters.</li><li>Combine content of cells<br> a. <code>=TEXTJOIN(&quot;,&quot;,TRUE,K1:K10)</code><br> i. <code>textjoin(delimiter, ignore_empty, text1)</code><br>        1. Delimiter: required. A text string, either empty, or one or more characters enclosed by double quotes, or a reference to a valid text string. If a number is supplied, it will be treated as text.<br>     1. Ignore_empty: if true, ignores empty cells.<br>     2. Text1: required. Text item to be joined. A text string, or array of strings, such as a range of cells.</li></ol></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Excel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Function </tag>
+            
+            <tag> Excel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Available Function Listing</title>
+      <link href="/2023/07/10/Available%20Function%20Listing/"/>
+      <url>/2023/07/10/Available%20Function%20Listing/</url>
+      
+        <content type="html"><![CDATA[<h2 id="From-AppDeployToolkit"><a href="#From-AppDeployToolkit" class="headerlink" title="From AppDeployToolkit"></a>From AppDeployToolkit</h2><table><thead><tr><th>Name</th><th>Synopsis</th><th>Name</th><th>Synopsis</th></tr></thead><tbody><tr><td><code>Execute-MSP</code></td><td>Reads SummaryInfo targeted product codes in MSP file and determines if the MSP file applies to any installed products.</td><td><code>Write-Log</code></td><td>Write messages to a log file in CMTrace.exe compatible format or Legacy text file format.  <!--one line --></td></tr><tr><td><code>New-ZipFile</code></td><td>Create a new zip archive or add content to an existing archive.</td><td><code>Exit-Script</code></td><td>Exit the script, perform cleanup actions, and pass an exit code to the parent process.</td></tr><tr><td><code>Resolve-Error</code></td><td>Enumerate error record details.</td><td><code>Show-InstallationPrompt</code></td><td>Displays a custom installation prompt with the toolkit branding and optional buttons.  <!--one line --></td></tr><tr><td><code>Show-DialogBox</code></td><td>Display a custom dialog box with optional title, buttons, icon and timeout.</td><td><code>Get-HardwarePlatform</code></td><td>Retrieves information about the hardware platform (physical or virtual)</td></tr><tr><td><code>Get-FreeDiskSpace</code></td><td>Retrieves the free disk space in MB on a particular drive (defaults to system drive)</td><td><code>Get-InstalledApplication</code></td><td>Retrieves information about installed applications.</td></tr><tr><td><code>Execute-MSI</code></td><td>Executes msiexec.exe to perform the following actions for MSI &amp; MSP files and MSI product codes: install, uninstall, patch, repair, active setup.</td><td><code>Remove-MSIApplications</code></td><td>Removes all MSI applications matching the specified application name.</td></tr><tr><td><code>Test-RegistryValue</code></td><td>Test if a registry value exists.</td><td><code>Get-RegistryKey</code></td><td>Retrieves value names and value data for a specified registry key or optionally, a specific value.</td></tr><tr><td><code>Set-RegistryKey</code></td><td>Creates a registry key name, value, and value data; it sets the same if it already exists.</td><td><code>Remove-RegistryKey</code></td><td>Deletes the specified registry key or value.</td></tr><tr><td><code>Invoke-HKCURegistrySettingsForAllUsers</code></td><td>Set current user registry settings for all current users and any new users in the future.</td><td><code>ConvertTo-NTAccountOrSID</code></td><td>Convert between NT Account names and their security identifiers (SIDs).</td></tr><tr><td><code>Get-UserProfiles</code></td><td>Get the User Profile Path, User Account Sid, and the User Account Name for all users that log onto the machine and also the Default User (which does not log on).</td><td><code>Get-FileVersion</code></td><td>Gets the version of the specified file</td></tr><tr><td><code>New-Shortcut</code></td><td>Creates a new .lnk or .url type shortcut</td><td><code>Execute-ProcessAsUser</code></td><td>Execute a process with a logged in user account, by using a scheduled task, to provide interaction with user in the SYSTEM context.</td></tr><tr><td><code>Update-Desktop</code></td><td>Refresh the Windows Explorer Shell, which causes the desktop icons and the environment variables to be reloaded.</td><td><code>Update-SessionEnvironmentVariables</code></td><td>Updates the environment variables for the current PowerShell session with any environment variable changes that may have occurred during script execution.</td></tr><tr><td><code>Get-ScheduledTask</code></td><td>Retrieve all details for scheduled tasks on the local computer.</td><td><code>Block-AppExecution</code></td><td>Block the execution of an application(s)</td></tr><tr><td><code>Unblock-AppExecution</code></td><td>Unblocks the execution of applications performed by the Block-AppExecution function</td><td><code>Get-DeferHistory</code></td><td>Get the history of deferrals from the registry for the current application, if it exists.</td></tr><tr><td><code>Set-DeferHistory</code></td><td>Set the history of deferrals in the registry for the current application.</td><td><code>Get-UniversalDate</code></td><td>Returns the date&#x2F;time for the local culture in a universal sortable date time pattern.</td></tr><tr><td><code>Get-RunningProcesses</code></td><td>Gets the processes that are running from a custom list of process objects and also adds a property called ProcessDescription.</td><td><code>Show-InstallationWelcome</code></td><td>Show a welcome dialog prompting the user with information about the installation and actions to be performed before the installation can begin.</td></tr><tr><td><code>Show-WelcomePrompt</code></td><td>Called by Show-InstallationWelcome to prompt the user to optionally do the following: 1. Close the specified running applications. 2. Provide an option to defer the installation. 3. Show a countdown before applications are automatically closed.</td><td><code>Show-InstallationRestartPrompt</code></td><td>Displays a restart prompt with a countdown to a forced restart.</td></tr><tr><td><code>Show-BalloonTip</code></td><td>Displays a balloon tip notification in the system tray.</td><td><code>Show-InstallationProgress</code></td><td>Displays a progress dialog in a separate thread with an updateable custom message.</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Powershell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Powershell </tag>
+            
+            <tag> AppDeployToolkit </tag>
+            
+            <tag> Function </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/07/03/hello-world/"/>
+      <url>/2023/07/03/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

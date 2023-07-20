@@ -319,7 +319,8 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="搭建前准备"><a href="#搭建前准备" class="headerlink" title="搭建前准备"></a>搭建前准备</h2><h3 id="部署设备：MacBook-Pro"><a href="#部署设备：MacBook-Pro" class="headerlink" title="部署设备：MacBook Pro"></a>部署设备：MacBook Pro</h3><ol>
+    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
+<ol>
 <li>安装Homebrew</li>
 </ol>
 <pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
@@ -374,12 +375,8 @@ cd /Users/user/.ssh/
 vim id_rsa.pub 				#复制ssh至下述步骤4
 </code></pre>
 <blockquote>
-<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token</p>
+<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
 </blockquote>
-<ol start="4">
-<li>github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"></li>
-<li>更改配置文件</li>
-</ol>
 <pre><code class="bash">cd ~/&lt;blog&gt;
 vim _config.yml 
 

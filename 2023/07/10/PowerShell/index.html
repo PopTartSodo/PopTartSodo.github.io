@@ -341,9 +341,7 @@
 <pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl
   Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;
 </code></pre>
-<blockquote>
-<p><strong>Learn more:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
-</blockquote>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
 </blockquote>
 <h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote>
 <ul>
@@ -361,9 +359,7 @@
 <ul>
 <li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li>
 </ul>
-<blockquote>
-<p><strong>Learn more:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
-</blockquote>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
 </blockquote>
 <h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote>
 <ul>
@@ -377,11 +373,58 @@
 <ul>
 <li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li>
 </ul>
-<blockquote>
-<p><strong>Learn more:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
 </blockquote>
+<h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p>
+</li>
+<li><p><strong>Example[Command]</strong></p>
+</li>
+</ul>
+<pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong></li>
+</ul>
+<pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+      0       2      432       1852       0.00  45952   1 msiexec
+</code></pre>
+<ul>
+<li><strong>Syntax</strong></li>
+</ul>
+<pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru
+</code></pre>
+<p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p>
+<ul>
+<li>&lt;arg&gt;Normal Parameters</li>
+<li><ul>
+<li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+
   </div>
   <div id="gitalk-container"></div>
 </div>
