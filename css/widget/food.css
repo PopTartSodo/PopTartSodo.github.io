@@ -2,7 +2,6 @@
   display: flex;
   padding: 0 calc((100% - 1160px)/2);
   height: 80px;
-  background: linear-gradient(to top, #f1f5fb, #f9fcff);
 }
 .footer .Copyright {
   display: flex;
