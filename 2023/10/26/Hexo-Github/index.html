@@ -2,17 +2,18 @@
 <html>
 	<head>
 		
-<title>Hexo主题-Quiet主题-Hexo扁平化主题安装-Quiet</title>
+<title>使用Hexo部署Github Page-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/image/Console03.png">
 
 <link rel="stylesheet" href="/css/index.css">
 
 
-<meta name="keywords" content="hexo主题,hexo扁平化主题,Quiet主题">
-<meta name="description" content="描述">
+
+<meta name="keywords" content="Github,Hexo,">
+<meta name="description" content="">
 
 
 <script src="/js/jquery.min.js"></script>
@@ -114,7 +115,7 @@
 	</div>
 	<div class="sidebar">
     <div class="topo">
-        <h2>Joey</h2>
+        <h2>Sodo</h2>
     </div>
     <ul>
         
@@ -145,7 +146,7 @@
     </ul>
     <div class="my_foot">
         
-        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+        <a target="_blank" rel="noopener" href="https://github.com/PopTartSodo/PopTartSodo.github.io">
             <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
         </a>
         
@@ -276,30 +277,39 @@
 </script>
 
 <div class="post">
-    <div class="post-header-background post-header-img"
-    style="background: url('https://api.ixiaowai.cn/gqapi/gqapi.php')" 
+    <div class="post-header-background post-header-color"
+    style="background: url('')" 
 >
     <div class="post-header-background-content">
         <ul class="post-header-tag">
             
+            
+            <li><a href="/tags/Github">Github</a></li>
+            
+            <li><a href="/tags/Hexo">Hexo</a></li>
+            
+            
         </ul>
         
-        <h1></h1>
+        <h1>使用Hexo部署Github Page</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
-                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
-                        <path
-                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
-                            p-id="2902" fill="#ffffff"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <g>
+                            <path fill="#12183A"
+                                d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                            </path>
+                        </g>
                     </svg>
-                    
-                <span class="post-header-info-author-text"> <a href="../../about">Joey</a></span>
+                
+                <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
+                         <a href="../../categories/Github/" target="_blank" >Github</a>
+                    
                 </div>
-                <p>2023-07-21 11:15:59</p>
+                <p>2023-10-26 14:33:49</p>
             </div>
         </div>
     </div>
@@ -309,7 +319,91 @@
   <div id="article" class="post-content-info">
     
 
-    <p>  test</p>
+    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
+<ol>
+<li>安装Homebrew</li>
+</ol>
+<pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+</code></pre>
+<ol start="2">
+<li>安装环境</li>
+</ol>
+<pre><code class="bash">#安装Git
+brew install git
+#安装node
+brew install node
+#安装Hexo 因为是macOS需要在命令前添加sudo
+sudo npm install -g hexo-cli
+#初始化
+hexo init &lt;blog&gt;   #blog可自定义
+cd &lt;blog&gt;
+npm install
+
+
+
+
+
+#检查是否安装成功
+node -v
+git --version
+hexo -v
+</code></pre>
+<ol start="3">
+<li>本地Hexo关联远程Github仓库</li>
+</ol>
+<pre><code class="bash"># 常用命令
+hexo c    #清理缓存
+hexo g    #生成
+hexo d    #发布
+hexo s    #本地预览
+
+
+#
+git config --global user.name &quot;username&quot;
+git config --global user.email &quot;email&quot;
+
+#验证查看是否有输出
+git config user.name
+git config user.email
+
+
+ssh-keygen -t rsa -C &quot;email&quot;
+
+
+#获取ssh
+cd /Users/user/.ssh/
+vim id_rsa.pub 				#复制ssh至下述步骤4
+</code></pre>
+<blockquote>
+<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
+</blockquote>
+<pre><code class="bash">cd ~/&lt;blog&gt;
+vim _config.yml 
+
+#########需要修改以下内容
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
+  branch: master
+
+
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;
+url: https://&lt;username&gt;.github.io
+
+#########需要修改以上内容
+
+#推送到github
+sudo npm install hexo-deployer-git --save
+hexo clean
+hexo d
+</code></pre>
+<ol start="6">
+<li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li>
+</ol>
 
   </div>
   <div id="gitalk-container"></div>
@@ -368,21 +462,31 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
     }
 </style>
 
-    <div class="post-paging">
+       <style>
+       hr{
+           width: 1000px;
+           height: 1px;
+           background: linear-gradient(to left, #fff 5%, gainsboro 50%, #fff 85%);
+	   margin: auto;
+
+       }
+   </style>
+<hr>
+<div class="post-paging">
     
-    <a href="/2023/07/21/hello-world/">
+    <a href="/2023/10/26/ExcelFuncton/">
         <div class="post-paging-last">
-            <span>上一篇</span>
-            <p>Hello World</p>
+            <span>Previous</span>
+            <p>Excel Function Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2023/07/21/Available%20Function%20Listing/">
+    <a href="/2023/10/26/PowerShell/">
         <div class="post-paging-next">
-            <span>下一篇</span>
-            <p>Available Function Listing</p>
+            <span>Next</span>
+            <p>PowerShell Command Recording</p>
         </div>
     </a>
     
@@ -391,16 +495,24 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 		
 <div class="footer">
 	<div class="Copyright">
-		©2023 By Joey. 主题：<a
+		©2023 By Sodo. 主题：<a
 			style="text-decoration: none;display: contents; color: #898F9F;"
-			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet.</a>&nbsp;
+
+		<span id="busuanzi_container_site_uv">
+		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	
 	</div>
+	
 	<div class="contact">
 		
-		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+		<a target="_blank" rel="noopener" href="https://github.com/PopTartSodo/PopTartSodo.github.io">
 			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
 		</a>
 		
+		</span>
 	</div>
 </div>
 
@@ -480,25 +592,21 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 		}
 	} );
 </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V1Z7EKXTB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-1V1Z7EKXTB');
+</script>
 
-    <!-- Gitalk -->
-    <script>
-        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
-        const gitalk = new Gitalk({
-            ...JSON.parse( data),
-            id:location.pathname,
-            distractionFreeMode:false
-        })
-        
-        if(Boolean('true')){
-            gitalk.render('gitalk-container')
-        }
-    </script>
 
 <script>
 	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
 </script>
+
 	</body>
 </html>
 

@@ -229,6 +229,7 @@
   display: flex;
   padding: 0 calc((100% - 1160px)/2);
   height: 80px;
+  background: linear-gradient(to top, #f1f5fb, #f9fcff);
 }
 .footer .Copyright {
   display: flex;
@@ -691,7 +692,7 @@ hue-6-2: #e6c07b
   box-shadow: 4px 6px 14px #ddd;
 }
 .categories-class-card-title {
-  color: #fff;
+  color: #34495e;
   position: relative;
   z-index: 2;
   font-size: 20px;
@@ -704,8 +705,8 @@ hue-6-2: #e6c07b
 }
 .categories-class-card-number .categories-length {
   position: relative;
-  font-size: 50px;
-  color: #fff;
+  font-size: 20px;
+  color: #34495e;
   z-index: 2;
   font-style: oblique;
   font-weight: bold;
@@ -713,7 +714,7 @@ hue-6-2: #e6c07b
 .categories-class-card-number span {
   position: relative;
   font-size: 20px;
-  color: #fff;
+  color: #34495e;
   z-index: 2;
   font-style: oblique;
 }
@@ -763,7 +764,7 @@ hue-6-2: #e6c07b
   flex-grow: 1;
   flex-shrink: 1;
   position: relative;
-  min-height: 420px;
+  max-height: 180px;
   margin: 20px;
   background-color: #FFF;
   border-radius: 10px;
