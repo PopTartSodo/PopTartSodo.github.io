@@ -147,7 +147,7 @@
       <link href="/2023/10/26/SplunkSearchCommand/"/>
       <url>/2023/10/26/SplunkSearchCommand/</url>
       
-        <content type="html"><![CDATA[<h2 id="Find-something-in-Splunk"><a href="#Find-something-in-Splunk" class="headerlink" title="Find something in Splunk"></a>Find something in Splunk</h2><blockquote><p>Then how can we do the search thing?<br>First of all, we should find “Datasets” then Click “Click Table View”. Then we could see the data repository in Splunk. This time you can return the Search Page.<br>Choose the one you need, input the below content in your search bar.</p><pre><code> index=&lt;your repository&gt;</code></pre><p>You also could use * to match the most close one.<br>For example:</p><pre><code>index=&quot;abc*&quot;</code></pre></blockquote>]]></content>
+        <content type="html"><![CDATA[<h2 id="Find-something-in-Splunk"><a href="#Find-something-in-Splunk" class="headerlink" title="Find something in Splunk"></a>Find something in Splunk</h2><blockquote><p>Then how can we do the search thing?<br>First of all, we should find “Datasets” then Click “Click Table View”. Then we could see the data repository in Splunk. This time you can return the Search Page.<br>Choose the one you need, input the below content in your search bar. </p><pre><code> index=&lt;your repository&gt;</code></pre><p>You also could use * to match the most close one.<br>For example: </p><pre><code>index=&quot;abc*&quot;</code></pre></blockquote>]]></content>
       
       
       <categories>
