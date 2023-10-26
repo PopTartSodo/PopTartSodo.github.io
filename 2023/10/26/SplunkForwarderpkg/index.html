@@ -309,7 +309,7 @@
                          <a href="../../categories/Shell/" target="_blank" >Shell</a>
                     
                 </div>
-                <p>2023-10-26 16:50:52</p>
+                <p>2023-10-26 16:53:10</p>
             </div>
         </div>
     </div>
@@ -347,11 +347,11 @@ fi
 <blockquote>
 <h3 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h3><ol>
 <li>T：检测当前SplunkForwarder版本是否为目标版本<ol>
-<li>T：替换配置文件</li>
+<li>T：替换配置文件，并重启服务splunk</li>
 <li>F：暂停Service，覆盖安装，添加配置文件</li>
 </ol>
 </li>
-<li>F：检测是否存在splunker用户，没有则进行添加；进行安装SplunkForwarder</li>
+<li>F：检测是否存在splunker用户，没有则进行添加；进行安装SplunkForwarder,替换配置文件后需要重启服务splunk</li>
 </ol>
 </blockquote>
 <pre><code class="shell">if [ -d $SPLUNK_HOME ]; then
