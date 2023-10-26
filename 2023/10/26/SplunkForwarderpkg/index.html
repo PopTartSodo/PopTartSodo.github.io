@@ -309,7 +309,7 @@
                          <a href="../../categories/Shell/" target="_blank" >Shell</a>
                     
                 </div>
-                <p>2023-10-26 16:44:55</p>
+                <p>2023-10-26 16:48:32</p>
             </div>
         </div>
     </div>
@@ -319,7 +319,9 @@
   <div id="article" class="post-content-info">
     
 
-    <h1 id="SplunkForwarder-UF-Installation"><a href="#SplunkForwarder-UF-Installation" class="headerlink" title="SplunkForwarder UF Installation"></a>SplunkForwarder UF Installation</h1><h2 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h2><pre><code class="shell">#!/bin/bash
+    <h1 id="SplunkForwarder-UF-Installation"><a href="#SplunkForwarder-UF-Installation" class="headerlink" title="SplunkForwarder UF Installation"></a>SplunkForwarder UF Installation</h1><blockquote>
+<h3 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h3></blockquote>
+<pre><code class="shell">#!/bin/bash
 #Argumentlist
 
 SPLUNK_HOME=/opt/splunkforwarder
@@ -333,7 +335,9 @@ CON_FOLDER=pwc-uf-mac-deploymentclient
 _silent=&quot;--accept-license --answer-yes --no-prompt&quot;
 SCRIPT_PATH=$(dirname &quot;$0&quot;)
 </code></pre>
-<h2 id="检测是否使用Root账号运行此脚本"><a href="#检测是否使用Root账号运行此脚本" class="headerlink" title="检测是否使用Root账号运行此脚本"></a>检测是否使用Root账号运行此脚本</h2><pre><code class="shell"># Check for root
+<blockquote>
+<h3 id="检测是否使用Root账号运行此脚本"><a href="#检测是否使用Root账号运行此脚本" class="headerlink" title="检测是否使用Root账号运行此脚本"></a>检测是否使用Root账号运行此脚本</h3></blockquote>
+<pre><code class="shell"># Check for root
 
 if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
     echo &quot;Relaunching this script as root user.&quot;
@@ -341,7 +345,7 @@ if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
 fi
 </code></pre>
 <blockquote>
-<h2 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h2><ol>
+<h3 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h3><ol>
 <li>T：</li>
 <li>检测当前SplunkForwarder版本是否为目标版本<ol>
 <li>T：替换配置文件</li>
