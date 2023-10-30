@@ -309,7 +309,7 @@
                          <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2023-10-30 19:07:08</p>
+                <p>2023-10-30 19:10:46</p>
             </div>
         </div>
     </div>
@@ -396,30 +396,12 @@ Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
 <blockquote>
 <p>For循环: </p>
 <ul>
-<li><ol>
-<li>for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>可以从OutlookMail.&lt;outlook里的item项&gt;，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。</li>
-</ol>
-</li>
-<li><ol start="5">
-<li>发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing</li>
-</ol>
-</li>
-<li><ol start="6">
+<li>for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。  </li>
+<li>Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。  </li>
+<li>从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。  </li>
+<li>outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。  </li>
+<li>发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing  </li>
 <li>最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。</li>
-</ol>
-</li>
 </ul>
 </blockquote>
 <pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
