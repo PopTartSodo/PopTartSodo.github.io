@@ -309,7 +309,7 @@
                          <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2023-10-30 19:10:46</p>
+                <p>2023-10-30 19:11:11</p>
             </div>
         </div>
     </div>
@@ -423,14 +423,8 @@ Next i
 </code></pre>
 <blockquote>
 <ul>
-<li><ol>
 <li>全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>然后是固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</li>
-</ol>
-</li>
+<li>固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</li>
 </ul>
 </blockquote>
 <pre><code>    &#39; 释放Outlook应用程序对象
@@ -439,10 +433,7 @@ End Sub
 </code></pre>
 <hr>
 <h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
-<ol>
-<li>打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮</li>
-<li>创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</li>
-</ol>
+<p>打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
 </blockquote>
 <pre><code>Private Sub CommandButton1_Click()
   sendMail
