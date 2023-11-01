@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>PowerShell Command Recording-Blog</title>
+<title>SplunkForwarder pkg in macOS-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Powershell,Command,ShortCuts,">
+<meta name="keywords" content="Shell,SplunkForwarder,">
 <meta name="description" content="">
 
 
@@ -284,16 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Powershell">Powershell</a></li>
+            <li><a href="/tags/Shell">Shell</a></li>
             
-            <li><a href="/tags/Command">Command</a></li>
-            
-            <li><a href="/tags/ShortCuts">ShortCuts</a></li>
+            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
             
             
         </ul>
         
-        <h1>PowerShell Command Recording</h1>
+        <h1>SplunkForwarder pkg in macOS</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -308,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
+                         <a href="../../categories/Shell/" target="_blank" >Shell</a>
                     
                 </div>
-                <p>2023-10-30 19:53:22</p>
+                <p>2023-11-01 10:01:52</p>
             </div>
         </div>
     </div>
@@ -321,91 +319,200 @@
   <div id="article" class="post-content-info">
     
 
-    <blockquote>
-<p><strong>ShortCut Keys in VSCode:</strong></p>
-<ul>
-<li><p><strong>Auto-adjust indent</strong><br> <code>Shift+Alt+F (Win)</code><br> <code>Shift+Option+F (Mac)</code></p>
-</li>
-<li><p><strong>Annotating</strong><br><code>Ctrl+/ (Win)</code></p>
-</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To get the specific file’s SHA256 automatically</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl
-  Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;
-</code></pre>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
-</blockquote>
-<h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>Make sure the script can output log.</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell"> $ErrorMessage = $_.Exception.Message
- $FailIedItem = $_.Exception.ItemName
- $StackTrace = $_.Exception.StackTrace
+    <h1 id="SplunkForwarder-UF-Installation"><a href="#SplunkForwarder-UF-Installation" class="headerlink" title="SplunkForwarder UF Installation"></a>SplunkForwarder UF Installation</h1><blockquote>
+<h3 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h3></blockquote>
+<pre><code class="shell">#!/bin/bash
+#Argumentlist
 
- Write-Host &quot;Error: $ErrorMessage &quot; 
+SPLUNK_HOME=/opt/splunkforwarder
+SPLUNK_USER=splunker
+#SPLUNK_GRP=splunker
+SPLUNK_BIN=$SPLUNK_HOME/bin
+SPLUNK_VER=&quot;$SPLUNK_HOME/splunkforwarder-9*&quot;
+SPLUNK_UNIT_NAME=splunk
+CON_DIR=$SPLUNK_HOME/etc/apps
+CON_FOLDER=pwc-uf-mac-deploymentclient
+_silent=&quot;--accept-license --answer-yes --no-prompt&quot;
+SCRIPT_PATH=$(dirname &quot;$0&quot;)
 </code></pre>
-<ul>
-<li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
+<blockquote>
+<h3 id="检测是否使用Root账号运行此脚本"><a href="#检测是否使用Root账号运行此脚本" class="headerlink" title="检测是否使用Root账号运行此脚本"></a>检测是否使用Root账号运行此脚本</h3></blockquote>
+<pre><code class="shell"># Check for root
+
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+    echo &quot;Relaunching this script as root user.&quot;
+    exec sudo &quot;$0&quot; &quot;$@&quot;
+fi
+</code></pre>
+<blockquote>
+<h3 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h3><ol>
+<li>T：检测当前SplunkForwarder版本是否为目标版本<ol>
+<li>T：替换配置文件，并重启服务splunk</li>
+<li>F：暂停Service，覆盖安装，添加配置文件</li>
+</ol>
+</li>
+<li>F：检测是否存在splunker用户，没有则进行添加；进行安装SplunkForwarder,替换配置文件后需要重启服务splunk</li>
+</ol>
 </blockquote>
-<h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To get the file name in the file’s path.</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell">Split-Path -Path &lt;Path&gt; -Leaf
+<pre><code class="shell">if [ -d $SPLUNK_HOME ]; then
+    echo &quot;Splunkforwarder exists!&quot;
+    if ls $SPLUNK_VER 1&gt; /dev/null 2&gt;&amp;1; then
+        echo &quot;Splunkforwarder is the lastest.&quot;
+        if [ -d $CON_DIR/Backup ]; then
+            for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then    
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
+            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+            $SPLUNK_BIN/splunk restart $_silent
+            echo &quot;Success to restart splunk!&quot;
+        else
+            for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
+                    mkdir -p $CON_DIR/Backup     
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+        fi
+    else
+        $SPLUNK_BIN/splunk stop
+        tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
+        if [ -d $CON_DIR/Backup ]; then
+            for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then     
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
+            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+        else
+           for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
+                    mkdir -p $CON_DIR/Backup     
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
+            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+        fi
+    fi
+
+else
+    # Does not exist. Then, Installation for splunk
+    cd $SCRIPT_PATH
+    tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
+    if [ -d $SPLUNK_HOME ]; then
+        echo &quot;Success to install Splunk.&quot;
+        #Create a new folder for backup configuration
+        mkdir -p $CON_DIR/Backup
+        mv -f $CON_DIR/pwc* $CON_DIR/Backup
+        echo &quot;Success to delete old configuration-pwc*&quot;
+
+        #Replace configuration [pwc-uf-mac-deploymentclient]
+        cd $SCRIPT_PATH
+        sudo cp -r $CON_FOLDER $CON_DIR
+        echo &quot;Success to copy $CON_FOLDER!&quot;
+
+        # Change ownership of splunk
+        if ! id -u splunker &gt;/dev/null 2&gt;&amp;1; then
+            # Create user: splunker
+            sudo dscl . -create /Users/splunker
+            sudo dscl . -create /Users/splunker UserShell /bin/bash
+            sudo dscl . -create /Users/splunker RealName &quot;splunker&quot;
+            sudo dscl . -create /Users/splunker UniqueID &quot;9980&quot;
+            sudo dscl . -create /Users/splunker PrimaryGroupID &quot;9980&quot;
+            sudo dscl . -create /Users/splunker NFSHomeDirectory /Users/splunker
+            sudo mkdir /Users/splunker
+            sudo chown splunker:splunker /Users/splunker
+            # Create group: splunker
+            sudo dscl . -create /Groups/splunker
+            sudo dscl . -create /Groups/splunker RealName &quot;splunker&quot;
+            sudo dscl . -create /Groups/splunker gid &quot;9980&quot;
+            # Add user to group
+            sudo dseditgroup -o edit -a splunker -t user splunker
+        fi
+        sudo chown -R splunker:splunker $SPLUNK_HOME/
+        echo &quot;Change successfully&quot;
+        # Start Splunk as non-root SPLUNK_USER                
+        sudo -u splunker $SPLUNK_BIN/splunk start $_silent                
+        # ENABLE BOOT START SECTION
+        sudo -u splunker $SPLUNK_BIN/splunk enable boot-start
+        # Restarting Splunk...
+        sudo -u splunker $SPLUNK_BIN/splunk restart $_silent
+        echo &quot;restart successfully&quot;
+
+    fi
+
+fi
 </code></pre>
-<ul>
-<li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
-</blockquote>
-<h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p>
-</li>
-<li><p><strong>Example[Command]</strong></p>
-</li>
-</ul>
-<pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;
-</code></pre>
-<ul>
-<li><strong>Example[Output]</strong></li>
-</ul>
-<pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
--------  ------    -----      -----     ------     --  -- -----------
-      0       2      432       1852       0.00  45952   1 msiexec
-</code></pre>
-<ul>
-<li><strong>Syntax</strong></li>
-</ul>
-<pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru
-</code></pre>
-<p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p>
-<ul>
-<li>&lt;arg&gt;Normal Parameters</li>
-<li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li>
-<li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li>
-<li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li>
-<li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></p>
-</blockquote>
 
   </div>
   <div id="gitalk-container"></div>
@@ -476,19 +583,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2023/10/30/Osaka-Tokyo%20Trave%20Guide%207%20Days/">
+    <a href="/2023/11/01/PowerShell/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Osaka-Tokyo Trave Guide 7 Days</p>
+            <p>PowerShell Command Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2023/10/30/SplunkForwarderpkg/">
+    <a href="/2023/11/01/SplunkSearchCommand/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>SplunkForwarder pkg in macOS</p>
+            <p>SplunkForwarder Search Command</p>
         </div>
     </a>
     
