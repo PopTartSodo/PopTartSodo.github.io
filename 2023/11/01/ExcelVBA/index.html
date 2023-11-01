@@ -309,7 +309,7 @@
                          <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2023-11-01 10:01:52</p>
+                <p>2023-11-01 10:02:17</p>
             </div>
         </div>
     </div>
@@ -405,10 +405,7 @@ Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
 Next i
 </code></pre>
 <blockquote>
-<ul>
-<li>全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application</li>
-<li>固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</li>
-</ul>
+<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
 </blockquote>
 <pre><code>    &#39; 释放Outlook应用程序对象
     Set OutlookApp = Nothing
