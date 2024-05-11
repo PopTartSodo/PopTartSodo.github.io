@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>SplunkForwarder Search Command-Blog</title>
+<title>Kanto Area Travel Guide 6 Days-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="SplunkForwarder,Search,">
+<meta name="keywords" content="Travel,Japan,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
+            <li><a href="/tags/Travel">Travel</a></li>
             
-            <li><a href="/tags/Search">Search</a></li>
+            <li><a href="/tags/Japan">Japan</a></li>
             
             
         </ul>
         
-        <h1>SplunkForwarder Search Command</h1>
+        <h1>Kanto Area Travel Guide 6 Days</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/SplunkForwarder/" target="_blank" >SplunkForwarder</a>
+                         <a href="../../categories/Travel/" target="_blank" >Travel</a>
                     
                 </div>
-                <p>2024-05-09 22:23:45</p>
+                <p>2024-05-11 21:53:15</p>
             </div>
         </div>
     </div>
@@ -319,34 +319,97 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="Find-something-in-Splunk"><a href="#Find-something-in-Splunk" class="headerlink" title="Find something in Splunk"></a>Find something in Splunk</h2><blockquote>
-<p>Then how can we do the search thing?<br>First of all, we should find “Datasets” then Click “Click Table View”. Then we could see the data repository in Splunk. This time you can return the Search Page.<br>Choose the one you need, input the below content in your search bar.</p>
+    <h2 id="机票-酒店"><a href="#机票-酒店" class="headerlink" title="机票&amp;酒店"></a>机票&amp;酒店</h2><blockquote>
+<p>出发时间-归来时间：06月01日-06月06日 机票：1990<br>民宿:2853<br>地址：8-chōme-19-11 Nishishinjuku, Shinjuku City, 东京 160-0023, 日本</p>
 </blockquote>
-<pre><code>index=&lt;your repository&gt;
-</code></pre>
-<blockquote>
-<p>You also could use * to match the most close one.<br>For example:</p>
+<hr>
+<h2 id="必备物品【计算单位-人民币】"><a href="#必备物品【计算单位-人民币】" class="headerlink" title="必备物品【计算单位:人民币】"></a>必备物品【计算单位:人民币】</h2><blockquote>
+<p>兑换日元(2人)：3737<br>预计交通费：500<br>Shibuya Sky:105<br>日本上网流量卡:45<br>迪士尼门票:375<br>提前填写: <a target="_blank" rel="noopener" href="https://www.vjw.digital.go.jp/main">https://www.vjw.digital.go.jp/main</a></p>
 </blockquote>
-<pre><code>index=&quot;abc*&quot;
-</code></pre>
-<blockquote>
-<p>如果想要在搜索里进行筛选，需要在上面event查找到可用的field<br>Example in EVENT:</p>
+<h2 id="需要下载的App"><a href="#需要下载的App" class="headerlink" title="需要下载的App"></a>需要下载的App</h2><blockquote>
+<p>交通：Google Maps<br>餐饮：Tabelog&#x2F;Retty<br>翻译：Google 翻译&#x2F;Voicetra<br>迪士尼：Tokyo Disney Resort App   </p>
 </blockquote>
-<pre><code>&#123; [-]
-   Tenant: DefaultTenant
-   category: AdvancedHunting-AlertEvidence
-   operationName: Publish
-   properties: &#123; [+]
-   &#125;
-   tenantId: abc123xxx
-   time: 2023-10-30T02:11:42.2937933Z
-&#125; 
-</code></pre>
-<blockquote>
-<p>If you wanna find the category is AdvancedHunting-AlertEvidence, then should add one space and category&#x3D;”AdvancedHunting-AlertEvidence”.</p>
+<hr>
+<h2 id="打卡美食"><a href="#打卡美食" class="headerlink" title="打卡美食"></a>打卡美食</h2><ul>
+<li><input disabled="" type="checkbox"> 拉面: 油そば  -  东京西新宿 【周日营业至22点, 平日营业至凌晨4点】<blockquote>
+<p>吃法推荐：面上来之后，先淋2-4圈醋，2-4圈辣油。然后搅拌均匀。之后，撒上 1&#x2F;3-1&#x2F;4盒洋葱末</p>
 </blockquote>
-<pre><code>index=&quot;abc*&quot; category=&quot;AdvancedHunting-AlertEvidence&quot;.
-</code></pre>
+</li>
+<li><input disabled="" type="checkbox"> 甜甜圈: I’m Donut - 东京涩谷&#x2F;表参道&#x2F;原宿</li>
+<li><input disabled="" type="checkbox"> 寿司: Umegaoka Sushinomidori Shibuya - 东京涩谷 【可预约 - <a target="_blank" rel="noopener" href="https://www.tablecheck.com/zh-CN/shops/sushinomidori-shibuya/reserve%E3%80%91">https://www.tablecheck.com/zh-CN/shops/sushinomidori-shibuya/reserve】</a></li>
+<li><input disabled="" type="checkbox"> 和牛&#x2F;鳗鱼三明治: Ginza sand - 东京银座</li>
+<li><input disabled="" type="checkbox"> 秋叶原牛奶: ミルクスタンド - 东京秋叶原</li>
+<li><input disabled="" type="checkbox"> 拉面: 一兰拉面Ichiran Ramen - 东京涩谷&#x2F;新宿</li>
+<li><input disabled="" type="checkbox"> 咖啡【可打卡东京塔】: Hills House - 东京麻布台之丘  森JP Tower</li>
+<li><input disabled="" type="checkbox"> 和风定食: Cafe Yoridokoro -镰仓稻村崎 【7:00-9:00; 11:00-17:00】</li>
+<li><input disabled="" type="checkbox"> Brunch: ダブルドアーズDouble Doors・NAVY -镰仓七里滨【10:30–21:00】</li>
+<li><input disabled="" type="checkbox"> 汤咖喱: Asian Bar RAMAI - 横滨关内</li>
+</ul>
+<hr>
+<h2 id="日程规划"><a href="#日程规划" class="headerlink" title="日程规划"></a>日程规划</h2><h1 id="CYF想要落日飞车"><a href="#CYF想要落日飞车" class="headerlink" title="CYF想要落日飞车"></a>CYF想要落日飞车</h1><h3 id="Day-1-上海东京-06月01日-星期六"><a href="#Day-1-上海东京-06月01日-星期六" class="headerlink" title="Day 1 上海东京 06月01日 星期六"></a>Day 1 上海东京 <strong>06月01日 星期六</strong></h3><blockquote>
+<p>8:20-12:10 上海浦东T2-东京成田T2</p>
+</blockquote>
+<h3 id="Day-2-镰仓横滨-06月02日-星期日"><a href="#Day-2-镰仓横滨-06月02日-星期日" class="headerlink" title="Day 2 镰仓横滨  06月02日 星期日"></a>Day 2 镰仓横滨  <strong>06月02日 星期日</strong></h3><font size=3>
+可购买江之电一日券(800日元)<br/> 
+江之电220日元/程<br/> 
+新宿->镰仓高校 ：1.5h<br/> 
+镰仓【9点出发-5.8h】<br/> 
+(总耗时4.3h)  <br/> 
+1.镰仓高校(灌篮高手打卡点)(30min)  <br/> 
+2.七里滨(2pm前打卡海边富士山)(可步行至下一站)(60min)  <br/> 
+&nbsp;&nbsp;备选：Double Doors NAVY【10:30–21:00】  <br/> 
+3.稻村崎站(90min)  <br/> 
+午餐：Cafe Yoridokoro(カフェ ヨリドコロ)  <br/> 
+&nbsp;&nbsp;早餐时间：7:00-9:00  <br/> 
+&nbsp;&nbsp;午餐时间：11:00-17:00  <br/> 
+&nbsp;&nbsp;靠窗：テラス席お願いします  <br/> 
+4.长谷寺(门票400日元)(90min)  <br/> 
+</font>
+
+<hr>
+<font size=3 face="微软雅黑">
+镰仓->横滨  ： 1.1h <br/> 
+横滨【预计16.30到达】  <br/> 
+可体验：城市缆车(1000单程 20min)  <br/> 
+晚餐：Asian Bar RAMAI (汤咖喱)  <br/> 
+花火PlanA：(臨港パーク内)横滨【主会场附近也有很大一片可以免费观看的地方，每年人都很多！】  <br/> 
+花火PlanB：(山下公园)横滨【场地大，感觉不出人多，有草坪可以坐，中华街吃完饭溜达到山下公园，正好看花火🎆】  <br/> 
+&nbsp;&nbsp;开始时间：19：25-19：55  <br/> 
+返程  <br/> 
+&nbsp;&nbsp;可打卡横滨高岛屋店Echire  <br/> 
+&nbsp;&nbsp;&nbsp;黄油饼干、黄油奶油派  <br/> 
+ 
+</font>
+
+
+
+<h3 id="Day-3-东京市区-06月03日-星期一"><a href="#Day-3-东京市区-06月03日-星期一" class="headerlink" title="Day 3 东京市区 06月03日 星期一"></a>Day 3 东京市区 <strong>06月03日 星期一</strong></h3><blockquote>
+<p>CityWalk区域CD(东京塔，涩谷，根津美术馆)<br>18:00 Shibuya Sky </p>
+</blockquote>
+<h3 id="Day-4-东京山梨-06月04日-星期二"><a href="#Day-4-东京山梨-06月04日-星期二" class="headerlink" title="Day 4 东京山梨 06月04日 星期二"></a>Day 4 东京山梨 <strong>06月04日 星期二</strong></h3><font size=3>
+8:05 新宿-高速巴士往返4400日元，提前在【Highway Bus中文网站 - https://highway-buses.jp/chs】订票<br/> 
+@河口湖巴士周游券(1700日元)-需了解 <br/> 
+【下吉田】日川时计店 - 可不去<br/> 
+&nbsp;&nbsp;富士山面包店:FUJISAN SNOKUPAN<br/>
+新仓山浅间神社<br/>
+&nbsp;&nbsp;下吉田-河口湖坐车20分钟<br/>
+河口湖(天鹅船、游艇、索道) - 优先打卡<br/>
+缆车往返:900日元
+&nbsp;&nbsp;河口湖站:<br/>
+&nbsp;&nbsp;天妇罗：冨士天ぷら いだ天【10:00–23:00】<br/>
+&nbsp;&nbsp;铁板烧:Tetsuyaki【12:00–14:00; 17:00–21:30】<br/>
+河口湖 - 大石公园<br/>
+&nbsp;&nbsp;咖啡:BRAND NEW DAY<br/>
+  
+</font>
+
+<h3 id="Day-5-东京市区-06月05日-星期三"><a href="#Day-5-东京市区-06月05日-星期三" class="headerlink" title="Day 5 东京市区 06月05日 星期三"></a>Day 5 东京市区 <strong>06月05日 星期三</strong></h3><font size=3>
+Disney Sea 
+</font>
+
+<h3 id="Day-6-上海东京-06月06日-星期四"><a href="#Day-6-上海东京-06月06日-星期四" class="headerlink" title="Day 6 上海东京 06月06日 星期四"></a>Day 6 上海东京 <strong>06月06日 星期四</strong></h3><blockquote>
+<p>13:25-15:30 东京成田T2-上海浦东T2</p>
+</blockquote>
 
   </div>
   <div id="gitalk-container"></div>
@@ -417,19 +480,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/05/09/SplunkForwarderpkg/">
+    <a href="/2024/05/11/Hexo-Github/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>SplunkForwarder pkg in macOS</p>
+            <p>使用Hexo部署Github Page</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/05/09/hello-world/">
+    <a href="/2024/05/11/Osaka-Tokyo%20Trave%20Guide%207%20Days/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Hello World</p>
+            <p>Tokyo - Osaka Travel Guide 7 Days</p>
         </div>
     </a>
     

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>SplunkForwarder pkg in macOS-Blog</title>
+<title>Excel VBA-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Shell,SplunkForwarder,">
+<meta name="keywords" content="Excel,VBA,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Shell">Shell</a></li>
+            <li><a href="/tags/Excel">Excel</a></li>
             
-            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
+            <li><a href="/tags/VBA">VBA</a></li>
             
             
         </ul>
         
-        <h1>SplunkForwarder pkg in macOS</h1>
+        <h1>Excel VBA</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Shell/" target="_blank" >Shell</a>
+                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2024-05-09 22:23:45</p>
+                <p>2024-05-11 21:53:15</p>
             </div>
         </div>
     </div>
@@ -319,200 +319,112 @@
   <div id="article" class="post-content-info">
     
 
-    <h1 id="SplunkForwarder-UF-Installation"><a href="#SplunkForwarder-UF-Installation" class="headerlink" title="SplunkForwarder UF Installation"></a>SplunkForwarder UF Installation</h1><blockquote>
-<h3 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h3></blockquote>
-<pre><code class="shell">#!/bin/bash
-#Argumentlist
-
-SPLUNK_HOME=/opt/splunkforwarder
-SPLUNK_USER=splunker
-#SPLUNK_GRP=splunker
-SPLUNK_BIN=$SPLUNK_HOME/bin
-SPLUNK_VER=&quot;$SPLUNK_HOME/splunkforwarder-9*&quot;
-SPLUNK_UNIT_NAME=splunk
-CON_DIR=$SPLUNK_HOME/etc/apps
-CON_FOLDER=pwc-uf-mac-deploymentclient
-_silent=&quot;--accept-license --answer-yes --no-prompt&quot;
-SCRIPT_PATH=$(dirname &quot;$0&quot;)
-</code></pre>
-<blockquote>
-<h3 id="检测是否使用Root账号运行此脚本"><a href="#检测是否使用Root账号运行此脚本" class="headerlink" title="检测是否使用Root账号运行此脚本"></a>检测是否使用Root账号运行此脚本</h3></blockquote>
-<pre><code class="shell"># Check for root
-
-if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
-    echo &quot;Relaunching this script as root user.&quot;
-    exec sudo &quot;$0&quot; &quot;$@&quot;
-fi
-</code></pre>
-<blockquote>
-<h3 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h3><ol>
-<li>T：检测当前SplunkForwarder版本是否为目标版本<ol>
-<li>T：替换配置文件，并重启服务splunk</li>
-<li>F：暂停Service，覆盖安装，添加配置文件</li>
-</ol>
-</li>
-<li>F：检测是否存在splunker用户，没有则进行添加；进行安装SplunkForwarder,替换配置文件后需要重启服务splunk</li>
-</ol>
+    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
+<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
 </blockquote>
-<pre><code class="shell">if [ -d $SPLUNK_HOME ]; then
-    echo &quot;Splunkforwarder exists!&quot;
-    if ls $SPLUNK_VER 1&gt; /dev/null 2&gt;&amp;1; then
-        echo &quot;Splunkforwarder is the lastest.&quot;
-        if [ -d $CON_DIR/Backup ]; then
-            for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then    
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
-            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-            $SPLUNK_BIN/splunk restart $_silent
-            echo &quot;Success to restart splunk!&quot;
-        else
-            for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
-                    mkdir -p $CON_DIR/Backup     
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-        fi
-    else
-        $SPLUNK_BIN/splunk stop
-        tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
-        if [ -d $CON_DIR/Backup ]; then
-            for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then     
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
-            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+<pre><code> Sub sendMail()
+    Dim OutlookApp As Object
+    Dim OutlookMail As Object
+    Dim lastRow As Long
+    Dim i As Long
 
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-        else
-           for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
-                    mkdir -p $CON_DIR/Backup     
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
-            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+    &#39; 创建Outlook应用程序
+    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
 
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-        fi
-    fi
+    &#39; 获取工作表
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
 
-else
-    # Does not exist. Then, Installation for splunk
-    cd $SCRIPT_PATH
-    tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
-    if [ -d $SPLUNK_HOME ]; then
-        echo &quot;Success to install Splunk.&quot;
-        #Create a new folder for backup configuration
-        mkdir -p $CON_DIR/Backup
-        mv -f $CON_DIR/pwc* $CON_DIR/Backup
-        echo &quot;Success to delete old configuration-pwc*&quot;
+    &#39; 获取最后一行
+    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
 
-        #Replace configuration [pwc-uf-mac-deploymentclient]
-        cd $SCRIPT_PATH
-        sudo cp -r $CON_FOLDER $CON_DIR
-        echo &quot;Success to copy $CON_FOLDER!&quot;
+    &#39; 循环发送邮件
+    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+        &#39; 创建新邮件
+        Set OutlookMail = OutlookApp.CreateItem(0)
 
-        # Change ownership of splunk
-        if ! id -u splunker &gt;/dev/null 2&gt;&amp;1; then
-            # Create user: splunker
-            sudo dscl . -create /Users/splunker
-            sudo dscl . -create /Users/splunker UserShell /bin/bash
-            sudo dscl . -create /Users/splunker RealName &quot;splunker&quot;
-            sudo dscl . -create /Users/splunker UniqueID &quot;9980&quot;
-            sudo dscl . -create /Users/splunker PrimaryGroupID &quot;9980&quot;
-            sudo dscl . -create /Users/splunker NFSHomeDirectory /Users/splunker
-            sudo mkdir /Users/splunker
-            sudo chown splunker:splunker /Users/splunker
-            # Create group: splunker
-            sudo dscl . -create /Groups/splunker
-            sudo dscl . -create /Groups/splunker RealName &quot;splunker&quot;
-            sudo dscl . -create /Groups/splunker gid &quot;9980&quot;
-            # Add user to group
-            sudo dseditgroup -o edit -a splunker -t user splunker
-        fi
-        sudo chown -R splunker:splunker $SPLUNK_HOME/
-        echo &quot;Change successfully&quot;
-        # Start Splunk as non-root SPLUNK_USER                
-        sudo -u splunker $SPLUNK_BIN/splunk start $_silent                
-        # ENABLE BOOT START SECTION
-        sudo -u splunker $SPLUNK_BIN/splunk enable boot-start
-        # Restarting Splunk...
-        sudo -u splunker $SPLUNK_BIN/splunk restart $_silent
-        echo &quot;restart successfully&quot;
+        &#39; 设置收件人、抄送、主题和正文
+        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
 
-    fi
+        &#39; 发送邮件
+        OutlookMail.Send
 
-fi
+        &#39; 释放对象
+        Set OutlookMail = Nothing
+    Next i
+
+    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
 </code></pre>
+<blockquote>
+<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
+</blockquote>
+<pre><code>Dim OutlookApp As Object
+Dim OutlookMail As Object
+Dim lastRow As Long
+Dim i As Long
+</code></pre>
+<blockquote>
+<p>创建Outlook应用程序，类似于打开Outlook</p>
+</blockquote>
+<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+</code></pre>
+<blockquote>
+<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
+</blockquote>
+<pre><code>Dim ws As Worksheet
+Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
+</code></pre>
+<blockquote>
+<p>获取工作簿中的最后一行，固定搭配</p>
+</blockquote>
+<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+</code></pre>
+<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
+<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
+</blockquote>
+<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+    &#39; 创建新邮件
+    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
+
+    &#39; 设置收件人、抄送、主题和正文
+    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+    &#39; 发送邮件
+    OutlookMail.Send
+
+    &#39; 释放对象
+    Set OutlookMail = Nothing
+Next i
+</code></pre>
+<blockquote>
+<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
+</blockquote>
+<pre><code>    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
+<hr>
+<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
+<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
+</blockquote>
+<pre><code>Private Sub CommandButton1_Click()
+  sendMail
+Enb Sub
+</code></pre>
+<blockquote>
+<p>返回工作簿点击按钮进行测试。</p>
+</blockquote>
+<blockquote>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
+</blockquote>
 
   </div>
   <div id="gitalk-container"></div>
@@ -583,12 +495,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
+    <a href="/2024/05/11/ExcelFuncton/">
+        <div class="post-paging-last">
+            <span>Previous</span>
+            <p>Excel Function Recording</p>
+        </div>
+    </a>
+    
 
     
-    <a href="/2024/05/09/SplunkSearchCommand/">
+    <a href="/2024/05/11/Hexo-Github/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>SplunkForwarder Search Command</p>
+            <p>使用Hexo部署Github Page</p>
         </div>
     </a>
     

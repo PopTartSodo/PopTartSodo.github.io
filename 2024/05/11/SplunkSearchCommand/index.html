@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>PowerShell Command Recording-Blog</title>
+<title>SplunkForwarder Search Command-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Powershell,Command,ShortCuts,">
+<meta name="keywords" content="SplunkForwarder,Search,">
 <meta name="description" content="">
 
 
@@ -284,16 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Powershell">Powershell</a></li>
+            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
             
-            <li><a href="/tags/Command">Command</a></li>
-            
-            <li><a href="/tags/ShortCuts">ShortCuts</a></li>
+            <li><a href="/tags/Search">Search</a></li>
             
             
         </ul>
         
-        <h1>PowerShell Command Recording</h1>
+        <h1>SplunkForwarder Search Command</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -308,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
+                         <a href="../../categories/SplunkForwarder/" target="_blank" >SplunkForwarder</a>
                     
                 </div>
-                <p>2024-05-09 22:23:45</p>
+                <p>2024-05-11 21:53:15</p>
             </div>
         </div>
     </div>
@@ -321,91 +319,34 @@
   <div id="article" class="post-content-info">
     
 
-    <blockquote>
-<p><strong>ShortCut Keys in VSCode:</strong></p>
-<ul>
-<li><p><strong>Auto-adjust indent</strong><br> <code>Shift+Alt+F (Win)</code><br> <code>Shift+Option+F (Mac)</code></p>
-</li>
-<li><p><strong>Annotating</strong><br><code>Ctrl+/ (Win)</code></p>
-</li>
-</ul>
+    <h2 id="Find-something-in-Splunk"><a href="#Find-something-in-Splunk" class="headerlink" title="Find something in Splunk"></a>Find something in Splunk</h2><blockquote>
+<p>Then how can we do the search thing?<br>First of all, we should find “Datasets” then Click “Click Table View”. Then we could see the data repository in Splunk. This time you can return the Search Page.<br>Choose the one you need, input the below content in your search bar.</p>
 </blockquote>
-<hr>
-<h2 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To get the specific file’s SHA256 automatically</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl
-  Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;
+<pre><code>index=&lt;your repository&gt;
 </code></pre>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
+<blockquote>
+<p>You also could use * to match the most close one.<br>For example:</p>
 </blockquote>
-<h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>Make sure the script can output log.</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell"> $ErrorMessage = $_.Exception.Message
- $FailIedItem = $_.Exception.ItemName
- $StackTrace = $_.Exception.StackTrace
-
- Write-Host &quot;Error: $ErrorMessage &quot; 
+<pre><code>index=&quot;abc*&quot;
 </code></pre>
-<ul>
-<li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
+<blockquote>
+<p>如果想要在搜索里进行筛选，需要在上面event查找到可用的field<br>Example in EVENT:</p>
 </blockquote>
-<h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To get the file name in the file’s path.</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell">Split-Path -Path &lt;Path&gt; -Leaf
+<pre><code>&#123; [-]
+   Tenant: DefaultTenant
+   category: AdvancedHunting-AlertEvidence
+   operationName: Publish
+   properties: &#123; [+]
+   &#125;
+   tenantId: abc123xxx
+   time: 2023-10-30T02:11:42.2937933Z
+&#125; 
 </code></pre>
-<ul>
-<li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
+<blockquote>
+<p>If you wanna find the category is AdvancedHunting-AlertEvidence, then should add one space and category&#x3D;”AdvancedHunting-AlertEvidence”.</p>
 </blockquote>
-<h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p>
-</li>
-<li><p><strong>Example[Command]</strong></p>
-</li>
-</ul>
-<pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;
+<pre><code>index=&quot;abc*&quot; category=&quot;AdvancedHunting-AlertEvidence&quot;.
 </code></pre>
-<ul>
-<li><strong>Example[Output]</strong></li>
-</ul>
-<pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
--------  ------    -----      -----     ------     --  -- -----------
-      0       2      432       1852       0.00  45952   1 msiexec
-</code></pre>
-<ul>
-<li><strong>Syntax</strong></li>
-</ul>
-<pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru
-</code></pre>
-<p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p>
-<ul>
-<li>&lt;arg&gt;Normal Parameters</li>
-<li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li>
-<li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li>
-<li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li>
-<li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></p>
-</blockquote>
 
   </div>
   <div id="gitalk-container"></div>
@@ -476,14 +417,21 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/05/09/Osaka-Tokyo%20Trave%20Guide%207%20Days/">
+    <a href="/2024/05/11/SplunkForwarderpkg/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Tokyo - Osaka Travel Guide 7 Days</p>
+            <p>SplunkForwarder pkg in macOS</p>
         </div>
     </a>
     
 
+    
+    <a href="/2024/05/11/hello-world/">
+        <div class="post-paging-next">
+            <span>Next</span>
+            <p>Hello World</p>
+        </div>
+    </a>
     
 </div>
 </div>

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel Function Recording-Blog</title>
+<title>SplunkForwarder pkg in macOS-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Function,Excel,">
+<meta name="keywords" content="Shell,SplunkForwarder,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Function">Function</a></li>
+            <li><a href="/tags/Shell">Shell</a></li>
             
-            <li><a href="/tags/Excel">Excel</a></li>
+            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
             
             
         </ul>
         
-        <h1>Excel Function Recording</h1>
+        <h1>SplunkForwarder pkg in macOS</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
+                         <a href="../../categories/Shell/" target="_blank" >Shell</a>
                     
                 </div>
-                <p>2024-05-09 22:23:45</p>
+                <p>2024-05-11 21:53:15</p>
             </div>
         </div>
     </div>
@@ -319,55 +319,200 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="Extract-Group-in-cell"><a href="#Extract-Group-in-cell" class="headerlink" title="Extract Group in cell"></a>Extract Group in cell</h2><p><code>=IF(ISNUMBER(SEARCH(&quot; : Users&quot;,D2)),&quot;Users&quot;,IF(ISNUMBER(SEARCH(&quot;Everyone&quot;,D2)),&quot;Everyone&quot;,&quot;Authenticated Users&quot;))</code>   </p>
-<h2 id="Extract-Path-in-cell"><a href="#Extract-Path-in-cell" class="headerlink" title="Extract Path in cell"></a>Extract Path in cell</h2><p><code>=MID(B9,FIND(&quot;Path :&quot;,B9)+LEN(&quot;Path :&quot;),FIND(&quot;Used by services&quot;,B9)-FIND(&quot;Path :&quot;,B9)-LEN(&quot;Path :&quot;))</code></p>
-<ul>
-<li>Only extract the path that includes three “&quot;, decrease to two if do not have it<br><code>=IFERROR(MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)+1)),MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)))</code></li>
-<li>Click “Data” , then will find “Text to Columns”. It will separate each field, only need 3 fields.</li>
-<li>New a pivot table to calculate data.(Control Columns A:I )</li>
-<li><strong>Required: DNS Name, Plugin Output</strong></li>
-</ul>
-<hr>
-<h3 id="Extract-Path-except-for-filename"><a href="#Extract-Path-except-for-filename" class="headerlink" title="Extract Path except for filename"></a>Extract Path except for filename</h3><blockquote>
-<p><code>=LEFT(D2,FIND(CHAR(1),SUBSTITUTE(D2,&quot;\&quot;,CHAR(1),LEN(D2)-LEN(SUBSTITUTE(D2,&quot;\&quot;,&quot;&quot;))))-1)</code>**<br><strong>i. <code>left(text, num_chars)</code></strong></p>
-<ul>
-<li>text: required. The text string that contains the characters you want to extract.</li>
-<li>num_chars: optional. Specifies the number of characters you want left to extract.<br><strong>ii. <code>find(find_text, within_text, [start_num])</code></strong>  </li>
-<li>find_text: required. The text you want to find.  </li>
-<li>within_text: required. The text containing the text you want to find.  </li>
-<li>start_num: option. Specifies the character at which to start the search. The first character in within_text is character number 1. if you omit start_num, it is assumed to be 1.<br><strong>iii.<code>substitute(text, old_text, new_text, [instance_num])</code></strong>  </li>
-<li>text: required. The text or the reference to a cell containing text for which you want to substitute characters.  </li>
-<li>old_text: required. The text you want to replace.  </li>
-<li>new_text: required. The Text you want to replace old_text with.  </li>
-<li>instance_num: optional. Specifics which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text.<br><strong>iv. <code>len(text) </code></strong>  </li>
-<li>Text: required. The text whose length you want to find. Space count as characters.</li>
-</ul>
-</blockquote>
-<h3 id="Combine-content-of-cells"><a href="#Combine-content-of-cells" class="headerlink" title="Combine content of cells"></a>Combine content of cells</h3><blockquote>
-<p><strong>a. <code>=TEXTJOIN(&quot;,&quot;,TRUE,K1:K10)</code></strong><br><strong>i. <code>textjoin(delimiter, ignore_empty, text1)</code></strong>  </p>
-<ul>
-<li>Delimiter: required. A text string, either empty, or one or more characters enclosed by double quotes, or a reference to a valid text string. If a number is supplied, it will be treated as text.</li>
-<li>Ignore_empty: if true, ignores empty cells.</li>
-<li>Text1: required. Text item to be joined. A text string, or array of strings, such as a range of cells.</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="xLookup"><a href="#xLookup" class="headerlink" title="xLookup"></a>xLookup</h2><pre><code>=XLOOKUP(lookup_value,lookup_array,return_array, [if_not_found], [match_mode], [search_mode]) 
+    <h1 id="SplunkForwarder-UF-Installation"><a href="#SplunkForwarder-UF-Installation" class="headerlink" title="SplunkForwarder UF Installation"></a>SplunkForwarder UF Installation</h1><blockquote>
+<h3 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h3></blockquote>
+<pre><code class="shell">#!/bin/bash
+#Argumentlist
+
+SPLUNK_HOME=/opt/splunkforwarder
+SPLUNK_USER=splunker
+#SPLUNK_GRP=splunker
+SPLUNK_BIN=$SPLUNK_HOME/bin
+SPLUNK_VER=&quot;$SPLUNK_HOME/splunkforwarder-9*&quot;
+SPLUNK_UNIT_NAME=splunk
+CON_DIR=$SPLUNK_HOME/etc/apps
+CON_FOLDER=pwc-uf-mac-deploymentclient
+_silent=&quot;--accept-license --answer-yes --no-prompt&quot;
+SCRIPT_PATH=$(dirname &quot;$0&quot;)
 </code></pre>
 <blockquote>
-<p><em><strong>参数说明</strong></em><br>lookup_value：查找值(必填项)<br>lookup_array：要搜索的数组或区域(必填项)<br>return_array：要返回的数组或区域(必填项)<br>[if_not_found]：如果找不到有效的匹配项，则返回你提供的[if_not_found]文本；如果找不到有效的匹配项，并且缺少[if_not_found]，则会返回#N&#x2F;A(选填项)<br>[match_mode]：指定匹配类型。 </p>
+<h3 id="检测是否使用Root账号运行此脚本"><a href="#检测是否使用Root账号运行此脚本" class="headerlink" title="检测是否使用Root账号运行此脚本"></a>检测是否使用Root账号运行此脚本</h3></blockquote>
+<pre><code class="shell"># Check for root
+
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+    echo &quot;Relaunching this script as root user.&quot;
+    exec sudo &quot;$0&quot; &quot;$@&quot;
+fi
+</code></pre>
 <blockquote>
-<p>0表示完全匹配，如果未找到，则返回<code>#N/A</code>，这是默认选项；<br>-1表示完全匹配，如果没有找到，则返回下一个较小的项；<br>1表示完全匹配，如果没有找到，则返回下一个较大的项；<br>2表示通配符匹配，其中<code>*</code>、<code>？</code>、<code>~</code>有特殊含义。 </p>
+<h3 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h3><ol>
+<li>T：检测当前SplunkForwarder版本是否为目标版本<ol>
+<li>T：替换配置文件，并重启服务splunk</li>
+<li>F：暂停Service，覆盖安装，添加配置文件</li>
+</ol>
+</li>
+<li>F：检测是否存在splunker用户，没有则进行添加；进行安装SplunkForwarder,替换配置文件后需要重启服务splunk</li>
+</ol>
 </blockquote>
-<p>[search_mode]：指定要使用的搜索模式。(选填项) </p>
-<blockquote>
-<p>1表示从第一项开始搜索，这是默认选项；<br>-1表示从最后一项开始执行反向搜索；<br>2表示执行依赖于lookup_array按升序排序的二进制搜索，如果未排序，将返回无效结果；<br>-2表示执行依赖于lookup_array按降序排序的二进制搜索，如果未排序，将返回无效结果。 </p>
-</blockquote>
-<p><em><strong>通配符解释</strong></em><br>通配符一般使用在Excel查找和替换中，将通配符用作文本筛选器的比较条件，并在搜索和替换内容时使用通配符字符。<br>常用通配符有三个，分别是<code>？</code>(问号)、<code>*</code>(星号)、<code>~</code>(波形符)。 </p>
-<blockquote>
-<p><code>？</code>(问号)表示任意单个字符，例如A？就表示以A开头的任意两个字符；<br><code>*</code>(星号)表示任意数量的字符，例如<code>*A*</code>就表示含有字符A的任意一个字符串，<code>*A</code>就表示以字符A结尾的任意一个字符串，<code>A*</code>就表示以字符A开头的任意一个字符串；<br><code>~</code>(波形符)即转义字符，通常后跟？、<code>*</code>或者<code>~</code>，表示<code>~</code>后面的字符为普通字符，例如<code>A~？</code>表示查找字符串<code>A？</code>。 </p>
-</blockquote>
-</blockquote>
+<pre><code class="shell">if [ -d $SPLUNK_HOME ]; then
+    echo &quot;Splunkforwarder exists!&quot;
+    if ls $SPLUNK_VER 1&gt; /dev/null 2&gt;&amp;1; then
+        echo &quot;Splunkforwarder is the lastest.&quot;
+        if [ -d $CON_DIR/Backup ]; then
+            for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then    
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
+            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+            $SPLUNK_BIN/splunk restart $_silent
+            echo &quot;Success to restart splunk!&quot;
+        else
+            for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
+                    mkdir -p $CON_DIR/Backup     
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+        fi
+    else
+        $SPLUNK_BIN/splunk stop
+        tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
+        if [ -d $CON_DIR/Backup ]; then
+            for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then     
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
+            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+        else
+           for dir in $CON_DIR/pwc*; do
+                dir_name=$(basename $&#123;dir&#125;)
+                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
+                    mkdir -p $CON_DIR/Backup     
+                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
+                    echo &quot;Success to delete old configuration-pwc*&quot;
+                fi
+            done
+            #Replace configuration
+            cd $SCRIPT_PATH
+            sudo cp -r $CON_FOLDER $CON_DIR
+            echo &quot;Success to copy $CON_FOLDER!&quot;
+            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
+            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+
+            while true; do
+                $&#123;RESTART_COMMNAD&#125;
+                sleep 10
+                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
+                    echo &quot;Restart successfully&quot;
+                    break
+                else
+                    echo &quot;Fail to restart. Trying again.&quot;
+                fi
+            done
+        fi
+    fi
+
+else
+    # Does not exist. Then, Installation for splunk
+    cd $SCRIPT_PATH
+    tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
+    if [ -d $SPLUNK_HOME ]; then
+        echo &quot;Success to install Splunk.&quot;
+        #Create a new folder for backup configuration
+        mkdir -p $CON_DIR/Backup
+        mv -f $CON_DIR/pwc* $CON_DIR/Backup
+        echo &quot;Success to delete old configuration-pwc*&quot;
+
+        #Replace configuration [pwc-uf-mac-deploymentclient]
+        cd $SCRIPT_PATH
+        sudo cp -r $CON_FOLDER $CON_DIR
+        echo &quot;Success to copy $CON_FOLDER!&quot;
+
+        # Change ownership of splunk
+        if ! id -u splunker &gt;/dev/null 2&gt;&amp;1; then
+            # Create user: splunker
+            sudo dscl . -create /Users/splunker
+            sudo dscl . -create /Users/splunker UserShell /bin/bash
+            sudo dscl . -create /Users/splunker RealName &quot;splunker&quot;
+            sudo dscl . -create /Users/splunker UniqueID &quot;9980&quot;
+            sudo dscl . -create /Users/splunker PrimaryGroupID &quot;9980&quot;
+            sudo dscl . -create /Users/splunker NFSHomeDirectory /Users/splunker
+            sudo mkdir /Users/splunker
+            sudo chown splunker:splunker /Users/splunker
+            # Create group: splunker
+            sudo dscl . -create /Groups/splunker
+            sudo dscl . -create /Groups/splunker RealName &quot;splunker&quot;
+            sudo dscl . -create /Groups/splunker gid &quot;9980&quot;
+            # Add user to group
+            sudo dseditgroup -o edit -a splunker -t user splunker
+        fi
+        sudo chown -R splunker:splunker $SPLUNK_HOME/
+        echo &quot;Change successfully&quot;
+        # Start Splunk as non-root SPLUNK_USER                
+        sudo -u splunker $SPLUNK_BIN/splunk start $_silent                
+        # ENABLE BOOT START SECTION
+        sudo -u splunker $SPLUNK_BIN/splunk enable boot-start
+        # Restarting Splunk...
+        sudo -u splunker $SPLUNK_BIN/splunk restart $_silent
+        echo &quot;restart successfully&quot;
+
+    fi
+
+fi
+</code></pre>
 
   </div>
   <div id="gitalk-container"></div>
@@ -438,19 +583,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/05/09/Available%20Function%20Listing/">
+    <a href="/2024/05/11/PowerShell/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Available Function Listing</p>
+            <p>PowerShell Command Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/05/09/ExcelVBA/">
+    <a href="/2024/05/11/SplunkSearchCommand/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Excel VBA</p>
+            <p>SplunkForwarder Search Command</p>
         </div>
     </a>
     
