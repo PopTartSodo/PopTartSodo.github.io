@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Tokyo - Osaka Travel Guide 7 Days-Blog</title>
+<title>Excel VBA-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Travel,Japan,">
+<meta name="keywords" content="Excel,VBA,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Travel">Travel</a></li>
+            <li><a href="/tags/Excel">Excel</a></li>
             
-            <li><a href="/tags/Japan">Japan</a></li>
+            <li><a href="/tags/VBA">VBA</a></li>
             
             
         </ul>
         
-        <h1>Tokyo - Osaka Travel Guide 7 Days</h1>
+        <h1>Excel VBA</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Travel/" target="_blank" >Travel</a>
+                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2024-05-11 21:54:35</p>
+                <p>2024-05-15 23:49:06</p>
             </div>
         </div>
     </div>
@@ -319,57 +319,111 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="机票-酒店"><a href="#机票-酒店" class="headerlink" title="机票&amp;酒店"></a>机票&amp;酒店</h2><blockquote>
-<p>出发时间-归来时间：5月16日-5月22日（暂定） 机票：3410<br>新干线:700<br>民宿:2500<br>大阪-心斋桥&#x2F;道顿堀 5月16日-5月20日<br>东京 东京站&#x2F;新宿站 5月20日-5月22日</p>
+    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
+<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
 </blockquote>
+<pre><code> Sub sendMail()
+    Dim OutlookApp As Object
+    Dim OutlookMail As Object
+    Dim lastRow As Long
+    Dim i As Long
+
+    &#39; 创建Outlook应用程序
+    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+
+    &#39; 获取工作表
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
+
+    &#39; 获取最后一行
+    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+
+    &#39; 循环发送邮件
+    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+        &#39; 创建新邮件
+        Set OutlookMail = OutlookApp.CreateItem(0)
+
+        &#39; 设置收件人、抄送、主题和正文
+        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+        &#39; 发送邮件
+        OutlookMail.Send
+
+        &#39; 释放对象
+        Set OutlookMail = Nothing
+    Next i
+
+    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
+<blockquote>
+<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
+</blockquote>
+<pre><code>Dim OutlookApp As Object
+Dim OutlookMail As Object
+Dim lastRow As Long
+Dim i As Long
+</code></pre>
+<blockquote>
+<p>创建Outlook应用程序，类似于打开Outlook</p>
+</blockquote>
+<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+</code></pre>
+<blockquote>
+<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
+</blockquote>
+<pre><code>Dim ws As Worksheet
+Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
+</code></pre>
+<blockquote>
+<p>获取工作簿中的最后一行，固定搭配</p>
+</blockquote>
+<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+</code></pre>
+<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
+<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
+</blockquote>
+<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+    &#39; 创建新邮件
+    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
+
+    &#39; 设置收件人、抄送、主题和正文
+    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+    &#39; 发送邮件
+    OutlookMail.Send
+
+    &#39; 释放对象
+    Set OutlookMail = Nothing
+Next i
+</code></pre>
+<blockquote>
+<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
+</blockquote>
+<pre><code>    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
 <hr>
-<h2 id="必备物品"><a href="#必备物品" class="headerlink" title="必备物品"></a>必备物品</h2><blockquote>
-<p>兑换日元：4000<br>预计交通费：420<br>大阪周游卡（待定）<br>日本上网流量卡：18<br>环球影城门票&amp;4项快速通行【小黄人】：1424<br>迪士尼门票：588</p>
+<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
+<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
 </blockquote>
-<h2 id="需要下载的App"><a href="#需要下载的App" class="headerlink" title="需要下载的App"></a>需要下载的App</h2><blockquote>
-<p>交通：Google Maps<br>餐饮：Tabelog&#x2F;Retty<br>翻译：Google 翻译&#x2F;Voicetra<br>迪士尼：Tokyo Disney Resort App<br>环球影城USJ：USJ（绑定门票）    </p>
+<pre><code>Private Sub CommandButton1_Click()
+  sendMail
+Enb Sub
+</code></pre>
+<blockquote>
+<p>返回工作簿点击按钮进行测试。</p>
 </blockquote>
-<hr>
-<h2 id="打卡美食"><a href="#打卡美食" class="headerlink" title="打卡美食"></a>打卡美食</h2><ul>
-<li><input checked="" disabled="" type="checkbox"> 寿司：鱼心 - 心斋桥 </li>
-<li><input checked="" disabled="" type="checkbox"> 海胆饭&#x2F;居酒屋：Unigoya Shibuya - 涉谷 需要提前预约 </li>
-<li><input checked="" disabled="" type="checkbox"> 烤肉：白云台 - 大阪梅田 【随便找了家】 </li>
-<li><input checked="" disabled="" type="checkbox"> 寿喜烧：今半本店 - 浅草 </li>
-<li><input checked="" disabled="" type="checkbox"> 拉面 ： Men-ya Inoichi - 京都伏见稻荷 </li>
-<li><input checked="" disabled="" type="checkbox"> 炸猪排：名代炸猪排 - 京都 </li>
-<li><input checked="" disabled="" type="checkbox"> 大阪烧：福太郎 - 大阪梅田 </li>
-<li><input disabled="" type="checkbox"> 炸物：元祖串炸 - 心斋桥</li>
-</ul>
-<hr>
-<h2 id="日程规划"><a href="#日程规划" class="headerlink" title="日程规划"></a>日程规划</h2><h2 id="Day-1-「5月18日星期四」"><a href="#Day-1-「5月18日星期四」" class="headerlink" title="Day 1  「5月18日星期四」"></a>Day 1  <strong>「5月18日星期四」</strong></h2><blockquote>
-<p>7:20 上海浦东T2<br>13:05 到达日本东京成田T1<br>当地购买suica卡<br>由于成田suica售尽，只能购买车票，浪费了点时间错过了去市区的电车等了1个小时 </p>
-<p>下午：民宿放好行李<br>晚上：秋叶原 【Bic camera&#x2F;友都八喜 - 游戏人狂喜】<br>晚餐：寿喜烧<br>秋葉原駅的みんなの牛乳可以打卡一下</p>
-</blockquote>
-<h2 id="Day-2-「5月19日星期五」"><a href="#Day-2-「5月19日星期五」" class="headerlink" title="Day 2  「5月19日星期五」"></a>Day 2  <strong>「5月19日星期五」</strong></h2><blockquote>
-<p>上午：浅草寺<br>打卡：御守、人型烧、草莓、炸肉饼(asakusamenchi)</p>
-<p>下午：涩谷天空观景台SHIBUYA SKY涩谷天空<br>打卡：LUKE’s Lobster</p>
-<p>晚上：东京塔<br>晚餐：海胆饭【Unigoya Shibuya - 涉谷 需要提前预约】</p>
-</blockquote>
-<h2 id="Day-3-「5月20日星期六」"><a href="#Day-3-「5月20日星期六」" class="headerlink" title="Day 3  「5月20日星期六」"></a>Day 3  <strong>「5月20日星期六」</strong></h2><blockquote>
-<p>11:00 退房</p>
-<p>下午坐新干线去大阪<br>通过人工窗口购买，如果有实体suica卡可以自助购买<br>找民宿放行李，大阪民宿离电车站有点远要走个10min</p>
-<p>晚餐：寿司 【鱼心 - 心斋桥】<br>晚上：心斋桥</p>
-</blockquote>
-<h2 id="Day-4-「5月21日星期日」"><a href="#Day-4-「5月21日星期日」" class="headerlink" title="Day 4  「5月21日星期日」"></a>Day 4  <strong>「5月21日星期日」</strong></h2><blockquote>
-<p>京都<br>由于每天爬的太累了，一般在10点左右起床<br>午饭：拉面【Men-ya Inoichi - 京都伏见稻荷】</p>
-<p>中午：伏见稻荷<br>打卡：御守，鸟居，爬山<br>下午：清水寺&#x2F;二年坂三年坂</p>
-<p>晚上：京都駅<br>晚餐：炸猪排【名代炸猪排 - 京都】</p>
-</blockquote>
-<h2 id="Day-5-「5月22日星期一」"><a href="#Day-5-「5月22日星期一」" class="headerlink" title="Day 5  「5月22日星期一」"></a>Day 5  <strong>「5月22日星期一」</strong></h2><blockquote>
-<p>7:30-8:30环球影城<br>打卡项目：哈利波特、大白鲨、马里奥、蜘蛛侠、哆啦A梦、小黄人【就是园区里最热门的项目】<br>有快速通行建议可以先玩没有快速通行的项目，为了带朋友体验排队的乐趣，排完2个小时后心态炸裂<br>注意：需要绑定门票，抢马里奥园区的入场资格，快速通行会有一次入场资格。【有点蠢的是快速通行给的库霸王的挑战在中午，奇诺比奥餐厅预约在下午，错过了巡游，满满的遗憾】<br>晚上还下雨了！很气</p>
-</blockquote>
-<h2 id="Day-6-「5月23日星期二」"><a href="#Day-6-「5月23日星期二」" class="headerlink" title="Day 6  「5月23日星期二」"></a>Day 6  <strong>「5月23日星期二」</strong></h2><blockquote>
-<p>大阪购物<br>主要之前几天都太特种兵了，所以这一天起床会比较晚，差不多12点吧<br>Bic Camera：购买游戏（不知道为啥去Bic的次数特别多，看完游戏看相机<br>午餐：烤肉 【白云台 - 大阪梅田】<br>大阪梅田 - 三大商圈<br>心斋桥 - 药妆</p>
-</blockquote>
-<h2 id="Day-7-「5月24日星期三」"><a href="#Day-7-「5月24日星期三」" class="headerlink" title="Day 7  「5月24日星期三」"></a>Day 7  <strong>「5月24日星期三」</strong></h2><blockquote>
-<p>10:00 退房<br>寄存行李<br>午餐：大阪烧 - 高岛屋【福太郎 - 大阪梅田】</p>
-<p>通天阁附近逛了一圈</p>
-<p>18:00 关西机场T1<br>22:00 浦东机场T2，回家 （中国时间预计21点）</p>
+<blockquote>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
 </blockquote>
 
   </div>
@@ -441,19 +495,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/05/11/Kanto%20Area%20Trave%20Guide%206%20Days/">
+    <a href="/2024/05/15/ExcelFuncton/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Kanto Area Travel Guide 6 Days</p>
+            <p>Excel Function Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/05/11/PowerShell/">
+    <a href="/2024/05/15/Hexo-Github/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>PowerShell Command Recording</p>
+            <p>使用Hexo部署Github Page</p>
         </div>
     </a>
     
