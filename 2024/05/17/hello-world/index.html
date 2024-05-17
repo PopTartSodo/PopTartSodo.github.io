@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel VBA-Blog</title>
+<title>Hello World-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,9 +11,8 @@
 <link rel="stylesheet" href="/css/index.css">
 
 
-
-<meta name="keywords" content="Excel,VBA,">
-<meta name="description" content="">
+<meta name="keywords" content="Sodo">
+<meta name="description" content="描述">
 
 
 <script src="/js/jquery.min.js"></script>
@@ -283,15 +282,9 @@
     <div class="post-header-background-content">
         <ul class="post-header-tag">
             
-            
-            <li><a href="/tags/Excel">Excel</a></li>
-            
-            <li><a href="/tags/VBA">VBA</a></li>
-            
-            
         </ul>
         
-        <h1>Excel VBA</h1>
+        <h1>Hello World</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +299,8 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
-                    
                 </div>
-                <p>2024-05-16 23:46:01</p>
+                <p>2024-05-17 22:49:46</p>
             </div>
         </div>
     </div>
@@ -319,112 +310,19 @@
   <div id="article" class="post-content-info">
     
 
-    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
-<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
-</blockquote>
-<pre><code> Sub sendMail()
-    Dim OutlookApp As Object
-    Dim OutlookMail As Object
-    Dim lastRow As Long
-    Dim i As Long
-
-    &#39; 创建Outlook应用程序
-    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
-
-    &#39; 获取工作表
-    Dim ws As Worksheet
-    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
-
-    &#39; 获取最后一行
-    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-
-    &#39; 循环发送邮件
-    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
-        &#39; 创建新邮件
-        Set OutlookMail = OutlookApp.CreateItem(0)
-
-        &#39; 设置收件人、抄送、主题和正文
-        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
-        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
-        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
-        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
-
-        &#39; 发送邮件
-        OutlookMail.Send
-
-        &#39; 释放对象
-        Set OutlookMail = Nothing
-    Next i
-
-    &#39; 释放Outlook应用程序对象
-    Set OutlookApp = Nothing
-End Sub
+    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
 </code></pre>
-<blockquote>
-<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
-</blockquote>
-<pre><code>Dim OutlookApp As Object
-Dim OutlookMail As Object
-Dim lastRow As Long
-Dim i As Long
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
 </code></pre>
-<blockquote>
-<p>创建Outlook应用程序，类似于打开Outlook</p>
-</blockquote>
-<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
 </code></pre>
-<blockquote>
-<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
-</blockquote>
-<pre><code>Dim ws As Worksheet
-Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
 </code></pre>
-<blockquote>
-<p>获取工作簿中的最后一行，固定搭配</p>
-</blockquote>
-<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-</code></pre>
-<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
-<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
-</blockquote>
-<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
-    &#39; 创建新邮件
-    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
-
-    &#39; 设置收件人、抄送、主题和正文
-    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
-    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
-    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
-    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
-
-    &#39; 发送邮件
-    OutlookMail.Send
-
-    &#39; 释放对象
-    Set OutlookMail = Nothing
-Next i
-</code></pre>
-<blockquote>
-<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
-</blockquote>
-<pre><code>    &#39; 释放Outlook应用程序对象
-    Set OutlookApp = Nothing
-End Sub
-</code></pre>
-<hr>
-<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
-<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
-</blockquote>
-<pre><code>Private Sub CommandButton1_Click()
-  sendMail
-Enb Sub
-</code></pre>
-<blockquote>
-<p>返回工作簿点击按钮进行测试。</p>
-</blockquote>
-<blockquote>
-<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
-</blockquote>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
   </div>
   <div id="gitalk-container"></div>
@@ -495,21 +393,14 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/05/16/ExcelFuncton/">
+    <a href="/2024/05/17/SplunkSearchCommand/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Excel Function Recording</p>
+            <p>SplunkForwarder Search Command</p>
         </div>
     </a>
     
 
-    
-    <a href="/2024/05/16/Hexo-Github/">
-        <div class="post-paging-next">
-            <span>Next</span>
-            <p>使用Hexo部署Github Page</p>
-        </div>
-    </a>
     
 </div>
 </div>
