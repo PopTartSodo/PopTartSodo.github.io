@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>使用Hexo部署Github Page-Blog</title>
+<title>PowerShell Command Recording-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Github,Hexo,">
+<meta name="keywords" content="Powershell,Command,ShortCuts,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,16 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Github">Github</a></li>
+            <li><a href="/tags/Powershell">Powershell</a></li>
             
-            <li><a href="/tags/Hexo">Hexo</a></li>
+            <li><a href="/tags/Command">Command</a></li>
+            
+            <li><a href="/tags/ShortCuts">ShortCuts</a></li>
             
             
         </ul>
         
-        <h1>使用Hexo部署Github Page</h1>
+        <h1>PowerShell Command Recording</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +308,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Github/" target="_blank" >Github</a>
+                         <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
                     
                 </div>
-                <p>2024-08-11 20:50:06</p>
+                <p>2024-08-12 09:19:36</p>
             </div>
         </div>
     </div>
@@ -319,91 +321,91 @@
   <div id="article" class="post-content-info">
     
 
-    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
-<ol>
-<li>安装Homebrew</li>
-</ol>
-<pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
-</code></pre>
-<ol start="2">
-<li>安装环境</li>
-</ol>
-<pre><code class="bash">#安装Git
-brew install git
-#安装node
-brew install node
-#安装Hexo 因为是macOS需要在命令前添加sudo
-sudo npm install -g hexo-cli
-#初始化
-hexo init &lt;blog&gt;   #blog可自定义
-cd &lt;blog&gt;
-npm install
-
-
-
-
-
-#检查是否安装成功
-node -v
-git --version
-hexo -v
-</code></pre>
-<ol start="3">
-<li>本地Hexo关联远程Github仓库</li>
-</ol>
-<pre><code class="bash"># 常用命令
-hexo c    #清理缓存
-hexo g    #生成
-hexo d    #发布
-hexo s    #本地预览
-
-
-#
-git config --global user.name &quot;username&quot;
-git config --global user.email &quot;email&quot;
-
-#验证查看是否有输出
-git config user.name
-git config user.email
-
-
-ssh-keygen -t rsa -C &quot;email&quot;
-
-
-#获取ssh
-cd /Users/user/.ssh/
-vim id_rsa.pub 				#复制ssh至下述步骤4
-</code></pre>
-<blockquote>
-<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
+    <blockquote>
+<p><strong>ShortCut Keys in VSCode:</strong></p>
+<ul>
+<li><p><strong>Auto-adjust indent</strong><br> <code>Shift+Alt+F (Win)</code><br> <code>Shift+Option+F (Mac)</code></p>
+</li>
+<li><p><strong>Annotating</strong><br><code>Ctrl+/ (Win)</code></p>
+</li>
+</ul>
 </blockquote>
-<pre><code class="bash">cd ~/&lt;blog&gt;
-vim _config.yml 
-
-#########需要修改以下内容
-
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
-  branch: master
-
-
-# URL
-## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;
-url: https://&lt;username&gt;.github.io
-
-#########需要修改以上内容
-
-#推送到github
-sudo npm install hexo-deployer-git --save
-hexo clean
-hexo d
+<hr>
+<h2 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To get the specific file’s SHA256 automatically</p>
+</li>
+<li><p><strong>Syntax</strong></p>
+</li>
+</ul>
+<pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl
+  Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;
 </code></pre>
-<ol start="6">
-<li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li>
-</ol>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
+</blockquote>
+<h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>Make sure the script can output log.</p>
+</li>
+<li><p><strong>Syntax</strong></p>
+</li>
+</ul>
+<pre><code class="powershell"> $ErrorMessage = $_.Exception.Message
+ $FailIedItem = $_.Exception.ItemName
+ $StackTrace = $_.Exception.StackTrace
+
+ Write-Host &quot;Error: $ErrorMessage &quot; 
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li>
+</ul>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
+</blockquote>
+<h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To get the file name in the file’s path.</p>
+</li>
+<li><p><strong>Syntax</strong></p>
+</li>
+</ul>
+<pre><code class="powershell">Split-Path -Path &lt;Path&gt; -Leaf
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li>
+</ul>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
+</blockquote>
+<h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p>
+</li>
+<li><p><strong>Example[Command]</strong></p>
+</li>
+</ul>
+<pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong></li>
+</ul>
+<pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+      0       2      432       1852       0.00  45952   1 msiexec
+</code></pre>
+<ul>
+<li><strong>Syntax</strong></li>
+</ul>
+<pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru
+</code></pre>
+<p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p>
+<ul>
+<li>&lt;arg&gt;Normal Parameters</li>
+<li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li>
+<li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li>
+<li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li>
+<li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li>
+</ul>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></p>
+</blockquote>
 
   </div>
   <div id="gitalk-container"></div>
@@ -474,21 +476,14 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/08/11/ExcelVBA/">
+    <a href="/2024/08/12/Osaka-Tokyo%20Trave%20Guide%207%20Days/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Excel VBA</p>
+            <p>Tokyo - Osaka Travel Guide 7 Days</p>
         </div>
     </a>
     
 
-    
-    <a href="/2024/08/11/Kanto%20Area%20Trave%20Guide%206%20Days/">
-        <div class="post-paging-next">
-            <span>Next</span>
-            <p>Kanto Area Travel Guide 6 Days</p>
-        </div>
-    </a>
     
 </div>
 </div>

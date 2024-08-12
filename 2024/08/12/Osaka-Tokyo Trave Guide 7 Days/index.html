@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel Function Recording-Blog</title>
+<title>Tokyo - Osaka Travel Guide 7 Days-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Function,Excel,">
+<meta name="keywords" content="Travel,Japan,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Function">Function</a></li>
+            <li><a href="/tags/Travel">Travel</a></li>
             
-            <li><a href="/tags/Excel">Excel</a></li>
+            <li><a href="/tags/Japan">Japan</a></li>
             
             
         </ul>
         
-        <h1>Excel Function Recording</h1>
+        <h1>Tokyo - Osaka Travel Guide 7 Days</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
+                         <a href="../../categories/Travel/" target="_blank" >Travel</a>
                     
                 </div>
-                <p>2024-08-11 20:50:06</p>
+                <p>2024-08-12 09:19:36</p>
             </div>
         </div>
     </div>
@@ -319,54 +319,57 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="Extract-Group-in-cell"><a href="#Extract-Group-in-cell" class="headerlink" title="Extract Group in cell"></a>Extract Group in cell</h2><p><code>=IF(ISNUMBER(SEARCH(&quot; : Users&quot;,D2)),&quot;Users&quot;,IF(ISNUMBER(SEARCH(&quot;Everyone&quot;,D2)),&quot;Everyone&quot;,&quot;Authenticated Users&quot;))</code>   </p>
-<h2 id="Extract-Path-in-cell"><a href="#Extract-Path-in-cell" class="headerlink" title="Extract Path in cell"></a>Extract Path in cell</h2><p><code>=MID(B9,FIND(&quot;Path :&quot;,B9)+LEN(&quot;Path :&quot;),FIND(&quot;Used by services&quot;,B9)-FIND(&quot;Path :&quot;,B9)-LEN(&quot;Path :&quot;))</code></p>
-<ul>
-<li>Only extract the path that includes three “&quot;, decrease to two if do not have it<br><code>=IFERROR(MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)+1)),MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)))</code></li>
-<li>Click “Data” , then will find “Text to Columns”. It will separate each field, only need 3 fields.</li>
-<li>New a pivot table to calculate data.(Control Columns A:I )</li>
-<li><strong>Required: DNS Name, Plugin Output</strong></li>
-</ul>
-<hr>
-<h3 id="Extract-Path-except-for-filename"><a href="#Extract-Path-except-for-filename" class="headerlink" title="Extract Path except for filename"></a>Extract Path except for filename</h3><blockquote>
-<p><code>=LEFT(D2,FIND(CHAR(1),SUBSTITUTE(D2,&quot;\&quot;,CHAR(1),LEN(D2)-LEN(SUBSTITUTE(D2,&quot;\&quot;,&quot;&quot;))))-1)</code>**<br><strong>i. <code>left(text, num_chars)</code></strong></p>
-<ul>
-<li>text: required. The text string that contains the characters you want to extract.</li>
-<li>num_chars: optional. Specifies the number of characters you want left to extract.<br><strong>ii. <code>find(find_text, within_text, [start_num])</code></strong>  </li>
-<li>find_text: required. The text you want to find.  </li>
-<li>within_text: required. The text containing the text you want to find.  </li>
-<li>start_num: option. Specifies the character at which to start the search. The first character in within_text is character number 1. if you omit start_num, it is assumed to be 1.<br><strong>iii.<code>substitute(text, old_text, new_text, [instance_num])</code></strong>  </li>
-<li>text: required. The text or the reference to a cell containing text for which you want to substitute characters.  </li>
-<li>old_text: required. The text you want to replace.  </li>
-<li>new_text: required. The Text you want to replace old_text with.  </li>
-<li>instance_num: optional. Specifics which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text.<br><strong>iv. <code>len(text) </code></strong>  </li>
-<li>Text: required. The text whose length you want to find. Space count as characters.</li>
-</ul>
-</blockquote>
-<h3 id="Combine-content-of-cells"><a href="#Combine-content-of-cells" class="headerlink" title="Combine content of cells"></a>Combine content of cells</h3><blockquote>
-<p><strong>a. <code>=TEXTJOIN(&quot;,&quot;,TRUE,K1:K10)</code></strong><br><strong>i. <code>textjoin(delimiter, ignore_empty, text1)</code></strong>  </p>
-<ul>
-<li>Delimiter: required. A text string, either empty, or one or more characters enclosed by double quotes, or a reference to a valid text string. If a number is supplied, it will be treated as text.</li>
-<li>Ignore_empty: if true, ignores empty cells.</li>
-<li>Text1: required. Text item to be joined. A text string, or array of strings, such as a range of cells.</li>
-</ul>
+    <h2 id="机票-酒店"><a href="#机票-酒店" class="headerlink" title="机票&amp;酒店"></a>机票&amp;酒店</h2><blockquote>
+<p>出发时间-归来时间：5月16日-5月22日（暂定） 机票：3410<br>新干线:700<br>民宿:2500<br>大阪-心斋桥&#x2F;道顿堀 5月16日-5月20日<br>东京 东京站&#x2F;新宿站 5月20日-5月22日</p>
 </blockquote>
 <hr>
-<h2 id="xLookup"><a href="#xLookup" class="headerlink" title="xLookup"></a>xLookup</h2><pre><code>=XLOOKUP(lookup_value,lookup_array,return_array, [if_not_found], [match_mode], [search_mode]) 
-</code></pre>
-<blockquote>
-<p><em><strong>参数说明</strong></em><br>lookup_value：查找值(必填项)<br>lookup_array：要搜索的数组或区域(必填项)<br>return_array：要返回的数组或区域(必填项)<br>[if_not_found]：如果找不到有效的匹配项，则返回你提供的[if_not_found]文本；如果找不到有效的匹配项，并且缺少[if_not_found]，则会返回#N&#x2F;A(选填项)<br>[match_mode]：指定匹配类型。 </p>
-<blockquote>
-<p>0表示完全匹配，如果未找到，则返回<code>#N/A</code>，这是默认选项；<br>-1表示完全匹配，如果没有找到，则返回下一个较小的项；<br>1表示完全匹配，如果没有找到，则返回下一个较大的项；<br>2表示通配符匹配，其中<code>*</code>、<code>？</code>、<code>~</code>有特殊含义。 </p>
+<h2 id="必备物品"><a href="#必备物品" class="headerlink" title="必备物品"></a>必备物品</h2><blockquote>
+<p>兑换日元：4000<br>预计交通费：420<br>大阪周游卡（待定）<br>日本上网流量卡：18<br>环球影城门票&amp;4项快速通行【小黄人】：1424<br>迪士尼门票：588</p>
 </blockquote>
-<p>[search_mode]：指定要使用的搜索模式。(选填项) </p>
-<blockquote>
-<p>1表示从第一项开始搜索，这是默认选项；<br>-1表示从最后一项开始执行反向搜索；<br>2表示执行依赖于lookup_array按升序排序的二进制搜索，如果未排序，将返回无效结果；<br>-2表示执行依赖于lookup_array按降序排序的二进制搜索，如果未排序，将返回无效结果。 </p>
+<h2 id="需要下载的App"><a href="#需要下载的App" class="headerlink" title="需要下载的App"></a>需要下载的App</h2><blockquote>
+<p>交通：Google Maps<br>餐饮：Tabelog&#x2F;Retty<br>翻译：Google 翻译&#x2F;Voicetra<br>迪士尼：Tokyo Disney Resort App<br>环球影城USJ：USJ（绑定门票）    </p>
 </blockquote>
-<p><em><strong>通配符解释</strong></em><br>通配符一般使用在Excel查找和替换中，将通配符用作文本筛选器的比较条件，并在搜索和替换内容时使用通配符字符。<br>常用通配符有三个，分别是<code>？</code>(问号)、<code>*</code>(星号)、<code>~</code>(波形符)。 </p>
-<blockquote>
-<p><code>？</code>(问号)表示任意单个字符，例如A？就表示以A开头的任意两个字符；<br><code>*</code>(星号)表示任意数量的字符，例如<code>*A*</code>就表示含有字符A的任意一个字符串，<code>*A</code>就表示以字符A结尾的任意一个字符串，<code>A*</code>就表示以字符A开头的任意一个字符串；<br><code>~</code>(波形符)即转义字符，通常后跟？、<code>*</code>或者<code>~</code>，表示<code>~</code>后面的字符为普通字符，例如<code>A~？</code>表示查找字符串<code>A？</code>。 </p>
+<hr>
+<h2 id="打卡美食"><a href="#打卡美食" class="headerlink" title="打卡美食"></a>打卡美食</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 寿司：鱼心 - 心斋桥 </li>
+<li><input checked="" disabled="" type="checkbox"> 海胆饭&#x2F;居酒屋：Unigoya Shibuya - 涉谷 需要提前预约 </li>
+<li><input checked="" disabled="" type="checkbox"> 烤肉：白云台 - 大阪梅田 【随便找了家】 </li>
+<li><input checked="" disabled="" type="checkbox"> 寿喜烧：今半本店 - 浅草 </li>
+<li><input checked="" disabled="" type="checkbox"> 拉面 ： Men-ya Inoichi - 京都伏见稻荷 </li>
+<li><input checked="" disabled="" type="checkbox"> 炸猪排：名代炸猪排 - 京都 </li>
+<li><input checked="" disabled="" type="checkbox"> 大阪烧：福太郎 - 大阪梅田 </li>
+<li><input disabled="" type="checkbox"> 炸物：元祖串炸 - 心斋桥</li>
+</ul>
+<hr>
+<h2 id="日程规划"><a href="#日程规划" class="headerlink" title="日程规划"></a>日程规划</h2><h2 id="Day-1-「5月18日星期四」"><a href="#Day-1-「5月18日星期四」" class="headerlink" title="Day 1  「5月18日星期四」"></a>Day 1  <strong>「5月18日星期四」</strong></h2><blockquote>
+<p>7:20 上海浦东T2<br>13:05 到达日本东京成田T1<br>当地购买suica卡<br>由于成田suica售尽，只能购买车票，浪费了点时间错过了去市区的电车等了1个小时 </p>
+<p>下午：民宿放好行李<br>晚上：秋叶原 【Bic camera&#x2F;友都八喜 - 游戏人狂喜】<br>晚餐：寿喜烧<br>秋葉原駅的みんなの牛乳可以打卡一下</p>
 </blockquote>
+<h2 id="Day-2-「5月19日星期五」"><a href="#Day-2-「5月19日星期五」" class="headerlink" title="Day 2  「5月19日星期五」"></a>Day 2  <strong>「5月19日星期五」</strong></h2><blockquote>
+<p>上午：浅草寺<br>打卡：御守、人型烧、草莓、炸肉饼(asakusamenchi)</p>
+<p>下午：涩谷天空观景台SHIBUYA SKY涩谷天空<br>打卡：LUKE’s Lobster</p>
+<p>晚上：东京塔<br>晚餐：海胆饭【Unigoya Shibuya - 涉谷 需要提前预约】</p>
+</blockquote>
+<h2 id="Day-3-「5月20日星期六」"><a href="#Day-3-「5月20日星期六」" class="headerlink" title="Day 3  「5月20日星期六」"></a>Day 3  <strong>「5月20日星期六」</strong></h2><blockquote>
+<p>11:00 退房</p>
+<p>下午坐新干线去大阪<br>通过人工窗口购买，如果有实体suica卡可以自助购买<br>找民宿放行李，大阪民宿离电车站有点远要走个10min</p>
+<p>晚餐：寿司 【鱼心 - 心斋桥】<br>晚上：心斋桥</p>
+</blockquote>
+<h2 id="Day-4-「5月21日星期日」"><a href="#Day-4-「5月21日星期日」" class="headerlink" title="Day 4  「5月21日星期日」"></a>Day 4  <strong>「5月21日星期日」</strong></h2><blockquote>
+<p>京都<br>由于每天爬的太累了，一般在10点左右起床<br>午饭：拉面【Men-ya Inoichi - 京都伏见稻荷】</p>
+<p>中午：伏见稻荷<br>打卡：御守，鸟居，爬山<br>下午：清水寺&#x2F;二年坂三年坂</p>
+<p>晚上：京都駅<br>晚餐：炸猪排【名代炸猪排 - 京都】</p>
+</blockquote>
+<h2 id="Day-5-「5月22日星期一」"><a href="#Day-5-「5月22日星期一」" class="headerlink" title="Day 5  「5月22日星期一」"></a>Day 5  <strong>「5月22日星期一」</strong></h2><blockquote>
+<p>7:30-8:30环球影城<br>打卡项目：哈利波特、大白鲨、马里奥、蜘蛛侠、哆啦A梦、小黄人【就是园区里最热门的项目】<br>有快速通行建议可以先玩没有快速通行的项目，为了带朋友体验排队的乐趣，排完2个小时后心态炸裂<br>注意：需要绑定门票，抢马里奥园区的入场资格，快速通行会有一次入场资格。【有点蠢的是快速通行给的库霸王的挑战在中午，奇诺比奥餐厅预约在下午，错过了巡游，满满的遗憾】<br>晚上还下雨了！很气</p>
+</blockquote>
+<h2 id="Day-6-「5月23日星期二」"><a href="#Day-6-「5月23日星期二」" class="headerlink" title="Day 6  「5月23日星期二」"></a>Day 6  <strong>「5月23日星期二」</strong></h2><blockquote>
+<p>大阪购物<br>主要之前几天都太特种兵了，所以这一天起床会比较晚，差不多12点吧<br>Bic Camera：购买游戏（不知道为啥去Bic的次数特别多，看完游戏看相机<br>午餐：烤肉 【白云台 - 大阪梅田】<br>大阪梅田 - 三大商圈<br>心斋桥 - 药妆</p>
+</blockquote>
+<h2 id="Day-7-「5月24日星期三」"><a href="#Day-7-「5月24日星期三」" class="headerlink" title="Day 7  「5月24日星期三」"></a>Day 7  <strong>「5月24日星期三」</strong></h2><blockquote>
+<p>10:00 退房<br>寄存行李<br>午餐：大阪烧 - 高岛屋【福太郎 - 大阪梅田】</p>
+<p>通天阁附近逛了一圈</p>
+<p>18:00 关西机场T1<br>22:00 浦东机场T2，回家 （中国时间预计21点）</p>
 </blockquote>
 
   </div>
@@ -438,19 +441,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/08/11/Bangkok%20Guide%204%20Days/">
+    <a href="/2024/08/12/Kanto%20Area%20Trave%20Guide%206%20Days/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Bangkok Guide 4 Days</p>
+            <p>Kanto Area Travel Guide 6 Days</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/08/11/ExcelVBA/">
+    <a href="/2024/08/12/PowerShell/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Excel VBA</p>
+            <p>PowerShell Command Recording</p>
         </div>
     </a>
     
