@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel VBA-Blog</title>
+<title>Available Function Listing-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Excel,VBA,">
+<meta name="keywords" content="Powershell,AppDeployToolkit,Function,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,16 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Excel">Excel</a></li>
+            <li><a href="/tags/Powershell">Powershell</a></li>
             
-            <li><a href="/tags/VBA">VBA</a></li>
+            <li><a href="/tags/AppDeployToolkit">AppDeployToolkit</a></li>
+            
+            <li><a href="/tags/Function">Function</a></li>
             
             
         </ul>
         
-        <h1>Excel VBA</h1>
+        <h1>Available Function Listing</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +308,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
+                         <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
                     
                 </div>
-                <p>2024-08-12 18:13:01</p>
+                <p>2024-08-14 22:13:13</p>
             </div>
         </div>
     </div>
@@ -319,112 +321,124 @@
   <div id="article" class="post-content-info">
     
 
-    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
-<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
-</blockquote>
-<pre><code> Sub sendMail()
-    Dim OutlookApp As Object
-    Dim OutlookMail As Object
-    Dim lastRow As Long
-    Dim i As Long
-
-    &#39; 创建Outlook应用程序
-    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
-
-    &#39; 获取工作表
-    Dim ws As Worksheet
-    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
-
-    &#39; 获取最后一行
-    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-
-    &#39; 循环发送邮件
-    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
-        &#39; 创建新邮件
-        Set OutlookMail = OutlookApp.CreateItem(0)
-
-        &#39; 设置收件人、抄送、主题和正文
-        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
-        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
-        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
-        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
-
-        &#39; 发送邮件
-        OutlookMail.Send
-
-        &#39; 释放对象
-        Set OutlookMail = Nothing
-    Next i
-
-    &#39; 释放Outlook应用程序对象
-    Set OutlookApp = Nothing
-End Sub
-</code></pre>
-<blockquote>
-<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
-</blockquote>
-<pre><code>Dim OutlookApp As Object
-Dim OutlookMail As Object
-Dim lastRow As Long
-Dim i As Long
-</code></pre>
-<blockquote>
-<p>创建Outlook应用程序，类似于打开Outlook</p>
-</blockquote>
-<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
-</code></pre>
-<blockquote>
-<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
-</blockquote>
-<pre><code>Dim ws As Worksheet
-Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
-</code></pre>
-<blockquote>
-<p>获取工作簿中的最后一行，固定搭配</p>
-</blockquote>
-<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-</code></pre>
-<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
-<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
-</blockquote>
-<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
-    &#39; 创建新邮件
-    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
-
-    &#39; 设置收件人、抄送、主题和正文
-    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
-    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
-    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
-    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
-
-    &#39; 发送邮件
-    OutlookMail.Send
-
-    &#39; 释放对象
-    Set OutlookMail = Nothing
-Next i
-</code></pre>
-<blockquote>
-<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
-</blockquote>
-<pre><code>    &#39; 释放Outlook应用程序对象
-    Set OutlookApp = Nothing
-End Sub
-</code></pre>
-<hr>
-<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
-<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
-</blockquote>
-<pre><code>Private Sub CommandButton1_Click()
-  sendMail
-Enb Sub
-</code></pre>
-<blockquote>
-<p>返回工作簿点击按钮进行测试。</p>
-</blockquote>
-<blockquote>
-<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
-</blockquote>
+    <h2 id="From-AppDeployToolkit"><a href="#From-AppDeployToolkit" class="headerlink" title="From AppDeployToolkit"></a>From AppDeployToolkit</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Name</th>
+<th>Synopsis</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Execute-MSP</code></td>
+<td>Reads SummaryInfo targeted product codes in MSP file and determines if the MSP file applies to any installed products.</td>
+<td><code>Write-Log</code></td>
+<td>Write messages to a log file in CMTrace.exe compatible format or Legacy text file format.  <!--one line --></td>
+</tr>
+<tr>
+<td><code>New-ZipFile</code></td>
+<td>Create a new zip archive or add content to an existing archive.</td>
+<td><code>Exit-Script</code></td>
+<td>Exit the script, perform cleanup actions, and pass an exit code to the parent process.</td>
+</tr>
+<tr>
+<td><code>Resolve-Error</code></td>
+<td>Enumerate error record details.</td>
+<td><code>Show-InstallationPrompt</code></td>
+<td>Displays a custom installation prompt with the toolkit branding and optional buttons.  <!--one line --></td>
+</tr>
+<tr>
+<td><code>Show-DialogBox</code></td>
+<td>Display a custom dialog box with optional title, buttons, icon and timeout.</td>
+<td><code>Get-HardwarePlatform</code></td>
+<td>Retrieves information about the hardware platform (physical or virtual)</td>
+</tr>
+<tr>
+<td><code>Get-FreeDiskSpace</code></td>
+<td>Retrieves the free disk space in MB on a particular drive (defaults to system drive)</td>
+<td><code>Get-InstalledApplication</code></td>
+<td>Retrieves information about installed applications.</td>
+</tr>
+<tr>
+<td><code>Execute-MSI</code></td>
+<td>Executes msiexec.exe to perform the following actions for MSI &amp; MSP files and MSI product codes: install, uninstall, patch, repair, active setup.</td>
+<td><code>Remove-MSIApplications</code></td>
+<td>Removes all MSI applications matching the specified application name.</td>
+</tr>
+<tr>
+<td><code>Test-RegistryValue</code></td>
+<td>Test if a registry value exists.</td>
+<td><code>Get-RegistryKey</code></td>
+<td>Retrieves value names and value data for a specified registry key or optionally, a specific value.</td>
+</tr>
+<tr>
+<td><code>Set-RegistryKey</code></td>
+<td>Creates a registry key name, value, and value data; it sets the same if it already exists.</td>
+<td><code>Remove-RegistryKey</code></td>
+<td>Deletes the specified registry key or value.</td>
+</tr>
+<tr>
+<td><code>Invoke-HKCURegistrySettingsForAllUsers</code></td>
+<td>Set current user registry settings for all current users and any new users in the future.</td>
+<td><code>ConvertTo-NTAccountOrSID</code></td>
+<td>Convert between NT Account names and their security identifiers (SIDs).</td>
+</tr>
+<tr>
+<td><code>Get-UserProfiles</code></td>
+<td>Get the User Profile Path, User Account Sid, and the User Account Name for all users that log onto the machine and also the Default User (which does not log on).</td>
+<td><code>Get-FileVersion</code></td>
+<td>Gets the version of the specified file</td>
+</tr>
+<tr>
+<td><code>New-Shortcut</code></td>
+<td>Creates a new .lnk or .url type shortcut</td>
+<td><code>Execute-ProcessAsUser</code></td>
+<td>Execute a process with a logged in user account, by using a scheduled task, to provide interaction with user in the SYSTEM context.</td>
+</tr>
+<tr>
+<td><code>Update-Desktop</code></td>
+<td>Refresh the Windows Explorer Shell, which causes the desktop icons and the environment variables to be reloaded.</td>
+<td><code>Update-SessionEnvironmentVariables</code></td>
+<td>Updates the environment variables for the current PowerShell session with any environment variable changes that may have occurred during script execution.</td>
+</tr>
+<tr>
+<td><code>Get-ScheduledTask</code></td>
+<td>Retrieve all details for scheduled tasks on the local computer.</td>
+<td><code>Block-AppExecution</code></td>
+<td>Block the execution of an application(s)</td>
+</tr>
+<tr>
+<td><code>Unblock-AppExecution</code></td>
+<td>Unblocks the execution of applications performed by the Block-AppExecution function</td>
+<td><code>Get-DeferHistory</code></td>
+<td>Get the history of deferrals from the registry for the current application, if it exists.</td>
+</tr>
+<tr>
+<td><code>Set-DeferHistory</code></td>
+<td>Set the history of deferrals in the registry for the current application.</td>
+<td><code>Get-UniversalDate</code></td>
+<td>Returns the date&#x2F;time for the local culture in a universal sortable date time pattern.</td>
+</tr>
+<tr>
+<td><code>Get-RunningProcesses</code></td>
+<td>Gets the processes that are running from a custom list of process objects and also adds a property called ProcessDescription.</td>
+<td><code>Show-InstallationWelcome</code></td>
+<td>Show a welcome dialog prompting the user with information about the installation and actions to be performed before the installation can begin.</td>
+</tr>
+<tr>
+<td><code>Show-WelcomePrompt</code></td>
+<td>Called by Show-InstallationWelcome to prompt the user to optionally do the following:  1. Close the specified running applications.  2. Provide an option to defer the installation.  3. Show a countdown before applications are automatically closed.</td>
+<td><code>Show-InstallationRestartPrompt</code></td>
+<td>Displays a restart prompt with a countdown to a forced restart.</td>
+</tr>
+<tr>
+<td><code>Show-BalloonTip</code></td>
+<td>Displays a balloon tip notification in the system tray.</td>
+<td><code>Show-InstallationProgress</code></td>
+<td>Displays a progress dialog in a separate thread with an updateable custom message.</td>
+</tr>
+</tbody></table>
 
   </div>
   <div id="gitalk-container"></div>
@@ -495,19 +509,12 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/08/12/ExcelFuncton/">
-        <div class="post-paging-last">
-            <span>Previous</span>
-            <p>Excel Function Recording</p>
-        </div>
-    </a>
-    
 
     
-    <a href="/2024/08/12/Hexo-Github/">
+    <a href="/2024/08/14/Bangkok%20Travel%20Guide%204%20Days/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>使用Hexo部署Github Page</p>
+            <p>Bangkok Travel Guide 4 Days</p>
         </div>
     </a>
     
