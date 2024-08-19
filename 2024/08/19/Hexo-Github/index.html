@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Available Function Listing-Blog</title>
+<title>使用Hexo部署Github Page-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Powershell,AppDeployToolkit,Function,">
+<meta name="keywords" content="Github,Hexo,">
 <meta name="description" content="">
 
 
@@ -284,16 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Powershell">Powershell</a></li>
+            <li><a href="/tags/Github">Github</a></li>
             
-            <li><a href="/tags/AppDeployToolkit">AppDeployToolkit</a></li>
-            
-            <li><a href="/tags/Function">Function</a></li>
+            <li><a href="/tags/Hexo">Hexo</a></li>
             
             
         </ul>
         
-        <h1>Available Function Listing</h1>
+        <h1>使用Hexo部署Github Page</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -308,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
+                         <a href="../../categories/Github/" target="_blank" >Github</a>
                     
                 </div>
-                <p>2024-08-17 23:26:36</p>
+                <p>2024-08-19 14:32:23</p>
             </div>
         </div>
     </div>
@@ -321,124 +319,91 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="From-AppDeployToolkit"><a href="#From-AppDeployToolkit" class="headerlink" title="From AppDeployToolkit"></a>From AppDeployToolkit</h2><table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Synopsis</th>
-<th>Name</th>
-<th>Synopsis</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Execute-MSP</code></td>
-<td>Reads SummaryInfo targeted product codes in MSP file and determines if the MSP file applies to any installed products.</td>
-<td><code>Write-Log</code></td>
-<td>Write messages to a log file in CMTrace.exe compatible format or Legacy text file format.  <!--one line --></td>
-</tr>
-<tr>
-<td><code>New-ZipFile</code></td>
-<td>Create a new zip archive or add content to an existing archive.</td>
-<td><code>Exit-Script</code></td>
-<td>Exit the script, perform cleanup actions, and pass an exit code to the parent process.</td>
-</tr>
-<tr>
-<td><code>Resolve-Error</code></td>
-<td>Enumerate error record details.</td>
-<td><code>Show-InstallationPrompt</code></td>
-<td>Displays a custom installation prompt with the toolkit branding and optional buttons.  <!--one line --></td>
-</tr>
-<tr>
-<td><code>Show-DialogBox</code></td>
-<td>Display a custom dialog box with optional title, buttons, icon and timeout.</td>
-<td><code>Get-HardwarePlatform</code></td>
-<td>Retrieves information about the hardware platform (physical or virtual)</td>
-</tr>
-<tr>
-<td><code>Get-FreeDiskSpace</code></td>
-<td>Retrieves the free disk space in MB on a particular drive (defaults to system drive)</td>
-<td><code>Get-InstalledApplication</code></td>
-<td>Retrieves information about installed applications.</td>
-</tr>
-<tr>
-<td><code>Execute-MSI</code></td>
-<td>Executes msiexec.exe to perform the following actions for MSI &amp; MSP files and MSI product codes: install, uninstall, patch, repair, active setup.</td>
-<td><code>Remove-MSIApplications</code></td>
-<td>Removes all MSI applications matching the specified application name.</td>
-</tr>
-<tr>
-<td><code>Test-RegistryValue</code></td>
-<td>Test if a registry value exists.</td>
-<td><code>Get-RegistryKey</code></td>
-<td>Retrieves value names and value data for a specified registry key or optionally, a specific value.</td>
-</tr>
-<tr>
-<td><code>Set-RegistryKey</code></td>
-<td>Creates a registry key name, value, and value data; it sets the same if it already exists.</td>
-<td><code>Remove-RegistryKey</code></td>
-<td>Deletes the specified registry key or value.</td>
-</tr>
-<tr>
-<td><code>Invoke-HKCURegistrySettingsForAllUsers</code></td>
-<td>Set current user registry settings for all current users and any new users in the future.</td>
-<td><code>ConvertTo-NTAccountOrSID</code></td>
-<td>Convert between NT Account names and their security identifiers (SIDs).</td>
-</tr>
-<tr>
-<td><code>Get-UserProfiles</code></td>
-<td>Get the User Profile Path, User Account Sid, and the User Account Name for all users that log onto the machine and also the Default User (which does not log on).</td>
-<td><code>Get-FileVersion</code></td>
-<td>Gets the version of the specified file</td>
-</tr>
-<tr>
-<td><code>New-Shortcut</code></td>
-<td>Creates a new .lnk or .url type shortcut</td>
-<td><code>Execute-ProcessAsUser</code></td>
-<td>Execute a process with a logged in user account, by using a scheduled task, to provide interaction with user in the SYSTEM context.</td>
-</tr>
-<tr>
-<td><code>Update-Desktop</code></td>
-<td>Refresh the Windows Explorer Shell, which causes the desktop icons and the environment variables to be reloaded.</td>
-<td><code>Update-SessionEnvironmentVariables</code></td>
-<td>Updates the environment variables for the current PowerShell session with any environment variable changes that may have occurred during script execution.</td>
-</tr>
-<tr>
-<td><code>Get-ScheduledTask</code></td>
-<td>Retrieve all details for scheduled tasks on the local computer.</td>
-<td><code>Block-AppExecution</code></td>
-<td>Block the execution of an application(s)</td>
-</tr>
-<tr>
-<td><code>Unblock-AppExecution</code></td>
-<td>Unblocks the execution of applications performed by the Block-AppExecution function</td>
-<td><code>Get-DeferHistory</code></td>
-<td>Get the history of deferrals from the registry for the current application, if it exists.</td>
-</tr>
-<tr>
-<td><code>Set-DeferHistory</code></td>
-<td>Set the history of deferrals in the registry for the current application.</td>
-<td><code>Get-UniversalDate</code></td>
-<td>Returns the date&#x2F;time for the local culture in a universal sortable date time pattern.</td>
-</tr>
-<tr>
-<td><code>Get-RunningProcesses</code></td>
-<td>Gets the processes that are running from a custom list of process objects and also adds a property called ProcessDescription.</td>
-<td><code>Show-InstallationWelcome</code></td>
-<td>Show a welcome dialog prompting the user with information about the installation and actions to be performed before the installation can begin.</td>
-</tr>
-<tr>
-<td><code>Show-WelcomePrompt</code></td>
-<td>Called by Show-InstallationWelcome to prompt the user to optionally do the following:  1. Close the specified running applications.  2. Provide an option to defer the installation.  3. Show a countdown before applications are automatically closed.</td>
-<td><code>Show-InstallationRestartPrompt</code></td>
-<td>Displays a restart prompt with a countdown to a forced restart.</td>
-</tr>
-<tr>
-<td><code>Show-BalloonTip</code></td>
-<td>Displays a balloon tip notification in the system tray.</td>
-<td><code>Show-InstallationProgress</code></td>
-<td>Displays a progress dialog in a separate thread with an updateable custom message.</td>
-</tr>
-</tbody></table>
+    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
+<ol>
+<li>安装Homebrew</li>
+</ol>
+<pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+</code></pre>
+<ol start="2">
+<li>安装环境</li>
+</ol>
+<pre><code class="bash">#安装Git
+brew install git
+#安装node
+brew install node
+#安装Hexo 因为是macOS需要在命令前添加sudo
+sudo npm install -g hexo-cli
+#初始化
+hexo init &lt;blog&gt;   #blog可自定义
+cd &lt;blog&gt;
+npm install
+
+
+
+
+
+#检查是否安装成功
+node -v
+git --version
+hexo -v
+</code></pre>
+<ol start="3">
+<li>本地Hexo关联远程Github仓库</li>
+</ol>
+<pre><code class="bash"># 常用命令
+hexo c    #清理缓存
+hexo g    #生成
+hexo d    #发布
+hexo s    #本地预览
+
+
+#
+git config --global user.name &quot;username&quot;
+git config --global user.email &quot;email&quot;
+
+#验证查看是否有输出
+git config user.name
+git config user.email
+
+
+ssh-keygen -t rsa -C &quot;email&quot;
+
+
+#获取ssh
+cd /Users/user/.ssh/
+vim id_rsa.pub 				#复制ssh至下述步骤4
+</code></pre>
+<blockquote>
+<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
+</blockquote>
+<pre><code class="bash">cd ~/&lt;blog&gt;
+vim _config.yml 
+
+#########需要修改以下内容
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
+  branch: master
+
+
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;
+url: https://&lt;username&gt;.github.io
+
+#########需要修改以上内容
+
+#推送到github
+sudo npm install hexo-deployer-git --save
+hexo clean
+hexo d
+</code></pre>
+<ol start="6">
+<li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li>
+</ol>
 
   </div>
   <div id="gitalk-container"></div>
@@ -509,12 +474,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
+    <a href="/2024/08/19/ExcelVBA/">
+        <div class="post-paging-last">
+            <span>Previous</span>
+            <p>Excel VBA</p>
+        </div>
+    </a>
+    
 
     
-    <a href="/2024/08/17/Bangkok%20Travel%20Guide%204%20Days/">
+    <a href="/2024/08/19/Kanto%20Area%20Trave%20Guide%206%20Days/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Bangkok Travel Guide 4 Days</p>
+            <p>Kanto Area Travel Guide 6 Days</p>
         </div>
     </a>
     
