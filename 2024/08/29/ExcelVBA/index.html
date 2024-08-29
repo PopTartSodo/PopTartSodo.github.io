@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>使用Hexo部署Github Page-Blog</title>
+<title>Excel VBA-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Github,Hexo,">
+<meta name="keywords" content="Excel,VBA,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Github">Github</a></li>
+            <li><a href="/tags/Excel">Excel</a></li>
             
-            <li><a href="/tags/Hexo">Hexo</a></li>
+            <li><a href="/tags/VBA">VBA</a></li>
             
             
         </ul>
         
-        <h1>使用Hexo部署Github Page</h1>
+        <h1>Excel VBA</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Github/" target="_blank" >Github</a>
+                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2024-08-21 16:54:15</p>
+                <p>2024-08-29 09:14:00</p>
             </div>
         </div>
     </div>
@@ -319,91 +319,112 @@
   <div id="article" class="post-content-info">
     
 
-    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
-<ol>
-<li>安装Homebrew</li>
-</ol>
-<pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
-</code></pre>
-<ol start="2">
-<li>安装环境</li>
-</ol>
-<pre><code class="bash">#安装Git
-brew install git
-#安装node
-brew install node
-#安装Hexo 因为是macOS需要在命令前添加sudo
-sudo npm install -g hexo-cli
-#初始化
-hexo init &lt;blog&gt;   #blog可自定义
-cd &lt;blog&gt;
-npm install
+    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
+<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
+</blockquote>
+<pre><code> Sub sendMail()
+    Dim OutlookApp As Object
+    Dim OutlookMail As Object
+    Dim lastRow As Long
+    Dim i As Long
 
+    &#39; 创建Outlook应用程序
+    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
 
+    &#39; 获取工作表
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
 
+    &#39; 获取最后一行
+    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
 
+    &#39; 循环发送邮件
+    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+        &#39; 创建新邮件
+        Set OutlookMail = OutlookApp.CreateItem(0)
 
-#检查是否安装成功
-node -v
-git --version
-hexo -v
-</code></pre>
-<ol start="3">
-<li>本地Hexo关联远程Github仓库</li>
-</ol>
-<pre><code class="bash"># 常用命令
-hexo c    #清理缓存
-hexo g    #生成
-hexo d    #发布
-hexo s    #本地预览
+        &#39; 设置收件人、抄送、主题和正文
+        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
 
+        &#39; 发送邮件
+        OutlookMail.Send
 
-#
-git config --global user.name &quot;username&quot;
-git config --global user.email &quot;email&quot;
+        &#39; 释放对象
+        Set OutlookMail = Nothing
+    Next i
 
-#验证查看是否有输出
-git config user.name
-git config user.email
-
-
-ssh-keygen -t rsa -C &quot;email&quot;
-
-
-#获取ssh
-cd /Users/user/.ssh/
-vim id_rsa.pub 				#复制ssh至下述步骤4
+    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
 </code></pre>
 <blockquote>
-<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
+<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
 </blockquote>
-<pre><code class="bash">cd ~/&lt;blog&gt;
-vim _config.yml 
-
-#########需要修改以下内容
-
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
-  branch: master
-
-
-# URL
-## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;
-url: https://&lt;username&gt;.github.io
-
-#########需要修改以上内容
-
-#推送到github
-sudo npm install hexo-deployer-git --save
-hexo clean
-hexo d
+<pre><code>Dim OutlookApp As Object
+Dim OutlookMail As Object
+Dim lastRow As Long
+Dim i As Long
 </code></pre>
-<ol start="6">
-<li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li>
-</ol>
+<blockquote>
+<p>创建Outlook应用程序，类似于打开Outlook</p>
+</blockquote>
+<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+</code></pre>
+<blockquote>
+<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
+</blockquote>
+<pre><code>Dim ws As Worksheet
+Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
+</code></pre>
+<blockquote>
+<p>获取工作簿中的最后一行，固定搭配</p>
+</blockquote>
+<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+</code></pre>
+<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
+<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
+</blockquote>
+<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+    &#39; 创建新邮件
+    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
+
+    &#39; 设置收件人、抄送、主题和正文
+    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+    &#39; 发送邮件
+    OutlookMail.Send
+
+    &#39; 释放对象
+    Set OutlookMail = Nothing
+Next i
+</code></pre>
+<blockquote>
+<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
+</blockquote>
+<pre><code>    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
+<hr>
+<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
+<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
+</blockquote>
+<pre><code>Private Sub CommandButton1_Click()
+  sendMail
+Enb Sub
+</code></pre>
+<blockquote>
+<p>返回工作簿点击按钮进行测试。</p>
+</blockquote>
+<blockquote>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
+</blockquote>
 
   </div>
   <div id="gitalk-container"></div>
@@ -474,19 +495,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/08/21/ExcelVBA/">
+    <a href="/2024/08/29/ExcelFuncton/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Excel VBA</p>
+            <p>Excel Function Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/08/21/Kanto%20Area%20Trave%20Guide%206%20Days/">
+    <a href="/2024/08/29/Hexo-Github/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Kanto Area Travel Guide 6 Days</p>
+            <p>使用Hexo部署Github Page</p>
         </div>
     </a>
     
