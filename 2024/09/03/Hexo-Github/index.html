@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>SplunkForwarder pkg in macOS-Blog</title>
+<title>使用Hexo部署Github Page-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Shell,SplunkForwarder,">
+<meta name="keywords" content="Github,Hexo,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Shell">Shell</a></li>
+            <li><a href="/tags/Github">Github</a></li>
             
-            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
+            <li><a href="/tags/Hexo">Hexo</a></li>
             
             
         </ul>
         
-        <h1>SplunkForwarder pkg in macOS</h1>
+        <h1>使用Hexo部署Github Page</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Shell/" target="_blank" >Shell</a>
+                         <a href="../../categories/Github/" target="_blank" >Github</a>
                     
                 </div>
-                <p>2024-08-29 10:39:56</p>
+                <p>2024-09-03 18:47:35</p>
             </div>
         </div>
     </div>
@@ -319,200 +319,91 @@
   <div id="article" class="post-content-info">
     
 
-    <h1 id="SplunkForwarder-UF-Installation"><a href="#SplunkForwarder-UF-Installation" class="headerlink" title="SplunkForwarder UF Installation"></a>SplunkForwarder UF Installation</h1><blockquote>
-<h3 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h3></blockquote>
-<pre><code class="shell">#!/bin/bash
-#Argumentlist
+    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
+<ol>
+<li>安装Homebrew</li>
+</ol>
+<pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+</code></pre>
+<ol start="2">
+<li>安装环境</li>
+</ol>
+<pre><code class="bash">#安装Git
+brew install git
+#安装node
+brew install node
+#安装Hexo 因为是macOS需要在命令前添加sudo
+sudo npm install -g hexo-cli
+#初始化
+hexo init &lt;blog&gt;   #blog可自定义
+cd &lt;blog&gt;
+npm install
 
-SPLUNK_HOME=/opt/splunkforwarder
-SPLUNK_USER=splunker
-#SPLUNK_GRP=splunker
-SPLUNK_BIN=$SPLUNK_HOME/bin
-SPLUNK_VER=&quot;$SPLUNK_HOME/splunkforwarder-9*&quot;
-SPLUNK_UNIT_NAME=splunk
-CON_DIR=$SPLUNK_HOME/etc/apps
-CON_FOLDER=pwc-uf-mac-deploymentclient
-_silent=&quot;--accept-license --answer-yes --no-prompt&quot;
-SCRIPT_PATH=$(dirname &quot;$0&quot;)
+
+
+
+
+#检查是否安装成功
+node -v
+git --version
+hexo -v
+</code></pre>
+<ol start="3">
+<li>本地Hexo关联远程Github仓库</li>
+</ol>
+<pre><code class="bash"># 常用命令
+hexo c    #清理缓存
+hexo g    #生成
+hexo d    #发布
+hexo s    #本地预览
+
+
+#
+git config --global user.name &quot;username&quot;
+git config --global user.email &quot;email&quot;
+
+#验证查看是否有输出
+git config user.name
+git config user.email
+
+
+ssh-keygen -t rsa -C &quot;email&quot;
+
+
+#获取ssh
+cd /Users/user/.ssh/
+vim id_rsa.pub 				#复制ssh至下述步骤4
 </code></pre>
 <blockquote>
-<h3 id="检测是否使用Root账号运行此脚本"><a href="#检测是否使用Root账号运行此脚本" class="headerlink" title="检测是否使用Root账号运行此脚本"></a>检测是否使用Root账号运行此脚本</h3></blockquote>
-<pre><code class="shell"># Check for root
-
-if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
-    echo &quot;Relaunching this script as root user.&quot;
-    exec sudo &quot;$0&quot; &quot;$@&quot;
-fi
-</code></pre>
-<blockquote>
-<h3 id="检测设置路径下是否存在SplunkForwarder"><a href="#检测设置路径下是否存在SplunkForwarder" class="headerlink" title="检测设置路径下是否存在SplunkForwarder"></a>检测设置路径下是否存在SplunkForwarder</h3><ol>
-<li>T：检测当前SplunkForwarder版本是否为目标版本<ol>
-<li>T：替换配置文件，并重启服务splunk</li>
-<li>F：暂停Service，覆盖安装，添加配置文件</li>
-</ol>
-</li>
-<li>F：检测是否存在splunker用户，没有则进行添加；进行安装SplunkForwarder,替换配置文件后需要重启服务splunk</li>
-</ol>
+<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
 </blockquote>
-<pre><code class="shell">if [ -d $SPLUNK_HOME ]; then
-    echo &quot;Splunkforwarder exists!&quot;
-    if ls $SPLUNK_VER 1&gt; /dev/null 2&gt;&amp;1; then
-        echo &quot;Splunkforwarder is the lastest.&quot;
-        if [ -d $CON_DIR/Backup ]; then
-            for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then    
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
-            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-            $SPLUNK_BIN/splunk restart $_silent
-            echo &quot;Success to restart splunk!&quot;
-        else
-            for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
-                    mkdir -p $CON_DIR/Backup     
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-        fi
-    else
-        $SPLUNK_BIN/splunk stop
-        tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
-        if [ -d $CON_DIR/Backup ]; then
-            for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then     
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
-            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+<pre><code class="bash">cd ~/&lt;blog&gt;
+vim _config.yml 
 
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-        else
-           for dir in $CON_DIR/pwc*; do
-                dir_name=$(basename $&#123;dir&#125;)
-                if [[ &quot;$&#123;dir_name&#125;&quot; !=  $CON_FOLDER &amp;&amp; &quot;$&#123;dir_name&#125;&quot; != *cn ]]; then
-                    mkdir -p $CON_DIR/Backup     
-                    mv -f $CON_DIR/pwc* $CON_DIR/Backup
-                    echo &quot;Success to delete old configuration-pwc*&quot;
-                fi
-            done
-            #Replace configuration
-            cd $SCRIPT_PATH
-            sudo cp -r $CON_FOLDER $CON_DIR
-            echo &quot;Success to copy $CON_FOLDER!&quot;
-            RESTART_COMMNAD=&quot;$SPLUNK_BIN/splunk restart $_silent&quot;
-            CHECK_COMMAND=&quot;$SPLUNK_BIN/splunk status&quot;
+#########需要修改以下内容
 
-            while true; do
-                $&#123;RESTART_COMMNAD&#125;
-                sleep 10
-                if $&#123;CHECK_COMMAND&#125; | grep -q &quot;splunkd is running&quot; ; then
-                    echo &quot;Restart successfully&quot;
-                    break
-                else
-                    echo &quot;Fail to restart. Trying again.&quot;
-                fi
-            done
-        fi
-    fi
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
+  branch: master
 
-else
-    # Does not exist. Then, Installation for splunk
-    cd $SCRIPT_PATH
-    tar -xzf splunkforwarder-9.0.3-darwin-universal.tgz -C /opt
-    if [ -d $SPLUNK_HOME ]; then
-        echo &quot;Success to install Splunk.&quot;
-        #Create a new folder for backup configuration
-        mkdir -p $CON_DIR/Backup
-        mv -f $CON_DIR/pwc* $CON_DIR/Backup
-        echo &quot;Success to delete old configuration-pwc*&quot;
 
-        #Replace configuration [pwc-uf-mac-deploymentclient]
-        cd $SCRIPT_PATH
-        sudo cp -r $CON_FOLDER $CON_DIR
-        echo &quot;Success to copy $CON_FOLDER!&quot;
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;
+url: https://&lt;username&gt;.github.io
 
-        # Change ownership of splunk
-        if ! id -u splunker &gt;/dev/null 2&gt;&amp;1; then
-            # Create user: splunker
-            sudo dscl . -create /Users/splunker
-            sudo dscl . -create /Users/splunker UserShell /bin/bash
-            sudo dscl . -create /Users/splunker RealName &quot;splunker&quot;
-            sudo dscl . -create /Users/splunker UniqueID &quot;9980&quot;
-            sudo dscl . -create /Users/splunker PrimaryGroupID &quot;9980&quot;
-            sudo dscl . -create /Users/splunker NFSHomeDirectory /Users/splunker
-            sudo mkdir /Users/splunker
-            sudo chown splunker:splunker /Users/splunker
-            # Create group: splunker
-            sudo dscl . -create /Groups/splunker
-            sudo dscl . -create /Groups/splunker RealName &quot;splunker&quot;
-            sudo dscl . -create /Groups/splunker gid &quot;9980&quot;
-            # Add user to group
-            sudo dseditgroup -o edit -a splunker -t user splunker
-        fi
-        sudo chown -R splunker:splunker $SPLUNK_HOME/
-        echo &quot;Change successfully&quot;
-        # Start Splunk as non-root SPLUNK_USER                
-        sudo -u splunker $SPLUNK_BIN/splunk start $_silent                
-        # ENABLE BOOT START SECTION
-        sudo -u splunker $SPLUNK_BIN/splunk enable boot-start
-        # Restarting Splunk...
-        sudo -u splunker $SPLUNK_BIN/splunk restart $_silent
-        echo &quot;restart successfully&quot;
+#########需要修改以上内容
 
-    fi
-
-fi
+#推送到github
+sudo npm install hexo-deployer-git --save
+hexo clean
+hexo d
 </code></pre>
+<ol start="6">
+<li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li>
+</ol>
 
   </div>
   <div id="gitalk-container"></div>
@@ -583,19 +474,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/08/29/PowerShell/">
+    <a href="/2024/09/03/ExcelVBA/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>PowerShell Command Recording</p>
+            <p>Excel VBA</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/08/29/SplunkSearchCommand/">
+    <a href="/2024/09/03/Kanto%20Area%20Trave%20Guide%206%20Days/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>SplunkForwarder Search Command</p>
+            <p>Kanto Area Travel Guide 6 Days</p>
         </div>
     </a>
     
