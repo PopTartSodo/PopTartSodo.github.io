@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>使用Hexo部署Github Page-Blog</title>
+<title>文章归档-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,9 +11,8 @@
 <link rel="stylesheet" href="/css/index.css">
 
 
-
-<meta name="keywords" content="Github,Hexo,">
-<meta name="description" content="">
+<meta name="keywords" content="Sodo">
+<meta name="description" content="描述">
 
 
 <script src="/js/jquery.min.js"></script>
@@ -39,6 +38,9 @@
 
 	<body>
 		
+
+    
+    
 	<div class="header">
 		<div class="header-top" id="header-top">
 			<div class="h-left">
@@ -59,13 +61,13 @@
 								
 									
 						
-								<li>
-									<a href="/archives">
-										ARCHIVE
-									</a>
-									<span class="dot"></span>
-								</li>
-								
+							<li class="select">
+								<a href="/archives">
+									ARCHIVE
+								</a>
+								<span class="dot"></span>
+							</li>
+							
 									
 						
 								<li>
@@ -276,222 +278,94 @@
 
 </script>
 
-<div class="post">
-    <div class="post-header-background post-header-color"
-    style="background: url('')" 
->
-    <div class="post-header-background-content">
-        <ul class="post-header-tag">
-            
-            
-            <li><a href="/tags/Github">Github</a></li>
-            
-            <li><a href="/tags/Hexo">Hexo</a></li>
-            
-            
-        </ul>
-        
-        <h1>使用Hexo部署Github Page</h1>
-        <div class="post-header-info">
-            <div class="post-header-info-author">
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                        <g>
-                            <path fill="#12183A"
-                                d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
-                            </path>
-                        </g>
-                    </svg>
-                
-                <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
-                <div class="post-header-info-author-categories">
-                    
-                         <a href="../../categories/Github/" target="_blank" >Github</a>
-                    
-                </div>
-                <p>2024-09-03 18:47:35</p>
-            </div>
-        </div>
+    
+
+
+
+<div class="archive">
+    
+        <div class="header-body-background">
+    <div class="header-body-background-content">
+        <span>
+            <img src="/image/Floppy Disk.png" alt="Quiet">
+        </span>
+
+        <h2>居然用了 1 年一共才写了 11 篇文章!</h2>
     </div>
 </div>
-    <div class="post-content" id="content">
-  
-  <div id="article" class="post-content-info">
     
-
-    <p>##搭建前准备<br>部署设备：MacBook Pro</p>
-<ol>
-<li>安装Homebrew</li>
-</ol>
-<pre><code class="bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
-</code></pre>
-<ol start="2">
-<li>安装环境</li>
-</ol>
-<pre><code class="bash">#安装Git
-brew install git
-#安装node
-brew install node
-#安装Hexo 因为是macOS需要在命令前添加sudo
-sudo npm install -g hexo-cli
-#初始化
-hexo init &lt;blog&gt;   #blog可自定义
-cd &lt;blog&gt;
-npm install
-
-
-
-
-
-#检查是否安装成功
-node -v
-git --version
-hexo -v
-</code></pre>
-<ol start="3">
-<li>本地Hexo关联远程Github仓库</li>
-</ol>
-<pre><code class="bash"># 常用命令
-hexo c    #清理缓存
-hexo g    #生成
-hexo d    #发布
-hexo s    #本地预览
-
-
-#
-git config --global user.name &quot;username&quot;
-git config --global user.email &quot;email&quot;
-
-#验证查看是否有输出
-git config user.name
-git config user.email
-
-
-ssh-keygen -t rsa -C &quot;email&quot;
-
-
-#获取ssh
-cd /Users/user/.ssh/
-vim id_rsa.pub 				#复制ssh至下述步骤4
-</code></pre>
-<blockquote>
-<p>注意hexo d时需要输入username和password，password输入的是步骤3中的token<br>4. github中个人资料Settings中「SSH and GPG keys」，「New SSH key」权限避免出现不够的情况，可以全选<br><img src="/assets/img/github-ssh.png" alt="这是图片" title="github-ssh"><br>5. 更改配置文件</p>
-</blockquote>
-<pre><code class="bash">cd ~/&lt;blog&gt;
-vim _config.yml 
-
-#########需要修改以下内容
-
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
-  branch: master
-
-
-# URL
-## Set your site url here. For example, if you use GitHub Page, set url as &#39;https://username.github.io/project&#39;
-url: https://&lt;username&gt;.github.io
-
-#########需要修改以上内容
-
-#推送到github
-sudo npm install hexo-deployer-git --save
-hexo clean
-hexo d
-</code></pre>
-<ol start="6">
-<li>访问github.io查看效果<br><img src="/assets/img/githubSite.png" alt="这是图片" title="githubSite"></li>
-</ol>
-
-  </div>
-  <div id="gitalk-container"></div>
+    <div class="archive-content" id="content">
+        <div class="archive-content-data">
+            <div class="grouping">
+    
+        <p>
+            2024
+        </p>
+        
+        <a href="/2024/10/07/hello-world/">
+            <span>Hello World</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/SplunkSearchCommand/">
+            <span>SplunkForwarder Search Command</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/SplunkForwarderpkg/">
+            <span>SplunkForwarder pkg in macOS</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/PowerShell/">
+            <span>PowerShell Command Recording</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/Osaka-Tokyo Trave Guide 7 Days/">
+            <span>Tokyo - Osaka Travel Guide 7 Days</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/Kanto Area Trave Guide 6 Days/">
+            <span>Kanto Area Travel Guide 6 Days</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/Hexo-Github/">
+            <span>使用Hexo部署Github Page</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/ExcelVBA/">
+            <span>Excel VBA</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/ExcelFuncton/">
+            <span>Excel Function Recording</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/Bangkok Travel Guide 4 Days/">
+            <span>Bangkok Travel Guide 4 Days</span>
+            <time>10-07</time>
+        </a>
+        
+        <a href="/2024/10/07/Available Function Listing/">
+            <span>Available Function Listing</span>
+            <time>10-07</time>
+        </a>
+        
+        
 </div>
-
-<script>
-  
-Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
-  dragToClose: true,
-  Toolbar: true,
-  closeButton: "top",
-  Image: {
-    zoom: true,
-  },
-  on: {
-    initCarousel: (fancybox) => {
-      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
-      fancybox.$container.style.setProperty(
-        "--bg-image",
-        `url("${slide.$thumb.src}")`
-      );
-    },
-    "Carousel.change": (fancybox, carousel, to, from) => {
-      const slide = carousel.slides[to];
-      fancybox.$container.style.setProperty(
-        "--bg-image",
-        `url("${slide.$thumb.src}")`
-      );
-    },
-  },
-});
-</script>
-
-<style>
-    #noneimg img {
-        display: none;
-        z-index: 9999;
-        /* width: 600px !important; */
-        min-width: 0%;
-        max-width: 90%;
-        max-height: 80%;
-        border-radius: 0px;
-        position: fixed;
-        box-shadow: 0 0 0px #c3c3c300 !important;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto !important;
-    }
-
-    @media screen and (max-width:600px) {
-        #noneimg img {
-            max-width: 88%
-        }
-    }
-</style>
-
-       <style>
-       hr{
-           width: 1000px;
-           height: 1px;
-           background: linear-gradient(to left, #fff 5%, gainsboro 50%, #fff 85%);
-	   margin: auto;
-
-       }
-   </style>
-<hr>
-<div class="post-paging">
-    
-    <a href="/2024/09/03/ExcelVBA/">
-        <div class="post-paging-last">
-            <span>Previous</span>
-            <p>Excel VBA</p>
         </div>
-    </a>
-    
+    </div>    
+</div>
 
-    
-    <a href="/2024/09/03/Kanto%20Area%20Trave%20Guide%206%20Days/">
-        <div class="post-paging-next">
-            <span>Next</span>
-            <p>Kanto Area Travel Guide 6 Days</p>
-        </div>
-    </a>
-    
-</div>
-</div>
+
+
+
 		
 <div class="footer">
 	<div class="Copyright">

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel Function Recording-Blog</title>
+<title>PowerShell Command Recording-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Function,Excel,">
+<meta name="keywords" content="Powershell,Command,ShortCuts,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,16 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Function">Function</a></li>
+            <li><a href="/tags/Powershell">Powershell</a></li>
             
-            <li><a href="/tags/Excel">Excel</a></li>
+            <li><a href="/tags/Command">Command</a></li>
+            
+            <li><a href="/tags/ShortCuts">ShortCuts</a></li>
             
             
         </ul>
         
-        <h1>Excel Function Recording</h1>
+        <h1>PowerShell Command Recording</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +308,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
+                         <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
                     
                 </div>
-                <p>2024-09-03 18:47:35</p>
+                <p>2024-10-07 17:04:18</p>
             </div>
         </div>
     </div>
@@ -319,54 +321,90 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="Extract-Group-in-cell"><a href="#Extract-Group-in-cell" class="headerlink" title="Extract Group in cell"></a>Extract Group in cell</h2><p><code>=IF(ISNUMBER(SEARCH(&quot; : Users&quot;,D2)),&quot;Users&quot;,IF(ISNUMBER(SEARCH(&quot;Everyone&quot;,D2)),&quot;Everyone&quot;,&quot;Authenticated Users&quot;))</code>   </p>
-<h2 id="Extract-Path-in-cell"><a href="#Extract-Path-in-cell" class="headerlink" title="Extract Path in cell"></a>Extract Path in cell</h2><p><code>=MID(B9,FIND(&quot;Path :&quot;,B9)+LEN(&quot;Path :&quot;),FIND(&quot;Used by services&quot;,B9)-FIND(&quot;Path :&quot;,B9)-LEN(&quot;Path :&quot;))</code></p>
+    <blockquote>
+<p><strong>ShortCut Keys in VSCode:</strong></p>
 <ul>
-<li>Only extract the path that includes three “&quot;, decrease to two if do not have it<br><code>=IFERROR(MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)+1)),MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)))</code></li>
-<li>Click “Data” , then will find “Text to Columns”. It will separate each field, only need 3 fields.</li>
-<li>New a pivot table to calculate data.(Control Columns A:I )</li>
-<li><strong>Required: DNS Name, Plugin Output</strong></li>
-</ul>
-<hr>
-<h3 id="Extract-Path-except-for-filename"><a href="#Extract-Path-except-for-filename" class="headerlink" title="Extract Path except for filename"></a>Extract Path except for filename</h3><blockquote>
-<p><code>=LEFT(D2,FIND(CHAR(1),SUBSTITUTE(D2,&quot;\&quot;,CHAR(1),LEN(D2)-LEN(SUBSTITUTE(D2,&quot;\&quot;,&quot;&quot;))))-1)</code>**<br><strong>i. <code>left(text, num_chars)</code></strong></p>
-<ul>
-<li>text: required. The text string that contains the characters you want to extract.</li>
-<li>num_chars: optional. Specifies the number of characters you want left to extract.<br><strong>ii. <code>find(find_text, within_text, [start_num])</code></strong>  </li>
-<li>find_text: required. The text you want to find.  </li>
-<li>within_text: required. The text containing the text you want to find.  </li>
-<li>start_num: option. Specifies the character at which to start the search. The first character in within_text is character number 1. if you omit start_num, it is assumed to be 1.<br><strong>iii.<code>substitute(text, old_text, new_text, [instance_num])</code></strong>  </li>
-<li>text: required. The text or the reference to a cell containing text for which you want to substitute characters.  </li>
-<li>old_text: required. The text you want to replace.  </li>
-<li>new_text: required. The Text you want to replace old_text with.  </li>
-<li>instance_num: optional. Specifics which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text.<br><strong>iv. <code>len(text) </code></strong>  </li>
-<li>Text: required. The text whose length you want to find. Space count as characters.</li>
-</ul>
-</blockquote>
-<h3 id="Combine-content-of-cells"><a href="#Combine-content-of-cells" class="headerlink" title="Combine content of cells"></a>Combine content of cells</h3><blockquote>
-<p><strong>a. <code>=TEXTJOIN(&quot;,&quot;,TRUE,K1:K10)</code></strong><br><strong>i. <code>textjoin(delimiter, ignore_empty, text1)</code></strong>  </p>
-<ul>
-<li>Delimiter: required. A text string, either empty, or one or more characters enclosed by double quotes, or a reference to a valid text string. If a number is supplied, it will be treated as text.</li>
-<li>Ignore_empty: if true, ignores empty cells.</li>
-<li>Text1: required. Text item to be joined. A text string, or array of strings, such as a range of cells.</li>
+<li><p><strong>Auto-adjust indent</strong><br> <code>Shift+Alt+F (Win)</code><br> <code>Shift+Option+F (Mac)</code></p>
+</li>
+<li><p><strong>Annotating</strong><br><code>Ctrl+/ (Win)</code></p>
+</li>
 </ul>
 </blockquote>
 <hr>
-<h2 id="xLookup"><a href="#xLookup" class="headerlink" title="xLookup"></a>xLookup</h2><pre><code>=XLOOKUP(lookup_value,lookup_array,return_array, [if_not_found], [match_mode], [search_mode]) 
+<h2 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To get the specific file’s SHA256 automatically</p>
+</li>
+<li><p><strong>Syntax</strong></p>
+</li>
+</ul>
+<pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl
+  Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;
 </code></pre>
-<blockquote>
-<p><em><strong>参数说明</strong></em><br>lookup_value：查找值(必填项)<br>lookup_array：要搜索的数组或区域(必填项)<br>return_array：要返回的数组或区域(必填项)<br>[if_not_found]：如果找不到有效的匹配项，则返回你提供的[if_not_found]文本；如果找不到有效的匹配项，并且缺少[if_not_found]，则会返回#N&#x2F;A(选填项)<br>[match_mode]：指定匹配类型。 </p>
-<blockquote>
-<p>0表示完全匹配，如果未找到，则返回<code>#N/A</code>，这是默认选项；<br>-1表示完全匹配，如果没有找到，则返回下一个较小的项；<br>1表示完全匹配，如果没有找到，则返回下一个较大的项；<br>2表示通配符匹配，其中<code>*</code>、<code>？</code>、<code>~</code>有特殊含义。 </p>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
 </blockquote>
-<p>[search_mode]：指定要使用的搜索模式。(选填项) </p>
-<blockquote>
-<p>1表示从第一项开始搜索，这是默认选项；<br>-1表示从最后一项开始执行反向搜索；<br>2表示执行依赖于lookup_array按升序排序的二进制搜索，如果未排序，将返回无效结果；<br>-2表示执行依赖于lookup_array按降序排序的二进制搜索，如果未排序，将返回无效结果。 </p>
+<h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>Make sure the script can output log.</p>
+</li>
+<li><p><strong>Syntax</strong></p>
+</li>
+</ul>
+<pre><code class="powershell"> $ErrorMessage = $_.Exception.Message
+ $FailIedItem = $_.Exception.ItemName
+ $StackTrace = $_.Exception.StackTrace
+
+ Write-Host &quot;Error: $ErrorMessage &quot; 
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li>
+</ul>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
 </blockquote>
-<p><em><strong>通配符解释</strong></em><br>通配符一般使用在Excel查找和替换中，将通配符用作文本筛选器的比较条件，并在搜索和替换内容时使用通配符字符。<br>常用通配符有三个，分别是<code>？</code>(问号)、<code>*</code>(星号)、<code>~</code>(波形符)。 </p>
-<blockquote>
-<p><code>？</code>(问号)表示任意单个字符，例如A？就表示以A开头的任意两个字符；<br><code>*</code>(星号)表示任意数量的字符，例如<code>*A*</code>就表示含有字符A的任意一个字符串，<code>*A</code>就表示以字符A结尾的任意一个字符串，<code>A*</code>就表示以字符A开头的任意一个字符串；<br><code>~</code>(波形符)即转义字符，通常后跟？、<code>*</code>或者<code>~</code>，表示<code>~</code>后面的字符为普通字符，例如<code>A~？</code>表示查找字符串<code>A？</code>。 </p>
+<h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To get the file name in the file’s path.</p>
+</li>
+<li><p><strong>Syntax</strong></p>
+</li>
+</ul>
+<pre><code class="powershell">Split-Path -Path &lt;Path&gt; -Leaf
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li>
+</ul>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
 </blockquote>
+<h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote>
+<ul>
+<li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p>
+</li>
+<li><p><strong>Example[Command]</strong></p>
+</li>
+</ul>
+<pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;
+</code></pre>
+<ul>
+<li><strong>Example[Output]</strong></li>
+</ul>
+<pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+      0       2      432       1852       0.00  45952   1 msiexec
+</code></pre>
+<ul>
+<li><strong>Syntax</strong></li>
+</ul>
+<pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru
+</code></pre>
+<p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p>
+<ul>
+<li>&lt;arg&gt;Normal Parameters</li>
+<li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li>
+<li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li>
+<li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li>
+<li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li>
+</ul>
+<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></p>
 </blockquote>
 
   </div>
@@ -438,19 +476,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/09/03/Bangkok%20Travel%20Guide%204%20Days/">
+    <a href="/2024/10/07/Osaka-Tokyo%20Trave%20Guide%207%20Days/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Bangkok Travel Guide 4 Days</p>
+            <p>Tokyo - Osaka Travel Guide 7 Days</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/09/03/ExcelVBA/">
+    <a href="/2024/10/07/SplunkForwarderpkg/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Excel VBA</p>
+            <p>SplunkForwarder pkg in macOS</p>
         </div>
     </a>
     
