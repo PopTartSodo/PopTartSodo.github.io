@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Bangkok Travel Guide 4 Days-Blog</title>
+<title>Excel VBA-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Travel,Thailand,">
+<meta name="keywords" content="Excel,VBA,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Travel">Travel</a></li>
+            <li><a href="/tags/Excel">Excel</a></li>
             
-            <li><a href="/tags/Thailand">Thailand</a></li>
+            <li><a href="/tags/VBA">VBA</a></li>
             
             
         </ul>
         
-        <h1>Bangkok Travel Guide 4 Days</h1>
+        <h1>Excel VBA</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Travel/" target="_blank" >Travel</a>
+                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2024-10-07 20:30:31</p>
+                <p>2024-10-08 00:19:35</p>
             </div>
         </div>
     </div>
@@ -319,147 +319,111 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="机票-酒店"><a href="#机票-酒店" class="headerlink" title="机票&amp;酒店"></a>机票&amp;酒店</h2><blockquote>
-<p>出发时间-归来时间：08月30日-09月02日 上海浦东&#x2F;西安咸阳-曼谷素万那普&#x2F;曼谷廊曼<br>H1: Pathumwan Princess Hotel</p>
+    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
+<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
+</blockquote>
+<pre><code> Sub sendMail()
+    Dim OutlookApp As Object
+    Dim OutlookMail As Object
+    Dim lastRow As Long
+    Dim i As Long
+
+    &#39; 创建Outlook应用程序
+    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+
+    &#39; 获取工作表
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
+
+    &#39; 获取最后一行
+    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+
+    &#39; 循环发送邮件
+    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+        &#39; 创建新邮件
+        Set OutlookMail = OutlookApp.CreateItem(0)
+
+        &#39; 设置收件人、抄送、主题和正文
+        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+        &#39; 发送邮件
+        OutlookMail.Send
+
+        &#39; 释放对象
+        Set OutlookMail = Nothing
+    Next i
+
+    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
 <blockquote>
-<p>444 Phayathai Road, Pathumwan, Bangkok, Thailand, 10330</p>
+<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
 </blockquote>
-<p>H2: Sindhorn Kempinski Hotel Bangkok</p>
+<pre><code>Dim OutlookApp As Object
+Dim OutlookMail As Object
+Dim lastRow As Long
+Dim i As Long
+</code></pre>
 <blockquote>
-<p>80 Soi Tonson Lumphini, Pathumwan, Bangkok, Thailand, 10330  </p>
+<p>创建Outlook应用程序，类似于打开Outlook</p>
 </blockquote>
-</blockquote>
-<hr>
-<h2 id="必备物品【计算单位-人民币】"><a href="#必备物品【计算单位-人民币】" class="headerlink" title="必备物品【计算单位:人民币】"></a>必备物品【计算单位:人民币】</h2><blockquote>
-<p>泰铢现金：1000 (5kTHB)<br>泰国电话卡:26<br>护照<br>信用卡:Visa&#x2F;Master<br>充电宝</p>
-</blockquote>
-<h2 id="交通"><a href="#交通" class="headerlink" title="交通"></a>交通</h2><blockquote>
-<p>可刷Visa&#x2F;Master卡进出站<br>购买兔子卡<br>BTS可微信&#x2F;现金<br>MRT只能现金硬币   </p>
-</blockquote>
-<h2 id="需要下载的App"><a href="#需要下载的App" class="headerlink" title="需要下载的App"></a>需要下载的App</h2><blockquote>
-<p>交通：Google Maps &#x2F; Grab &#x2F; Bolt   </p>
-</blockquote>
-<hr>
-<h2 id="外卖Grab"><a href="#外卖Grab" class="headerlink" title="外卖Grab"></a>外卖Grab</h2><blockquote>
-<p>Phed Mark 猪肉打抛饭<br>พ่อครัวน้อย - ถนนสุขุมวิท 打抛饭<br>Choongman chicken 炸鸡(奶油洋葱味)<br>Kub Kao Kub Pla 咖喱蟹 蟹肉炒饭<br>ปูพ่นไฟ puponfai 海鲜<br>Piak Grilled Pork 泰式烤串<br>After you 甜品</p>
-</blockquote>
-<h2 id="C-T-Coffee-Tea"><a href="#C-T-Coffee-Tea" class="headerlink" title="C&amp;T (Coffee&amp;Tea)"></a>C&amp;T (Coffee&amp;Tea)</h2><blockquote>
-<p>Factory Coffee:Mrs.Cold-Dirty拿铁, Phayathai-无奶冷萃,Moscow-奶盖Dirty(奶味重),Supreme-卡布奇诺(含肉桂味),White Citrus冷萃苦橙拿铁 - <strong>难喝</strong><br>A Keen House:焦糖拿铁、黑芝麻拿铁、开心果奶油拿铁<br>Nueng Nom Nua- Banthat Thong(16pm-1am) 牛奶小子 建议当天喝完 - <strong>太甜</strong><br>Karun 泰奶冰沙(类似珍珠奶茶，但是是冰沙)(昀姐版)<br>Pangcha 泰奶刨冰(类似甜品) - <strong>一般</strong><br>ChaTraMue 网红泰奶(偏甜 建议少甜OR无糖) - <strong>还可以比Pangcha好喝</strong><br>After you<br>L-Seven(L7 Cafe)(11am-2am) 凭小票撸狮子(昀姐版) - <strong>要等一个小时,300🐖&#x2F;人 3min</strong><br>P.S. I Love You 小饼干: Classic Butter, Chocolate chip(昀姐版) - <strong>因为是昀姐买的所以特别！好吃！</strong>    </p>
-</blockquote>
-<h2 id="Restaurant"><a href="#Restaurant" class="headerlink" title="Restaurant"></a>Restaurant</h2><h3 id="米其林"><a href="#米其林" class="headerlink" title="米其林"></a>米其林</h3><blockquote>
-<ul>
-<li><input disabled="" type="checkbox"> Here Hai Restaurant: 海鲜餐 蟹肉炒饭 (不想排队太久可在快10点的时候去排队,可赶上第一波)(10am-5:30pm 周一休) 完他那县 - 近TDERM  -&gt;可Grab</li>
-<li><input disabled="" type="checkbox"> Rung Rueang Pork Noodle(Left shop): 猪肉末粉(8am-5pm) 离EmSphere近     </li>
-<li><input disabled="" type="checkbox"> Jeh O Chula: 海鲜面&#x2F;mama面(4pm-12am) 朱拉隆功  </li>
-<li><input disabled="" type="checkbox"> Sae Phun: 煎蛋鸡肉饭&#x2F;猪肉云吞(8am-2pm 周三&amp;四休) 近大皇宫  </li>
-<li><input disabled="" type="checkbox"> Somsak Poo Op: 粉蟹肉煲、虾煲(3pm-9pm 周一休) 远到不认识附近有啥  </li>
-<li><input disabled="" type="checkbox"> lay lao -Ari: 柚子木瓜沙拉、猪颈肉沙拉(10:30am-10pm) 近Ari站  </li>
-<li><input disabled="" type="checkbox"> Krua Apsorn @Dinso: 主打咖喱 蛋包饭咖喱 烤鸡翅(10am-7:30pm 周日休) 近民主纪念碑</li>
-<li><input disabled="" type="checkbox"> Baan Pee Lek Restaurant: 咖喱和牛扒(周一-周四11am-2pm&#x2F;4:30pm-10:30pm &#x2F; 周五-周日 11am-10:30pm) 算了太远了   </li>
-<li><input disabled="" type="checkbox"> Polo Fried Chicken(Soi Polo): 米其林国民炸鸡(7am-8:30pm) 近伦披尼公园  </li>
-<li><input disabled="" type="checkbox"> Thai Niyom Cuisine: 咖喱面、炸蛋咖喱(11am-9pm) 近Phloen Chit站</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="昀姐版"><a href="#昀姐版" class="headerlink" title="昀姐版"></a>昀姐版</h3><blockquote>
-<p>Restaurant POTONG(4:30pm-11pm) 需要预约 <a target="_blank" rel="noopener" href="http://www.restaurantpotong.com/">http://www.restaurantpotong.com/</a>  本行程无法预约</p>
-</blockquote>
-<h2 id="Massage"><a href="#Massage" class="headerlink" title="Massage"></a>Massage</h2><blockquote>
-<p>Health land(9am-11pm):要给小费，听说有些手法很敷衍<br>phumontra(10am-10pm) 贵妇按摩 (昀姐版)<br>Dream House     </p>
-</blockquote>
-<h2 id="711必买清单-昀姐了如指掌-不用list"><a href="#711必买清单-昀姐了如指掌-不用list" class="headerlink" title="711必买清单(昀姐了如指掌 不用list)"></a>711必买清单(昀姐了如指掌 不用list)</h2><blockquote>
-<p>富吉李小梅子<br>绣球梨子(蓝色小瓶子,有个绣球花)  - 头发香水<br>环保袋 很可爱</p>
-</blockquote>
-<h2 id="美妆店"><a href="#美妆店" class="headerlink" title="美妆店"></a>美妆店</h2><blockquote>
-<p>711<br>bigC<br>eveandboy  </p>
-</blockquote>
-<hr>
-<h2 id="日程规划"><a href="#日程规划" class="headerlink" title="日程规划"></a>日程规划</h2><h3 id="Day-1-上海-西安-曼谷-08月30日-星期五"><a href="#Day-1-上海-西安-曼谷-08月30日-星期五" class="headerlink" title="Day 1 上海&#x2F;西安-曼谷 08月30日 星期五"></a>Day 1 上海&#x2F;西安-曼谷 <strong>08月30日 星期五</strong></h3><blockquote>
-<p>21:25-00:40 上海浦东T1-曼谷素万那普<br>22:50-01:45 西安咸阳T3-曼谷廊曼T1  </p>
-</blockquote>
-<h3 id="Day-2-曼谷-08月31日-星期六"><a href="#Day-2-曼谷-08月31日-星期六" class="headerlink" title="Day 2 曼谷 08月31日 星期六"></a>Day 2 曼谷 <strong>08月31日 星期六</strong></h3><blockquote>
-<ul>
-<li>凌晨</li>
-</ul>
-<p>Grab打车至酒店H1<br>落地后点外卖至H1  </p>
-<ul>
-<li>上午</li>
-</ul>
-<p>起床<br>Factory Coffee:Mr.Cold &amp;  White Citrus</p>
-<ul>
-<li><p>早餐</p>
-</li>
-<li><p>四面佛(无门票)<br>&nbsp;&nbsp;开放时间：<br>&nbsp;&nbsp;&nbsp;&nbsp;06:00-22:00<br>&nbsp;&nbsp;参拜顺序：<br>&nbsp;&nbsp;&nbsp;&nbsp;1.功名事业和学业(正面)<br>&nbsp;&nbsp;&nbsp;&nbsp;2.爱情婚姻(右侧)<br>&nbsp;&nbsp;&nbsp;&nbsp;3.金钱财富(背面)<br>&nbsp;&nbsp;&nbsp;&nbsp;4.健康平安(左侧)<br>&nbsp;&nbsp;&nbsp;&nbsp;从正面开始，顺时针方向参拜，跪拜完放(一束花，一个蜡烛，三柱香)，直至回到正面参拜结束。<br>&nbsp;&nbsp;心中默念：<br>&nbsp;&nbsp;&nbsp;&nbsp;1.来自XX的XXX + 心愿<br>&nbsp;&nbsp;&nbsp;&nbsp;2.可能需要告知还愿方式<br>&nbsp;&nbsp;注意事项：<br>&nbsp;&nbsp;&nbsp;&nbsp;衣着避免暴露：忌讳露臂膀、低胸、裤过短，宜过膝<br>&nbsp;&nbsp;&nbsp;&nbsp;礼佛用品可在入口处购买<br>&nbsp;&nbsp;&nbsp;&nbsp;最佳参拜时间在上午  </p>
-</li>
-<li><p>午餐建议 暹罗商圈</p>
-</li>
-</ul>
-<p>P.S. I Love You by Pimara Macadamia Balls Siam Paragon(昀姐版) - <strong>还没吃</strong><br>TAKUYA OKONOMIYAKI by Siam Paragon G floor(昀姐版)<br>Karun 泰奶冰沙(类似珍珠奶茶，但是是冰沙)<br>Pangcha 泰奶刨冰(类似甜品) - <strong>不太行</strong><br>Thong Smith 船面&#x2F;mama面<br>ChaTraMue 网红泰奶(偏甜 建议少甜OR无糖) - <strong>还可以</strong><br>Omakase Don by Teppen สาขา CentralWorld(昀姐版)  </p>
-<ul>
-<li>午餐</li>
-</ul>
-<p>Kub Kao Kub Pla 冬阴功汤 蟹肉炒饭 生腌虾(辣) 炒空心菜 - <strong>一般</strong> </p>
-<ul>
-<li>打卡点</li>
-</ul>
-<p>Bangkok天桥 - 人多,建议用变焦,戴墨镜<br>Central World<br>Siam Paragon<br>Siam Discovery  </p>
-<ul>
-<li>Tips</li>
-</ul>
-<p>暹罗商圈组成: Siam Paragon暹罗百丽宫(奢侈品) + Siam Square(精品+网红品牌) + Siam Discovery(潮牌+网红桥M层) + Siam Center(本土品牌)</p>
-<ul>
-<li>下午</li>
-</ul>
-<p>大皇宫 - 3点结束售票没去成<br>Sala rattanakosin 晚餐需要预约<br>Siam Square  </p>
-<p><del>(民主纪念碑)Baan Kuay Tiew Ruathong 可顺道去King Power</del>  </p>
-<ul>
-<li>晚餐</li>
-</ul>
-<p>พ่อครัวน้อย - ถนนสุขุมวิท 打抛饭</p>
-<ul>
-<li>晚餐建议</li>
-</ul>
-<p>Jeh O Chula 网红米其林mama面(4pm-12am)<br>Lek Yai Traditional Tom Yum Noodles(11am-12am)<br>Chula 50 Kitchen(7am-7pm)周日休  </p>
-<ul>
-<li>逛夜市 朱拉隆功</li>
-</ul>
-</blockquote>
-<h3 id="Day-3-曼谷-09月01日-WangYun-s-Day"><a href="#Day-3-曼谷-09月01日-WangYun-s-Day" class="headerlink" title="Day 3 曼谷 09月01日 WangYun&#39;s Day"></a>Day 3 曼谷 <strong>09月01日 WangYun&#39;s Day</strong></h3><blockquote>
-<ul>
-<li><p>早上</p>
-</li>
-<li><p>11:00 退房H1 -&gt; 前往 H2  路程约40分钟</p>
-</li>
-<li><p>11:40 到达H2</p>
-<p>路程20分钟 3.7公里</p>
-</li>
-<li><p>13:00 Brunch<br>预约时间:1230 可保留30分钟 或者 和店家email沟通  </p>
-<p>Sühring(出片点)  </p>
-</li>
-<li><p>下午</p>
-</li>
-</ul>
-<p><del>Khlong Lat Mayom Floating Market 水上市场 周末(8am-5pm)</del><br><del>Taling Chan Floating Market 水上市场 周末(8am-3.30pm)</del><br><del>1st Signal Regiment Shooting Club(不远处)</del></p>
-<p>L-Seven(L7 Cafe)(11am-2am) 凭小票撸狮子   </p>
-<ul>
-<li>晚上</li>
-</ul>
-<p>EmSphere</p>
+<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+</code></pre>
 <blockquote>
-<p>Co-limited<br>逛gai<br>BIG C<br><del>Sirocco (需要预约:未预约) <a target="_blank" rel="noopener" href="https://www.tablecheck.com/zh-CN/lebua-hotels-and-resorts-sirocco/reserve/landing?utm_source=google">https://www.tablecheck.com/zh-CN/lebua-hotels-and-resorts-sirocco/reserve/landing?utm_source=google</a></del></p>
+<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
 </blockquote>
+<pre><code>Dim ws As Worksheet
+Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
+</code></pre>
+<blockquote>
+<p>获取工作簿中的最后一行，固定搭配</p>
 </blockquote>
-<h3 id="Day-4-曼谷-西安-上海-09月02日-星期一"><a href="#Day-4-曼谷-西安-上海-09月02日-星期一" class="headerlink" title="Day 4 曼谷-西安&#x2F;上海 09月02日 星期一"></a>Day 4 曼谷-西安&#x2F;上海 <strong>09月02日 星期一</strong></h3><blockquote>
-<p>9:00-10:00 早餐</p>
-<p>11:00 退房</p>
-<ul>
-<li>Massage<br> 酒店附近Dream House</li>
-</ul>
+<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+</code></pre>
+<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
+<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
+</blockquote>
+<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+    &#39; 创建新邮件
+    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
+
+    &#39; 设置收件人、抄送、主题和正文
+    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+    &#39; 发送邮件
+    OutlookMail.Send
+
+    &#39; 释放对象
+    Set OutlookMail = Nothing
+Next i
+</code></pre>
+<blockquote>
+<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
+</blockquote>
+<pre><code>    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
+<hr>
+<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
+<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
+</blockquote>
+<pre><code>Private Sub CommandButton1_Click()
+  sendMail
+Enb Sub
+</code></pre>
+<blockquote>
+<p>返回工作簿点击按钮进行测试。</p>
 </blockquote>
 <blockquote>
-<p>14:00 到机场  </p>
-<p>BonChon 炸鸡: 还可以Hot有点辣,刚出餐 很脆 味道还行,有点干</p>
-<p>16:35-21:15 素万那普-西安咸阳T3<br>16:50-22:25 素万纳普-上海浦东T1  </p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
 </blockquote>
 
   </div>
@@ -531,19 +495,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/10/07/Available%20Function%20Listing/">
+    <a href="/2024/10/08/ExcelFuncton/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Available Function Listing</p>
+            <p>Excel Function Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/10/07/ExcelFuncton/">
+    <a href="/2024/10/08/Hexo-Github/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Excel Function Recording</p>
+            <p>使用Hexo部署Github Page</p>
         </div>
     </a>
     
