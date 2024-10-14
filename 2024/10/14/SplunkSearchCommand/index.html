@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Hello World-Blog</title>
+<title>SplunkForwarder Search Command-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,8 +11,9 @@
 <link rel="stylesheet" href="/css/index.css">
 
 
-<meta name="keywords" content="Sodo">
-<meta name="description" content="描述">
+
+<meta name="keywords" content="SplunkForwarder,Search,">
+<meta name="description" content="">
 
 
 <script src="/js/jquery.min.js"></script>
@@ -282,9 +283,15 @@
     <div class="post-header-background-content">
         <ul class="post-header-tag">
             
+            
+            <li><a href="/tags/SplunkForwarder">SplunkForwarder</a></li>
+            
+            <li><a href="/tags/Search">Search</a></li>
+            
+            
         </ul>
         
-        <h1>Hello World</h1>
+        <h1>SplunkForwarder Search Command</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -299,8 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
+                         <a href="../../categories/SplunkForwarder/" target="_blank" >SplunkForwarder</a>
+                    
                 </div>
-                <p>2024-10-11 15:34:33</p>
+                <p>2024-10-14 16:38:09</p>
             </div>
         </div>
     </div>
@@ -310,19 +319,34 @@
   <div id="article" class="post-content-info">
     
 
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+    <h2 id="Find-something-in-Splunk"><a href="#Find-something-in-Splunk" class="headerlink" title="Find something in Splunk"></a>Find something in Splunk</h2><blockquote>
+<p>Then how can we do the search thing?<br>First of all, we should find “Datasets” then Click “Click Table View”. Then we could see the data repository in Splunk. This time you can return the Search Page.<br>Choose the one you need, input the below content in your search bar.</p>
+</blockquote>
+<pre><code>index=&lt;your repository&gt;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+<blockquote>
+<p>You also could use * to match the most close one.<br>For example:</p>
+</blockquote>
+<pre><code>index=&quot;abc*&quot;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+<blockquote>
+<p>如果想要在搜索里进行筛选，需要在上面event查找到可用的field<br>Example in EVENT:</p>
+</blockquote>
+<pre><code>&#123; [-]
+   Tenant: DefaultTenant
+   category: AdvancedHunting-AlertEvidence
+   operationName: Publish
+   properties: &#123; [+]
+   &#125;
+   tenantId: abc123xxx
+   time: 2023-10-30T02:11:42.2937933Z
+&#125; 
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+<blockquote>
+<p>If you wanna find the category is AdvancedHunting-AlertEvidence, then should add one space and category&#x3D;”AdvancedHunting-AlertEvidence”.</p>
+</blockquote>
+<pre><code>index=&quot;abc*&quot; category=&quot;AdvancedHunting-AlertEvidence&quot;.
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
   </div>
   <div id="gitalk-container"></div>
@@ -393,14 +417,21 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/10/11/SplunkSearchCommand/">
+    <a href="/2024/10/14/SplunkForwarderpkg/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>SplunkForwarder Search Command</p>
+            <p>SplunkForwarder pkg in macOS</p>
         </div>
     </a>
     
 
+    
+    <a href="/2024/10/14/hello-world/">
+        <div class="post-paging-next">
+            <span>Next</span>
+            <p>Hello World</p>
+        </div>
+    </a>
     
 </div>
 </div>

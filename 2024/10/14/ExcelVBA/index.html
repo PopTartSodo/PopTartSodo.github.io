@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel Function Recording-Blog</title>
+<title>Excel VBA-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Function,Excel,">
+<meta name="keywords" content="Excel,VBA,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Function">Function</a></li>
-            
             <li><a href="/tags/Excel">Excel</a></li>
+            
+            <li><a href="/tags/VBA">VBA</a></li>
             
             
         </ul>
         
-        <h1>Excel Function Recording</h1>
+        <h1>Excel VBA</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -309,7 +309,7 @@
                          <a href="../../categories/Excel/" target="_blank" >Excel</a>
                     
                 </div>
-                <p>2024-10-11 15:34:33</p>
+                <p>2024-10-14 16:38:09</p>
             </div>
         </div>
     </div>
@@ -319,54 +319,111 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="Extract-Group-in-cell"><a href="#Extract-Group-in-cell" class="headerlink" title="Extract Group in cell"></a>Extract Group in cell</h2><p><code>=IF(ISNUMBER(SEARCH(&quot; : Users&quot;,D2)),&quot;Users&quot;,IF(ISNUMBER(SEARCH(&quot;Everyone&quot;,D2)),&quot;Everyone&quot;,&quot;Authenticated Users&quot;))</code>   </p>
-<h2 id="Extract-Path-in-cell"><a href="#Extract-Path-in-cell" class="headerlink" title="Extract Path in cell"></a>Extract Path in cell</h2><p><code>=MID(B9,FIND(&quot;Path :&quot;,B9)+LEN(&quot;Path :&quot;),FIND(&quot;Used by services&quot;,B9)-FIND(&quot;Path :&quot;,B9)-LEN(&quot;Path :&quot;))</code></p>
-<ul>
-<li>Only extract the path that includes three “&quot;, decrease to two if do not have it<br><code>=IFERROR(MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)+1)),MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)))</code></li>
-<li>Click “Data” , then will find “Text to Columns”. It will separate each field, only need 3 fields.</li>
-<li>New a pivot table to calculate data.(Control Columns A:I )</li>
-<li><strong>Required: DNS Name, Plugin Output</strong></li>
-</ul>
-<hr>
-<h3 id="Extract-Path-except-for-filename"><a href="#Extract-Path-except-for-filename" class="headerlink" title="Extract Path except for filename"></a>Extract Path except for filename</h3><blockquote>
-<p><code>=LEFT(D2,FIND(CHAR(1),SUBSTITUTE(D2,&quot;\&quot;,CHAR(1),LEN(D2)-LEN(SUBSTITUTE(D2,&quot;\&quot;,&quot;&quot;))))-1)</code>**<br><strong>i. <code>left(text, num_chars)</code></strong></p>
-<ul>
-<li>text: required. The text string that contains the characters you want to extract.</li>
-<li>num_chars: optional. Specifies the number of characters you want left to extract.<br><strong>ii. <code>find(find_text, within_text, [start_num])</code></strong>  </li>
-<li>find_text: required. The text you want to find.  </li>
-<li>within_text: required. The text containing the text you want to find.  </li>
-<li>start_num: option. Specifies the character at which to start the search. The first character in within_text is character number 1. if you omit start_num, it is assumed to be 1.<br><strong>iii.<code>substitute(text, old_text, new_text, [instance_num])</code></strong>  </li>
-<li>text: required. The text or the reference to a cell containing text for which you want to substitute characters.  </li>
-<li>old_text: required. The text you want to replace.  </li>
-<li>new_text: required. The Text you want to replace old_text with.  </li>
-<li>instance_num: optional. Specifics which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text.<br><strong>iv. <code>len(text) </code></strong>  </li>
-<li>Text: required. The text whose length you want to find. Space count as characters.</li>
-</ul>
+    <h3 id="解读VBA-Script"><a href="#解读VBA-Script" class="headerlink" title="解读VBA Script"></a>解读VBA Script</h3><blockquote>
+<p>Sub 过程是一系列 Visual Basic 语句，由 Sub 语句和 End Sub 语句括起来，这些语句执行操作但不返回值。 Sub 过程可采用参数，例如通过调用过程传递的常量、变量或表达式。 如果 Sub 过程没有参数，则 Sub 语句必须包括一组空括号。</p>
 </blockquote>
-<h3 id="Combine-content-of-cells"><a href="#Combine-content-of-cells" class="headerlink" title="Combine content of cells"></a>Combine content of cells</h3><blockquote>
-<p><strong>a. <code>=TEXTJOIN(&quot;,&quot;,TRUE,K1:K10)</code></strong><br><strong>i. <code>textjoin(delimiter, ignore_empty, text1)</code></strong>  </p>
-<ul>
-<li>Delimiter: required. A text string, either empty, or one or more characters enclosed by double quotes, or a reference to a valid text string. If a number is supplied, it will be treated as text.</li>
-<li>Ignore_empty: if true, ignores empty cells.</li>
-<li>Text1: required. Text item to be joined. A text string, or array of strings, such as a range of cells.</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="xLookup"><a href="#xLookup" class="headerlink" title="xLookup"></a>xLookup</h2><pre><code>=XLOOKUP(lookup_value,lookup_array,return_array, [if_not_found], [match_mode], [search_mode]) 
+<pre><code> Sub sendMail()
+    Dim OutlookApp As Object
+    Dim OutlookMail As Object
+    Dim lastRow As Long
+    Dim i As Long
+
+    &#39; 创建Outlook应用程序
+    Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+
+    &#39; 获取工作表
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39; 修改为您的工作表名称
+
+    &#39; 获取最后一行
+    lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+
+    &#39; 循环发送邮件
+    For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+        &#39; 创建新邮件
+        Set OutlookMail = OutlookApp.CreateItem(0)
+
+        &#39; 设置收件人、抄送、主题和正文
+        OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+        OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+        OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+        OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+        &#39; 发送邮件
+        OutlookMail.Send
+
+        &#39; 释放对象
+        Set OutlookMail = Nothing
+    Next i
+
+    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
 </code></pre>
 <blockquote>
-<p><em><strong>参数说明</strong></em><br>lookup_value：查找值(必填项)<br>lookup_array：要搜索的数组或区域(必填项)<br>return_array：要返回的数组或区域(必填项)<br>[if_not_found]：如果找不到有效的匹配项，则返回你提供的[if_not_found]文本；如果找不到有效的匹配项，并且缺少[if_not_found]，则会返回#N&#x2F;A(选填项)<br>[match_mode]：指定匹配类型。 </p>
-<blockquote>
-<p>0表示完全匹配，如果未找到，则返回<code>#N/A</code>，这是默认选项；<br>-1表示完全匹配，如果没有找到，则返回下一个较小的项；<br>1表示完全匹配，如果没有找到，则返回下一个较大的项；<br>2表示通配符匹配，其中<code>*</code>、<code>？</code>、<code>~</code>有特殊含义。 </p>
+<p>DIM就是定义一个变量，第一个就是把OutlookApp（自定义）的变成object的数据类型。也就是通俗一点，把A定义成动物。电脑会识别A为动物。</p>
 </blockquote>
-<p>[search_mode]：指定要使用的搜索模式。(选填项) </p>
+<pre><code>Dim OutlookApp As Object
+Dim OutlookMail As Object
+Dim lastRow As Long
+Dim i As Long
+</code></pre>
 <blockquote>
-<p>1表示从第一项开始搜索，这是默认选项；<br>-1表示从最后一项开始执行反向搜索；<br>2表示执行依赖于lookup_array按升序排序的二进制搜索，如果未排序，将返回无效结果；<br>-2表示执行依赖于lookup_array按降序排序的二进制搜索，如果未排序，将返回无效结果。 </p>
+<p>创建Outlook应用程序，类似于打开Outlook</p>
 </blockquote>
-<p><em><strong>通配符解释</strong></em><br>通配符一般使用在Excel查找和替换中，将通配符用作文本筛选器的比较条件，并在搜索和替换内容时使用通配符字符。<br>常用通配符有三个，分别是<code>？</code>(问号)、<code>*</code>(星号)、<code>~</code>(波形符)。 </p>
+<pre><code>Set OutlookApp = CreateObject(&quot;Outlook.Application&quot;)
+</code></pre>
 <blockquote>
-<p><code>？</code>(问号)表示任意单个字符，例如A？就表示以A开头的任意两个字符；<br><code>*</code>(星号)表示任意数量的字符，例如<code>*A*</code>就表示含有字符A的任意一个字符串，<code>*A</code>就表示以字符A结尾的任意一个字符串，<code>A*</code>就表示以字符A开头的任意一个字符串；<br><code>~</code>(波形符)即转义字符，通常后跟？、<code>*</code>或者<code>~</code>，表示<code>~</code>后面的字符为普通字符，例如<code>A~？</code>表示查找字符串<code>A？</code>。 </p>
+<p>1.获取工作簿<br>2.修改为工作簿里sheet的名称 </p>
 </blockquote>
+<pre><code>Dim ws As Worksheet
+Set ws = ThisWorkbook.Sheets(&quot;Sheet1&quot;) &#39;
+</code></pre>
+<blockquote>
+<p>获取工作簿中的最后一行，固定搭配</p>
+</blockquote>
+<pre><code>lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+</code></pre>
+<h4 id="For循环解读"><a href="#For循环解读" class="headerlink" title="For循环解读:"></a>For循环解读:</h4><blockquote>
+<p>1.for i&#x3D;2 to lastRow  i就是一个变量 从下文理解就是 i&#x3D;行，To lastRow 就是循环从第二行到最后一行。<br>2.Set OutlookMail &#x3D; OutlookApp.CreateItem(0)创建新邮件。<br>3.从OutlookMail.**&lt;Outlook里的item项&gt;**，就比如说发件人那就是outlookmail.sender；然后ws.Cells(i,1).value就是上面自定义的变量ws也就是你上面发给我的excel，也就是读取第二行第一列的值作为收件人。<br>4.outlookmail.send 就是发送邮件，固定搭配 ，有官方文档可以参考。<br>5.发送完之后需要释放被占用的对象，所以需要写一句        Set OutlookMail &#x3D; Nothing<br>6.最后for循环结尾 Next i 意思就是换行继续执行以上操作，直到excel的最后一行。  </p>
+</blockquote>
+<pre><code>For i = 2 To lastRow &#39; 假设第一行是标题，数据从第二行开始
+    &#39; 创建新邮件
+    Set OutlookMail = OutlookApp.CreateItem(0)   &#39; 0表示邮件
+
+    &#39; 设置收件人、抄送、主题和正文
+    OutlookMail.To = ws.Cells(i, 1).Value &#39; 收件人列
+    OutlookMail.CC = ws.Cells(i, 2).Value &#39; 抄送列
+    OutlookMail.Subject = ws.Cells(i, 3).Value &#39; 主题列
+    OutlookMail.Body = ws.Cells(i, 4).Value &#39; 正文列
+
+    &#39; 发送邮件
+    OutlookMail.Send
+
+    &#39; 释放对象
+    Set OutlookMail = Nothing
+Next i
+</code></pre>
+<blockquote>
+<p>1.全部发送完，比如16个都发送完毕，则会退出for循环，此时我们的目的已经达到，所以我们需要释放被占用的对象，也就是application<br>2.固定搭配 End Sub 一个程序语句的结尾 一般是写完Sub xxx()后 立马要补充End Sub</p>
+</blockquote>
+<pre><code>    &#39; 释放Outlook应用程序对象
+    Set OutlookApp = Nothing
+End Sub
+</code></pre>
+<hr>
+<h3 id="在Excel里创建按钮"><a href="#在Excel里创建按钮" class="headerlink" title="在Excel里创建按钮"></a>在Excel里创建按钮</h3><blockquote>
+<p>1.打开”开发人员”选项卡，选择”插入”-&gt;”按钮(ActiveX控件)”，然后在工作簿上绘制一个按钮<br>2.创建按钮后，双击按钮以打开代码编辑器。将以下代码复制并粘贴到按钮的Click事件(点击后会发生的事情)中：</p>
+</blockquote>
+<pre><code>Private Sub CommandButton1_Click()
+  sendMail
+Enb Sub
+</code></pre>
+<blockquote>
+<p>返回工作簿点击按钮进行测试。</p>
+</blockquote>
+<blockquote>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/QingYuanve/article/details/131440152">在VBA中，使用Outlook对象库可以访问和操作Outlook应用程序中的邮件项</a><br>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/office/vba/api/overview/">Office VBA 参考</a></p>
 </blockquote>
 
   </div>
@@ -438,19 +495,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/10/11/Bangkok%20Travel%20Guide%204%20Days/">
+    <a href="/2024/10/14/ExcelFuncton/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Bangkok Travel Guide 4 Days</p>
+            <p>Excel Function Recording</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/10/11/ExcelVBA/">
+    <a href="/2024/10/14/Hexo-Github/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Excel VBA</p>
+            <p>使用Hexo部署Github Page</p>
         </div>
     </a>
     
