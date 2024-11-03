@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>PowerShell Command Recording-Blog</title>
+<title>Available Function Listing-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Powershell,Command,ShortCuts,">
+<meta name="keywords" content="Powershell,AppDeployToolkit,Function,">
 <meta name="description" content="">
 
 
@@ -286,14 +286,14 @@
             
             <li><a href="/tags/Powershell">Powershell</a></li>
             
-            <li><a href="/tags/Command">Command</a></li>
+            <li><a href="/tags/AppDeployToolkit">AppDeployToolkit</a></li>
             
-            <li><a href="/tags/ShortCuts">ShortCuts</a></li>
+            <li><a href="/tags/Function">Function</a></li>
             
             
         </ul>
         
-        <h1>PowerShell Command Recording</h1>
+        <h1>Available Function Listing</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -311,7 +311,7 @@
                          <a href="../../categories/Powershell/" target="_blank" >Powershell</a>
                     
                 </div>
-                <p>2024-10-21 14:03:43</p>
+                <p>2024-11-03 23:15:01</p>
             </div>
         </div>
     </div>
@@ -321,91 +321,124 @@
   <div id="article" class="post-content-info">
     
 
-    <blockquote>
-<p><strong>ShortCut Keys in VSCode:</strong></p>
-<ul>
-<li><p><strong>Auto-adjust indent</strong><br> <code>Shift+Alt+F (Win)</code><br> <code>Shift+Option+F (Mac)</code></p>
-</li>
-<li><p><strong>Annotating</strong><br><code>Ctrl+/ (Win)</code></p>
-</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To get the specific file’s SHA256 automatically</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell">  Get-FileHash &lt;Path&gt;  | fl
-  Get-FileHash &lt;Path&gt;  -Algorithm &lt;SHA256/MD5/…&gt;
-</code></pre>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2">Microsoft-Get-FileHash</a></p>
-</blockquote>
-<h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>Make sure the script can output log.</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell"> $ErrorMessage = $_.Exception.Message
- $FailIedItem = $_.Exception.ItemName
- $StackTrace = $_.Exception.StackTrace
-
- Write-Host &quot;Error: $ErrorMessage &quot; 
-</code></pre>
-<ul>
-<li><strong>Example[Output]</strong><br>Error Message : Cannot find path ‘C:\Program Files’ because it does not exist.<br>Failed Item : C:\Program Files</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_try_catch_finally?view=powershell-7.3">Microsoft-about_Try_Catch_Finally</a></p>
-</blockquote>
-<h2 id="Split-Path"><a href="#Split-Path" class="headerlink" title="Split-Path"></a>Split-Path</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To get the file name in the file’s path.</p>
-</li>
-<li><p><strong>Syntax</strong></p>
-</li>
-</ul>
-<pre><code class="powershell">Split-Path -Path &lt;Path&gt; -Leaf
-</code></pre>
-<ul>
-<li><strong>Example[Output]</strong><br>Pass1.log<br>Pass2.log</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7.2">Microsoft-Split-Path</a></p>
-</blockquote>
-<h2 id="Start-process-Msiexec-exe"><a href="#Start-process-Msiexec-exe" class="headerlink" title="Start-process(Msiexec.exe)"></a>Start-process(Msiexec.exe)</h2><blockquote>
-<ul>
-<li><p><strong>Description:</strong><br>To start one or more processes on the local computer.</p>
-</li>
-<li><p><strong>Example[Command]</strong></p>
-</li>
-</ul>
-<pre><code class="Powershell">Start-Process -PassThru -Wait MsiExec.exe  -ArgumentList &quot;/i $mPar /qn REBOOT=Suppress&quot;
-</code></pre>
-<ul>
-<li><strong>Example[Output]</strong></li>
-</ul>
-<pre><code class="plain">Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
--------  ------    -----      -----     ------     --  -- -----------
-      0       2      432       1852       0.00  45952   1 msiexec
-</code></pre>
-<ul>
-<li><strong>Syntax</strong></li>
-</ul>
-<pre><code class="powershell">Start-Process MsiExec.exe -ArgumentList &lt;Arg&gt; -Wait -PassThru
-</code></pre>
-<p><strong>-PassThru</strong> is a parameter that returns an object that contains information about the new process<br><strong>-Wait</strong> is a parameter that waits for the new process to finish before continuing execution.</p>
-<ul>
-<li>&lt;arg&gt;Normal Parameters</li>
-<li><strong>&#x2F;i</strong> is an option that installs a Windows Installer package.</li>
-<li><strong>&#x2F;X</strong> is an option that unintalls a Windows Installer package.</li>
-<li><strong>&#x2F;qn</strong> is an option that display no user interface during the installation process.</li>
-<li><strong>REBOOT&#x3D;Suppress</strong> is a property that prevents the computer from restarting after the installation completes.</li>
-</ul>
-<p><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msiexec">Microsoft-MsiExec</a><br><strong>More info:</strong> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.2">Microsoft-Start-Process</a></p>
-</blockquote>
+    <h2 id="From-AppDeployToolkit"><a href="#From-AppDeployToolkit" class="headerlink" title="From AppDeployToolkit"></a>From AppDeployToolkit</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Name</th>
+<th>Synopsis</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Execute-MSP</code></td>
+<td>Reads SummaryInfo targeted product codes in MSP file and determines if the MSP file applies to any installed products.</td>
+<td><code>Write-Log</code></td>
+<td>Write messages to a log file in CMTrace.exe compatible format or Legacy text file format.  <!--one line --></td>
+</tr>
+<tr>
+<td><code>New-ZipFile</code></td>
+<td>Create a new zip archive or add content to an existing archive.</td>
+<td><code>Exit-Script</code></td>
+<td>Exit the script, perform cleanup actions, and pass an exit code to the parent process.</td>
+</tr>
+<tr>
+<td><code>Resolve-Error</code></td>
+<td>Enumerate error record details.</td>
+<td><code>Show-InstallationPrompt</code></td>
+<td>Displays a custom installation prompt with the toolkit branding and optional buttons.  <!--one line --></td>
+</tr>
+<tr>
+<td><code>Show-DialogBox</code></td>
+<td>Display a custom dialog box with optional title, buttons, icon and timeout.</td>
+<td><code>Get-HardwarePlatform</code></td>
+<td>Retrieves information about the hardware platform (physical or virtual)</td>
+</tr>
+<tr>
+<td><code>Get-FreeDiskSpace</code></td>
+<td>Retrieves the free disk space in MB on a particular drive (defaults to system drive)</td>
+<td><code>Get-InstalledApplication</code></td>
+<td>Retrieves information about installed applications.</td>
+</tr>
+<tr>
+<td><code>Execute-MSI</code></td>
+<td>Executes msiexec.exe to perform the following actions for MSI &amp; MSP files and MSI product codes: install, uninstall, patch, repair, active setup.</td>
+<td><code>Remove-MSIApplications</code></td>
+<td>Removes all MSI applications matching the specified application name.</td>
+</tr>
+<tr>
+<td><code>Test-RegistryValue</code></td>
+<td>Test if a registry value exists.</td>
+<td><code>Get-RegistryKey</code></td>
+<td>Retrieves value names and value data for a specified registry key or optionally, a specific value.</td>
+</tr>
+<tr>
+<td><code>Set-RegistryKey</code></td>
+<td>Creates a registry key name, value, and value data; it sets the same if it already exists.</td>
+<td><code>Remove-RegistryKey</code></td>
+<td>Deletes the specified registry key or value.</td>
+</tr>
+<tr>
+<td><code>Invoke-HKCURegistrySettingsForAllUsers</code></td>
+<td>Set current user registry settings for all current users and any new users in the future.</td>
+<td><code>ConvertTo-NTAccountOrSID</code></td>
+<td>Convert between NT Account names and their security identifiers (SIDs).</td>
+</tr>
+<tr>
+<td><code>Get-UserProfiles</code></td>
+<td>Get the User Profile Path, User Account Sid, and the User Account Name for all users that log onto the machine and also the Default User (which does not log on).</td>
+<td><code>Get-FileVersion</code></td>
+<td>Gets the version of the specified file</td>
+</tr>
+<tr>
+<td><code>New-Shortcut</code></td>
+<td>Creates a new .lnk or .url type shortcut</td>
+<td><code>Execute-ProcessAsUser</code></td>
+<td>Execute a process with a logged in user account, by using a scheduled task, to provide interaction with user in the SYSTEM context.</td>
+</tr>
+<tr>
+<td><code>Update-Desktop</code></td>
+<td>Refresh the Windows Explorer Shell, which causes the desktop icons and the environment variables to be reloaded.</td>
+<td><code>Update-SessionEnvironmentVariables</code></td>
+<td>Updates the environment variables for the current PowerShell session with any environment variable changes that may have occurred during script execution.</td>
+</tr>
+<tr>
+<td><code>Get-ScheduledTask</code></td>
+<td>Retrieve all details for scheduled tasks on the local computer.</td>
+<td><code>Block-AppExecution</code></td>
+<td>Block the execution of an application(s)</td>
+</tr>
+<tr>
+<td><code>Unblock-AppExecution</code></td>
+<td>Unblocks the execution of applications performed by the Block-AppExecution function</td>
+<td><code>Get-DeferHistory</code></td>
+<td>Get the history of deferrals from the registry for the current application, if it exists.</td>
+</tr>
+<tr>
+<td><code>Set-DeferHistory</code></td>
+<td>Set the history of deferrals in the registry for the current application.</td>
+<td><code>Get-UniversalDate</code></td>
+<td>Returns the date&#x2F;time for the local culture in a universal sortable date time pattern.</td>
+</tr>
+<tr>
+<td><code>Get-RunningProcesses</code></td>
+<td>Gets the processes that are running from a custom list of process objects and also adds a property called ProcessDescription.</td>
+<td><code>Show-InstallationWelcome</code></td>
+<td>Show a welcome dialog prompting the user with information about the installation and actions to be performed before the installation can begin.</td>
+</tr>
+<tr>
+<td><code>Show-WelcomePrompt</code></td>
+<td>Called by Show-InstallationWelcome to prompt the user to optionally do the following:  1. Close the specified running applications.  2. Provide an option to defer the installation.  3. Show a countdown before applications are automatically closed.</td>
+<td><code>Show-InstallationRestartPrompt</code></td>
+<td>Displays a restart prompt with a countdown to a forced restart.</td>
+</tr>
+<tr>
+<td><code>Show-BalloonTip</code></td>
+<td>Displays a balloon tip notification in the system tray.</td>
+<td><code>Show-InstallationProgress</code></td>
+<td>Displays a progress dialog in a separate thread with an updateable custom message.</td>
+</tr>
+</tbody></table>
 
   </div>
   <div id="gitalk-container"></div>
@@ -476,19 +509,12 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/10/21/Osaka-Tokyo%20Trave%20Guide%207%20Days/">
-        <div class="post-paging-last">
-            <span>Previous</span>
-            <p>Tokyo - Osaka Travel Guide 7 Days</p>
-        </div>
-    </a>
-    
 
     
-    <a href="/2024/10/21/SplunkForwarderpkg/">
+    <a href="/2024/11/03/Bangkok%20Travel%20Guide%204%20Days/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>SplunkForwarder pkg in macOS</p>
+            <p>Bangkok Travel Guide 4 Days</p>
         </div>
     </a>
     
