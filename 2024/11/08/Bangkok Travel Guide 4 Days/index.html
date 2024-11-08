@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Excel Function Recording-Blog</title>
+<title>Bangkok Travel Guide 4 Days-Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
 
 
 
-<meta name="keywords" content="Function,Excel,">
+<meta name="keywords" content="Travel,Thailand,">
 <meta name="description" content="">
 
 
@@ -284,14 +284,14 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Function">Function</a></li>
+            <li><a href="/tags/Travel">Travel</a></li>
             
-            <li><a href="/tags/Excel">Excel</a></li>
+            <li><a href="/tags/Thailand">Thailand</a></li>
             
             
         </ul>
         
-        <h1>Excel Function Recording</h1>
+        <h1>Bangkok Travel Guide 4 Days</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -306,10 +306,10 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Sodo</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../categories/Excel/" target="_blank" >Excel</a>
+                         <a href="../../categories/Travel/" target="_blank" >Travel</a>
                     
                 </div>
-                <p>2024-11-07 15:36:57</p>
+                <p>2024-11-08 11:32:24</p>
             </div>
         </div>
     </div>
@@ -319,54 +319,146 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="Extract-Group-in-cell"><a href="#Extract-Group-in-cell" class="headerlink" title="Extract Group in cell"></a>Extract Group in cell</h2><p><code>=IF(ISNUMBER(SEARCH(&quot; : Users&quot;,D2)),&quot;Users&quot;,IF(ISNUMBER(SEARCH(&quot;Everyone&quot;,D2)),&quot;Everyone&quot;,&quot;Authenticated Users&quot;))</code>   </p>
-<h2 id="Extract-Path-in-cell"><a href="#Extract-Path-in-cell" class="headerlink" title="Extract Path in cell"></a>Extract Path in cell</h2><p><code>=MID(B9,FIND(&quot;Path :&quot;,B9)+LEN(&quot;Path :&quot;),FIND(&quot;Used by services&quot;,B9)-FIND(&quot;Path :&quot;,B9)-LEN(&quot;Path :&quot;))</code></p>
-<ul>
-<li>Only extract the path that includes three “&quot;, decrease to two if do not have it<br><code>=IFERROR(MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)+1)),MID(D3,1,FIND(&quot;\&quot;,D3,FIND(&quot;\&quot;,D3)+1)))</code></li>
-<li>Click “Data” , then will find “Text to Columns”. It will separate each field, only need 3 fields.</li>
-<li>New a pivot table to calculate data.(Control Columns A:I )</li>
-<li><strong>Required: DNS Name, Plugin Output</strong></li>
-</ul>
-<hr>
-<h3 id="Extract-Path-except-for-filename"><a href="#Extract-Path-except-for-filename" class="headerlink" title="Extract Path except for filename"></a>Extract Path except for filename</h3><blockquote>
-<p><code>=LEFT(D2,FIND(CHAR(1),SUBSTITUTE(D2,&quot;\&quot;,CHAR(1),LEN(D2)-LEN(SUBSTITUTE(D2,&quot;\&quot;,&quot;&quot;))))-1)</code>**<br><strong>i. <code>left(text, num_chars)</code></strong></p>
-<ul>
-<li>text: required. The text string that contains the characters you want to extract.</li>
-<li>num_chars: optional. Specifies the number of characters you want left to extract.<br><strong>ii. <code>find(find_text, within_text, [start_num])</code></strong>  </li>
-<li>find_text: required. The text you want to find.  </li>
-<li>within_text: required. The text containing the text you want to find.  </li>
-<li>start_num: option. Specifies the character at which to start the search. The first character in within_text is character number 1. if you omit start_num, it is assumed to be 1.<br><strong>iii.<code>substitute(text, old_text, new_text, [instance_num])</code></strong>  </li>
-<li>text: required. The text or the reference to a cell containing text for which you want to substitute characters.  </li>
-<li>old_text: required. The text you want to replace.  </li>
-<li>new_text: required. The Text you want to replace old_text with.  </li>
-<li>instance_num: optional. Specifics which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text.<br><strong>iv. <code>len(text) </code></strong>  </li>
-<li>Text: required. The text whose length you want to find. Space count as characters.</li>
-</ul>
+    <h2 id="机票-酒店"><a href="#机票-酒店" class="headerlink" title="机票&amp;酒店"></a>机票&amp;酒店</h2><blockquote>
+<p>出发时间-归来时间：08月30日-09月02日 上海浦东&#x2F;西安咸阳-曼谷素万那普&#x2F;曼谷廊曼<br>H1: Pathumwan Princess Hotel</p>
+<blockquote>
+<p>444 Phayathai Road, Pathumwan, Bangkok, Thailand, 10330</p>
 </blockquote>
-<h3 id="Combine-content-of-cells"><a href="#Combine-content-of-cells" class="headerlink" title="Combine content of cells"></a>Combine content of cells</h3><blockquote>
-<p><strong>a. <code>=TEXTJOIN(&quot;,&quot;,TRUE,K1:K10)</code></strong><br><strong>i. <code>textjoin(delimiter, ignore_empty, text1)</code></strong>  </p>
-<ul>
-<li>Delimiter: required. A text string, either empty, or one or more characters enclosed by double quotes, or a reference to a valid text string. If a number is supplied, it will be treated as text.</li>
-<li>Ignore_empty: if true, ignores empty cells.</li>
-<li>Text1: required. Text item to be joined. A text string, or array of strings, such as a range of cells.</li>
-</ul>
+<p>H2: Sindhorn Kempinski Hotel Bangkok</p>
+<blockquote>
+<p>80 Soi Tonson Lumphini, Pathumwan, Bangkok, Thailand, 10330  </p>
+</blockquote>
 </blockquote>
 <hr>
-<h2 id="xLookup"><a href="#xLookup" class="headerlink" title="xLookup"></a>xLookup</h2><pre><code>=XLOOKUP(lookup_value,lookup_array,return_array, [if_not_found], [match_mode], [search_mode]) 
-</code></pre>
-<blockquote>
-<p><em><strong>参数说明</strong></em><br>lookup_value：查找值(必填项)<br>lookup_array：要搜索的数组或区域(必填项)<br>return_array：要返回的数组或区域(必填项)<br>[if_not_found]：如果找不到有效的匹配项，则返回你提供的[if_not_found]文本；如果找不到有效的匹配项，并且缺少[if_not_found]，则会返回#N&#x2F;A(选填项)<br>[match_mode]：指定匹配类型。 </p>
-<blockquote>
-<p>0表示完全匹配，如果未找到，则返回<code>#N/A</code>，这是默认选项；<br>-1表示完全匹配，如果没有找到，则返回下一个较小的项；<br>1表示完全匹配，如果没有找到，则返回下一个较大的项；<br>2表示通配符匹配，其中<code>*</code>、<code>？</code>、<code>~</code>有特殊含义。 </p>
+<h2 id="必备物品【计算单位-人民币】"><a href="#必备物品【计算单位-人民币】" class="headerlink" title="必备物品【计算单位:人民币】"></a>必备物品【计算单位:人民币】</h2><blockquote>
+<p>泰铢现金：1000 (5kTHB)<br>泰国电话卡:26<br>护照<br>信用卡:Visa&#x2F;Master<br>充电宝</p>
 </blockquote>
-<p>[search_mode]：指定要使用的搜索模式。(选填项) </p>
-<blockquote>
-<p>1表示从第一项开始搜索，这是默认选项；<br>-1表示从最后一项开始执行反向搜索；<br>2表示执行依赖于lookup_array按升序排序的二进制搜索，如果未排序，将返回无效结果；<br>-2表示执行依赖于lookup_array按降序排序的二进制搜索，如果未排序，将返回无效结果。 </p>
+<h2 id="交通"><a href="#交通" class="headerlink" title="交通"></a>交通</h2><blockquote>
+<p>可刷Visa&#x2F;Master卡进出站<br>购买兔子卡<br>BTS可微信&#x2F;现金<br>MRT只能现金硬币   </p>
 </blockquote>
-<p><em><strong>通配符解释</strong></em><br>通配符一般使用在Excel查找和替换中，将通配符用作文本筛选器的比较条件，并在搜索和替换内容时使用通配符字符。<br>常用通配符有三个，分别是<code>？</code>(问号)、<code>*</code>(星号)、<code>~</code>(波形符)。 </p>
-<blockquote>
-<p><code>？</code>(问号)表示任意单个字符，例如A？就表示以A开头的任意两个字符；<br><code>*</code>(星号)表示任意数量的字符，例如<code>*A*</code>就表示含有字符A的任意一个字符串，<code>*A</code>就表示以字符A结尾的任意一个字符串，<code>A*</code>就表示以字符A开头的任意一个字符串；<br><code>~</code>(波形符)即转义字符，通常后跟？、<code>*</code>或者<code>~</code>，表示<code>~</code>后面的字符为普通字符，例如<code>A~？</code>表示查找字符串<code>A？</code>。 </p>
+<h2 id="需要下载的App"><a href="#需要下载的App" class="headerlink" title="需要下载的App"></a>需要下载的App</h2><blockquote>
+<p>交通：Google Maps &#x2F; Grab &#x2F; Bolt   </p>
 </blockquote>
+<hr>
+<h2 id="外卖Grab"><a href="#外卖Grab" class="headerlink" title="外卖Grab"></a>外卖Grab</h2><blockquote>
+<p>Phed Mark 猪肉打抛饭<br>พ่อครัวน้อย - ถนนสุขุมวิท 打抛饭<br>Choongman chicken 炸鸡(奶油洋葱味)<br>Kub Kao Kub Pla 咖喱蟹 蟹肉炒饭<br>ปูพ่นไฟ puponfai 海鲜<br>Piak Grilled Pork 泰式烤串<br>After you 甜品</p>
+</blockquote>
+<h2 id="C-T-Coffee-Tea"><a href="#C-T-Coffee-Tea" class="headerlink" title="C&amp;T (Coffee&amp;Tea)"></a>C&amp;T (Coffee&amp;Tea)</h2><blockquote>
+<p>Factory Coffee:Mrs.Cold-Dirty拿铁, Phayathai-无奶冷萃,Moscow-奶盖Dirty(奶味重),Supreme-卡布奇诺(含肉桂味),White Citrus冷萃苦橙拿铁 - <strong>难喝</strong><br>A Keen House:焦糖拿铁、黑芝麻拿铁、开心果奶油拿铁<br>Nueng Nom Nua- Banthat Thong(16pm-1am) 牛奶小子 建议当天喝完 - <strong>太甜</strong><br>Karun 泰奶冰沙(类似珍珠奶茶，但是是冰沙)(昀姐版)<br>Pangcha 泰奶刨冰(类似甜品) - <strong>一般</strong><br>ChaTraMue 网红泰奶(偏甜 建议少甜OR无糖) - <strong>还可以比Pangcha好喝</strong><br>After you<br>L-Seven(L7 Cafe)(11am-2am) 凭小票撸狮子(昀姐版) - <strong>要等一个小时,300🐖&#x2F;人 3min</strong><br>P.S. I Love You 小饼干: Classic Butter, Chocolate chip(昀姐版) - <strong>因为是昀姐买的所以特别！好吃！</strong>    </p>
+</blockquote>
+<h2 id="Restaurant"><a href="#Restaurant" class="headerlink" title="Restaurant"></a>Restaurant</h2><h3 id="米其林"><a href="#米其林" class="headerlink" title="米其林"></a>米其林</h3><blockquote>
+<ul>
+<li><input disabled="" type="checkbox"> Here Hai Restaurant: 海鲜餐 蟹肉炒饭 (不想排队太久可在快10点的时候去排队,可赶上第一波)(10am-5:30pm 周一休) 完他那县 - 近TDERM  -&gt;可Grab</li>
+<li><input disabled="" type="checkbox"> Rung Rueang Pork Noodle(Left shop): 猪肉末粉(8am-5pm) 离EmSphere近     </li>
+<li><input disabled="" type="checkbox"> Jeh O Chula: 海鲜面&#x2F;mama面(4pm-12am) 朱拉隆功  </li>
+<li><input disabled="" type="checkbox"> Sae Phun: 煎蛋鸡肉饭&#x2F;猪肉云吞(8am-2pm 周三&amp;四休) 近大皇宫  </li>
+<li><input disabled="" type="checkbox"> Somsak Poo Op: 粉蟹肉煲、虾煲(3pm-9pm 周一休) 远到不认识附近有啥  </li>
+<li><input disabled="" type="checkbox"> lay lao -Ari: 柚子木瓜沙拉、猪颈肉沙拉(10:30am-10pm) 近Ari站  </li>
+<li><input disabled="" type="checkbox"> Krua Apsorn @Dinso: 主打咖喱 蛋包饭咖喱 烤鸡翅(10am-7:30pm 周日休) 近民主纪念碑</li>
+<li><input disabled="" type="checkbox"> Baan Pee Lek Restaurant: 咖喱和牛扒(周一-周四11am-2pm&#x2F;4:30pm-10:30pm &#x2F; 周五-周日 11am-10:30pm) 算了太远了   </li>
+<li><input disabled="" type="checkbox"> Polo Fried Chicken(Soi Polo): 米其林国民炸鸡(7am-8:30pm) 近伦披尼公园  </li>
+<li><input disabled="" type="checkbox"> Thai Niyom Cuisine: 咖喱面、炸蛋咖喱(11am-9pm) 近Phloen Chit站</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="昀姐版"><a href="#昀姐版" class="headerlink" title="昀姐版"></a>昀姐版</h3><blockquote>
+<p>Restaurant POTONG(4:30pm-11pm) 需要预约 <a target="_blank" rel="noopener" href="http://www.restaurantpotong.com/">http://www.restaurantpotong.com/</a>  本行程无法预约</p>
+</blockquote>
+<h2 id="Massage"><a href="#Massage" class="headerlink" title="Massage"></a>Massage</h2><blockquote>
+<p>Health land(9am-11pm):要给小费，听说有些手法很敷衍<br>phumontra(10am-10pm) 贵妇按摩 (昀姐版)<br>Dream House     </p>
+</blockquote>
+<h2 id="711必买清单-昀姐了如指掌-不用list"><a href="#711必买清单-昀姐了如指掌-不用list" class="headerlink" title="711必买清单(昀姐了如指掌 不用list)"></a>711必买清单(昀姐了如指掌 不用list)</h2><blockquote>
+<p>富吉李小梅子<br>绣球梨子(蓝色小瓶子,有个绣球花)  - 头发香水<br>环保袋 很可爱</p>
+</blockquote>
+<h2 id="美妆店"><a href="#美妆店" class="headerlink" title="美妆店"></a>美妆店</h2><blockquote>
+<p>711<br>bigC<br>eveandboy  </p>
+</blockquote>
+<hr>
+<h2 id="日程规划"><a href="#日程规划" class="headerlink" title="日程规划"></a>日程规划</h2><h3 id="Day-1-上海-西安-曼谷-08月30日-星期五"><a href="#Day-1-上海-西安-曼谷-08月30日-星期五" class="headerlink" title="Day 1 上海&#x2F;西安-曼谷 08月30日 星期五"></a>Day 1 上海&#x2F;西安-曼谷 <strong>08月30日 星期五</strong></h3><blockquote>
+<p>21:25-00:40 上海浦东T1-曼谷素万那普<br>22:50-01:45 西安咸阳T3-曼谷廊曼T1  </p>
+</blockquote>
+<h3 id="Day-2-曼谷-08月31日-星期六"><a href="#Day-2-曼谷-08月31日-星期六" class="headerlink" title="Day 2 曼谷 08月31日 星期六"></a>Day 2 曼谷 <strong>08月31日 星期六</strong></h3><blockquote>
+<ul>
+<li>凌晨</li>
+</ul>
+<p>Grab打车至酒店H1<br>落地后点外卖至H1  </p>
+<ul>
+<li>上午</li>
+</ul>
+<p>起床<br>Factory Coffee:Mr.Cold &amp;  White Citrus</p>
+<ul>
+<li><p>早餐</p>
+</li>
+<li><p>四面佛(无门票)<br>&nbsp;&nbsp;开放时间：<br>&nbsp;&nbsp;&nbsp;&nbsp;06:00-22:00<br>&nbsp;&nbsp;参拜顺序：<br>&nbsp;&nbsp;&nbsp;&nbsp;1.功名事业和学业(正面)<br>&nbsp;&nbsp;&nbsp;&nbsp;2.爱情婚姻(右侧)<br>&nbsp;&nbsp;&nbsp;&nbsp;3.金钱财富(背面)<br>&nbsp;&nbsp;&nbsp;&nbsp;4.健康平安(左侧)<br>&nbsp;&nbsp;&nbsp;&nbsp;从正面开始，顺时针方向参拜，跪拜完放(一束花，一个蜡烛，三柱香)，直至回到正面参拜结束。<br>&nbsp;&nbsp;心中默念：<br>&nbsp;&nbsp;&nbsp;&nbsp;1.来自XX的XXX + 心愿<br>&nbsp;&nbsp;&nbsp;&nbsp;2.可能需要告知还愿方式<br>&nbsp;&nbsp;注意事项：<br>&nbsp;&nbsp;&nbsp;&nbsp;衣着避免暴露：忌讳露臂膀、低胸、裤过短，宜过膝<br>&nbsp;&nbsp;&nbsp;&nbsp;礼佛用品可在入口处购买<br>&nbsp;&nbsp;&nbsp;&nbsp;最佳参拜时间在上午  </p>
+</li>
+<li><p>午餐建议 暹罗商圈</p>
+</li>
+</ul>
+<p>P.S. I Love You by Pimara Macadamia Balls Siam Paragon(昀姐版) - <strong>还没吃</strong><br>TAKUYA OKONOMIYAKI by Siam Paragon G floor(昀姐版)<br>Karun 泰奶冰沙(类似珍珠奶茶，但是是冰沙)<br>Pangcha 泰奶刨冰(类似甜品) - <strong>不太行</strong><br>Thong Smith 船面&#x2F;mama面<br>ChaTraMue 网红泰奶(偏甜 建议少甜OR无糖) - <strong>还可以</strong><br>Omakase Don by Teppen สาขา CentralWorld(昀姐版)  </p>
+<ul>
+<li>午餐</li>
+</ul>
+<p>Kub Kao Kub Pla 冬阴功汤 蟹肉炒饭 生腌虾(辣) 炒空心菜 - <strong>一般</strong> </p>
+<ul>
+<li>打卡点</li>
+</ul>
+<p>Bangkok天桥 - 人多,建议用变焦,戴墨镜<br>Central World<br>Siam Paragon<br>Siam Discovery  </p>
+<ul>
+<li>Tips</li>
+</ul>
+<p>暹罗商圈组成: Siam Paragon暹罗百丽宫(奢侈品) + Siam Square(精品+网红品牌) + Siam Discovery(潮牌+网红桥M层) + Siam Center(本土品牌)</p>
+<ul>
+<li>下午</li>
+</ul>
+<p>大皇宫 - 3点结束售票没去成<br>Sala rattanakosin 晚餐需要预约<br>Siam Square  </p>
+<p><del>(民主纪念碑)Baan Kuay Tiew Ruathong 可顺道去King Power</del>  </p>
+<ul>
+<li>晚餐</li>
+</ul>
+<p>พ่อครัวน้อย - ถนนสุขุมวิท 打抛饭</p>
+<ul>
+<li>晚餐建议</li>
+</ul>
+<p>Jeh O Chula 网红米其林mama面(4pm-12am)<br>Lek Yai Traditional Tom Yum Noodles(11am-12am)<br>Chula 50 Kitchen(7am-7pm)周日休  </p>
+<ul>
+<li>逛夜市 朱拉隆功</li>
+</ul>
+</blockquote>
+<h3 id="Day-3-曼谷-09月01日-WangYun-s-Day"><a href="#Day-3-曼谷-09月01日-WangYun-s-Day" class="headerlink" title="Day 3 曼谷 09月01日 WangYun&#39;s Day"></a>Day 3 曼谷 <strong>09月01日 WangYun&#39;s Day</strong></h3><blockquote>
+<ul>
+<li><p>早上</p>
+</li>
+<li><p>11:00 退房H1 -&gt; 前往 H2  路程约40分钟</p>
+</li>
+<li><p>11:40 到达H2</p>
+<p>路程20分钟 3.7公里</p>
+</li>
+<li><p>13:00 Brunch<br>预约时间:1230 可保留30分钟 或者 和店家email沟通  </p>
+<p>Sühring(出片点)  </p>
+</li>
+<li><p>下午</p>
+</li>
+</ul>
+<p><del>Khlong Lat Mayom Floating Market 水上市场 周末(8am-5pm)</del><br><del>Taling Chan Floating Market 水上市场 周末(8am-3.30pm)</del><br><del>1st Signal Regiment Shooting Club(不远处)</del></p>
+<p>L-Seven(L7 Cafe)(11am-2am) 凭小票撸狮子   </p>
+<ul>
+<li>晚上</li>
+</ul>
+<p>EmSphere</p>
+<blockquote>
+<p>Co-limited<br>逛gai<br>BIG C<br><del>Sirocco (需要预约:未预约) <a target="_blank" rel="noopener" href="https://www.tablecheck.com/zh-CN/lebua-hotels-and-resorts-sirocco/reserve/landing?utm_source=google">https://www.tablecheck.com/zh-CN/lebua-hotels-and-resorts-sirocco/reserve/landing?utm_source=google</a></del></p>
+</blockquote>
+</blockquote>
+<h3 id="Day-4-曼谷-西安-上海-09月02日-星期一"><a href="#Day-4-曼谷-西安-上海-09月02日-星期一" class="headerlink" title="Day 4 曼谷-西安&#x2F;上海 09月02日 星期一"></a>Day 4 曼谷-西安&#x2F;上海 <strong>09月02日 星期一</strong></h3><blockquote>
+<p>9:00-10:00 早餐</p>
+<p>11:00 退房</p>
+<ul>
+<li>Massage</li>
+</ul>
+<p>酒店附近Dream House  </p>
+<p>14:00 到机场  </p>
+<p>BonChon 炸鸡: 还可以Hot有点辣,刚出餐 很脆 味道还行,有点干</p>
+<p>16:35-21:15 素万那普-西安咸阳T3<br>16:50-22:25 素万纳普-上海浦东T1  </p>
 </blockquote>
 
   </div>
@@ -438,19 +530,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <hr>
 <div class="post-paging">
     
-    <a href="/2024/11/07/Bangkok%20Travel%20Guide%204%20Days/">
+    <a href="/2024/11/08/Available%20Function%20Listing/">
         <div class="post-paging-last">
             <span>Previous</span>
-            <p>Bangkok Travel Guide 4 Days</p>
+            <p>Available Function Listing</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/11/07/ExcelVBA/">
+    <a href="/2024/11/08/ExcelFuncton/">
         <div class="post-paging-next">
             <span>Next</span>
-            <p>Excel VBA</p>
+            <p>Excel Function Recording</p>
         </div>
     </a>
     
